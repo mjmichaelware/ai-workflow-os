@@ -175,5 +175,29 @@
 })();
 </script>
 
+
+<section id=\"self-build-panel\" style=\"border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px\">
+  <h2>Approval-Gated Self Builder</h2>
+  <p>Consumes the next approved prompt and creates repo-scoped generated app files with compile/test proof.</p>
+  <button id=\"self-build-run-next\">Run Next Approved Prompt</button>
+  <pre id=\"self-build-output\">Self builder waiting...</pre>
+</section>
+<script>
+(function(){
+  async function runSelfBuild(){
+    const out = document.getElementById("self-build-output");
+    if(!out) return;
+    out.textContent = "Running next approved prompt...";
+    const r = await fetch("/api/self-build/run-next", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const b = document.getElementById("self-build-run-next");
+    if(b) b.onclick = runSelfBuild;
+  });
+})();
+</script>
+
 </body>
 </html>

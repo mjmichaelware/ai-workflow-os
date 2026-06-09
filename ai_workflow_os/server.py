@@ -7,6 +7,7 @@ import json
 from .registry_spine import build_registry, dispatch
 from .terminal_bridge import list_terminal_commands, run_terminal_command
 from .prompt_bridge import bridge_manifest, submit_prompt, approve_prompt, complete_prompt, list_prompts, next_approved_prompt
+from .self_build_executor import self_build_manifest, run_next_self_build
 import urllib.parse
 
 from .android_builder import android_status, create_native_android_target
@@ -114,6 +115,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/api/self-build/manifest":
+            self.send_json(self_build_manifest())
+            return
         if path == "/api/prompts":
             self.send_json(list_prompts())
             return
@@ -176,6 +180,13 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/api/self-build/run-next":
+            try:
+                self.send_json(run_next_self_build())
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
         if path == "/api/prompts/submit":
             try:
                 length = int(self.headers.get("Content-Length", "0") or "0")

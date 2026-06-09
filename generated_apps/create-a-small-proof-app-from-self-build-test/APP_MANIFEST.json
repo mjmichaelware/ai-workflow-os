@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-06-09T04:12:51.143948+00:00",
+  "generated_by": "ai-workflow-os-self-build-executor",
+  "health_endpoint": "/api/health",
+  "inherits": [
+    "no fake proof",
+    "no silent button failure",
+    "no secret printing",
+    "runtime proof required",
+    "compile proof required",
+    "no module package shadowing",
+    "no heredoc core build"
+  ],
+  "name": "create-a-small-proof-app-from-self-build-test",
+  "ok": true,
+  "prompt": "Create a small proof app from self build test"
+}
