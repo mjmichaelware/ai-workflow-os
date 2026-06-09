@@ -1,32 +1,42 @@
 # AI Workflow OS
 
-Reusable AI-agent workflow kit for carrying context, proof, patch plans, and handoffs across Claude, Codex, Gemini, ChatGPT, and future agents.
+Reusable AI-agent workflow kit for building, auditing, repairing, handing off, and deploying software projects across Claude, Codex, Gemini, ChatGPT, and future agents.
 
-This is not a deployed app and does not require Google Cloud.
+This is a GitHub-based workflow control plane. It is not a separate cloud project and does not require Google Cloud.
 
-## What it is
+## What it gives you
 
-- A GitHub-based workflow control plane.
-- A reusable `.claude` / AI-agent handoff pattern.
-- A way to prevent AI agents from guessing, losing context, or repeating audits.
-- A portable handoff-packet exporter.
+- durable AI context
+- contradiction audits
+- canonical specs
+- bug ledgers
+- patch plans
+- proof reports
+- UI/backend parity workflows
+- provider registry standards
+- ARM64 Termux safety rules
+- portable handoff archives
 
-## What it is not
-
-- Not a token bypass.
-- Not a cloud service.
-- Not a database project.
-- Not tied to one app.
-
-## Standard start prompt
+## Start prompt
 
 Read `workflow/MASTER_AGENT_START_PROMPT.md` and follow it exactly.
 
-## Core rules
+## Install into another repo
 
-- Do not print secrets.
-- Do not hardcode secrets.
-- Do not deploy unless explicitly authorized.
-- Inspect current code before patching.
-- Compile and proof before commit/deploy decisions.
-- Do not use heredocs in user-facing terminal commands.
+Run:
+
+```bash
+bash scripts/install_into_project.sh /path/to/target/repo
+```
+
+## Proof
+
+Run:
+
+```bash
+bash scripts/verify_workflow_repo.sh
+```
+
+## Non-goal
+
+This repository does not contain every possible computer science fact. It contains a practical operating workflow that future agents can extend.
