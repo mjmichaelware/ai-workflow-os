@@ -14,3 +14,7 @@ phone_exports/
 # Local AI Workflow OS runtime state
 ai_workflow_os/proofs/*.json
 ai_workflow_os/terminal_bridge_logs/*.jsonl
+# Runtime state must stay local
+ai_workflow_os/audit/*.jsonl
+ai_workflow_os/persistence/*.sqlite3
+ai_workflow_os/persistence/*.jsonl

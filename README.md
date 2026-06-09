@@ -64,3 +64,18 @@ Secrets stay outside source. The app reports key presence only. It does not prin
 ## Status
 
 Early public operator build. Phone-local first. Cross-device and SaaS paths are planned.
+
+
+## Console-grade direction
+
+AI Workflow OS is being shaped as a cloud-console-style operating surface that runs anywhere: phone, tablet, desktop, Codespaces, local runners, and eventually SaaS.
+
+The phone version is not a toy mode. It is the wedge. The long-term platform goal is a device-independent operating console where the browser is the intent surface and approved runners perform the work.
+
+## Public research snapshots
+
+The repository includes a public landscape research script:
+
+python3 scripts/research_public_landscape.py
+
+It snapshots public GitHub signals for Actions, CodeQL, devcontainers, PWA, Termux, local-first, and agentic coding tools.

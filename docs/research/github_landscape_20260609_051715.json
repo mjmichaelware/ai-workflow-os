@@ -1,0 +1,65 @@
+{
+  "created_at": "20260609_051715",
+  "queries": [
+    {
+      "ok": false,
+      "query": "topic:github-actions language:Python stars:>100",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "topic:codeql stars:>100",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "topic:devcontainer stars:>100",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "topic:pwa stars:>100",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "topic:termux stars:>50",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "topic:agentic-ai stars:>10",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "topic:ai-agents stars:>100",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "claude code agent stars:>10",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "codex cli agent stars:>10",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "gemini cli stars:>10",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "cline ai agent stars:>10",
+      "error": "gh: Not Found (HTTP 404)"
+    },
+    {
+      "ok": false,
+      "query": "continue dev ai stars:>10",
+      "error": "gh: Not Found (HTTP 404)"
+    }
+  ]
+}
