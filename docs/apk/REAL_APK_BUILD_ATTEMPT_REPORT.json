@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "project_created": true,
+  "project_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/exports/real_apk_project/ai-workflow-os-mobile",
+  "toolchain": {
+    "ok": true,
+    "tools": {
+      "java": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/java"
+      },
+      "javac": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/javac"
+      },
+      "gradle": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/gradle"
+      },
+      "sdkmanager": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/cmdline-tools/latest/bin/sdkmanager"
+      },
+      "adb": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/platform-tools/adb"
+      },
+      "apksigner": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/build-tools/36.0.0/apksigner"
+      },
+      "zipalign": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/build-tools/36.0.0/zipalign"
+      },
+      "aapt2": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/build-tools/36.0.0/aapt2"
+      },
+      "d8": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/cmdline-tools/latest/bin/d8"
+      },
+      "keytool": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/keytool"
+      }
+    },
+    "android_home_present": true,
+    "keys_printed": false
+  },
+  "build_attempted": true,
+  "debug_apk_built": false,
+  "debug_apk": null,
+  "build_returncode": 1,
+  "build_stdout_tail": "rces\n> Task :app:mergeDebugResources\n> Task :app:createDebugCompatibleScreenManifests\n> Task :app:extractDeepLinksDebug\n> Task :app:parseDebugLocalResources\n> Task :app:processDebugMainManifest\n> Task :app:processDebugManifest\n> Task :app:mergeDebugShaders\n> Task :app:compileDebugShaders NO-SOURCE\n> Task :app:generateDebugAssets UP-TO-DATE\n> Task :app:mergeDebugAssets\n> Task :app:compressDebugAssets\n> Task :app:processDebugJavaRes NO-SOURCE\n> Task :app:checkDebugDuplicateClasses\n> Task :app:desugarDebugFileDependencies\n> Task :app:processDebugManifestForPackage\n> Task :app:mergeExtDexDebug\n> Task :app:mergeLibDexDebug\n> Task :app:mergeDebugJavaResource\n> Task :app:mergeDebugJniLibFolders\n> Task :app:mergeDebugNativeLibs NO-SOURCE\n> Task :app:stripDebugDebugSymbols NO-SOURCE\n> Task :app:processDebugResources FAILED\n> Task :app:validateSigningDebug\n\n[Incubating] Problems report is available at: file:///data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/exports/real_apk_project/ai-workflow-os-mobile/build/reports/problems/problems-report.html\n\nDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.\n\nYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.\n\nFor more on this, please refer to https://docs.gradle.org/9.5.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.\n24 actionable tasks: 24 executed\n",
+  "build_stderr_tail": "LeaseService.java:300)\n\tat org.gradle.internal.work.ResourceLockStatistics$1.measure(ResourceLockStatistics.java:43)\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.runAndReleaseLocks(DefaultWorkerLeaseService.java:298)\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.withLocksAcquired(DefaultWorkerLeaseService.java:294)\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:286)\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:130)\n\tat org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:135)\n\tat org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:163)\n\tat org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:125)\n\t... 2 more\nCaused by: com.android.builder.internal.aapt.v2.Aapt2InternalException: Failed to start AAPT2 process.\n\tat com.android.builder.internal.aapt.v2.Aapt2DaemonImpl.stopQuietly(Aapt2DaemonImpl.kt:126)\n\tat com.android.builder.internal.aapt.v2.Aapt2DaemonImpl.startProcess(Aapt2DaemonImpl.kt:113)\n\tat com.android.builder.internal.aapt.v2.Aapt2Daemon.checkStarted(Aapt2Daemon.kt:56)\n\t... 41 more\nCaused by: java.io.IOException: Process unexpectedly exit.\n\tat com.android.builder.internal.aapt.v2.Aapt2DaemonImpl.startProcess(Aapt2DaemonImpl.kt:114)\n\t... 42 more\n\n\nBUILD FAILED in 2m 7s\n",
+  "keys_printed": false,
+  "broad_permissions": false,
+  "keystore_in_repo": false
+}

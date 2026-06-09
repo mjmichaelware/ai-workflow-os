@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "created_at": "2026-06-09T17:10:44.675366+00:00",
-  "git_head": "8b5a42e Merge recursive grandchild inheritance proof",
+  "created_at": "2026-06-09T21:34:15.318687+00:00",
+  "git_head": "93c21f7 Merge final release hardening",
   "checks": [
     {
       "name": "tests",
       "ok": true,
       "returncode": 0,
-      "stdout_tail": "................................................................         [100%]\n64 passed in 10.04s\n",
+      "stdout_tail": "..................................................................       [100%]\n66 passed in 8.31s\n",
       "stderr_tail": ""
     },
     {
