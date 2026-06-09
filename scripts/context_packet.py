@@ -11,6 +11,12 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_capability_matrix.py",
+    "docs/standards/CAPABILITY_MATRIX_STANDARD.md",
+    "docs/capabilities/TOOL_AGENT_CAPABILITY_MATRIX.md",
+    "docs/capabilities/TOOL_AGENT_CAPABILITY_MATRIX.json",
+    "scripts/prove_capability_matrix.py",
+    "ai_workflow_os/capability_matrix.py",
     "tests/test_native_android_wrapper.py",
     "docs/standards/NATIVE_ANDROID_WRAPPER_STANDARD.md",
     "docs/NATIVE_ANDROID_WRAPPER.md",
