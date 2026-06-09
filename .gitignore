@@ -18,3 +18,4 @@ ai_workflow_os/terminal_bridge_logs/*.jsonl
 ai_workflow_os/audit/*.jsonl
 ai_workflow_os/persistence/*.sqlite3
 ai_workflow_os/persistence/*.jsonl
+exports/

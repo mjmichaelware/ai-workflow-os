@@ -1,0 +1,234 @@
+{
+  "ok": true,
+  "local_only_inventory": true,
+  "broad_permissions": false,
+  "keys_printed": false,
+  "capabilities": [
+    {
+      "id": "git",
+      "label": "Git",
+      "kind": "vcs",
+      "binary": "git",
+      "safe_templates": [
+        "git status --short",
+        "git diff --check",
+        "git log --oneline -5"
+      ],
+      "writes_repo": true,
+      "network": "optional",
+      "secret_policy": "never print credentials or remotes with embedded tokens",
+      "proof": "git --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "git --version",
+        "stdout": "git version 2.54.0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "kind": "runtime",
+      "binary": "python3",
+      "safe_templates": [
+        "python3 -m py_compile",
+        "python3 -m pytest -q"
+      ],
+      "writes_repo": false,
+      "network": "none by default",
+      "secret_policy": "no environment dump",
+      "proof": "python3 --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "python3 --version",
+        "stdout": "Python 3.13.13\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "pytest",
+      "label": "Pytest",
+      "kind": "test",
+      "binary": "python3",
+      "safe_templates": [
+        "PYTHONPATH=$PWD python3 -m pytest -q"
+      ],
+      "writes_repo": false,
+      "network": "none",
+      "secret_policy": "redact stdout on failures if token patterns appear",
+      "proof": "python3 -m pytest --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "python3 -m pytest --version",
+        "stdout": "pytest 9.0.3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "gh",
+      "label": "GitHub CLI",
+      "kind": "platform-cli",
+      "binary": "gh",
+      "safe_templates": [
+        "gh auth status",
+        "gh repo view"
+      ],
+      "writes_repo": false,
+      "network": "github",
+      "secret_policy": "never print tokens",
+      "proof": "gh --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "gh --version",
+        "stdout": "gh version 2.93.0\nhttps://github.com/cli/cli/releases/tag/v2.93.0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "gcloud",
+      "label": "Cloud CLI",
+      "kind": "platform-cli",
+      "binary": "gcloud",
+      "safe_templates": [
+        "gcloud --version",
+        "gcloud config list --format=json"
+      ],
+      "writes_repo": false,
+      "network": "cloud",
+      "secret_policy": "never print credentials",
+      "proof": "gcloud --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "gcloud --version",
+        "stdout": "Google Cloud SDK 571.0.0\nbeta 2026.05.29\nbq 2.1.32\ncore 2026.05.29\ngcloud-crc32c 1.0.0\ngsutil 5.37\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "node",
+      "label": "Node",
+      "kind": "runtime",
+      "binary": "node",
+      "safe_templates": [
+        "node --version"
+      ],
+      "writes_repo": false,
+      "network": "none by default",
+      "secret_policy": "no environment dump",
+      "proof": "node --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "node --version",
+        "stdout": "v26.2.0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "npm",
+      "label": "NPM",
+      "kind": "package-manager",
+      "binary": "npm",
+      "safe_templates": [
+        "npm --version",
+        "npm audit --json"
+      ],
+      "writes_repo": true,
+      "network": "registry",
+      "secret_policy": "never print npm tokens",
+      "proof": "npm --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "npm --version",
+        "stdout": "11.16.0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "gemini",
+      "label": "Gemini CLI",
+      "kind": "agent",
+      "binary": "gemini",
+      "safe_templates": [
+        "gemini --version"
+      ],
+      "writes_repo": "requires explicit task packet",
+      "network": "model-provider",
+      "secret_policy": "keys only through provider auth, never in scripts",
+      "proof": "gemini --version",
+      "detected": {
+        "ok": false,
+        "installed": true,
+        "command": "gemini --version",
+        "stdout": "",
+        "stderr": "Command '['gemini', '--version']' timed out after 12 seconds"
+      }
+    },
+    {
+      "id": "claude",
+      "label": "Claude CLI",
+      "kind": "agent",
+      "binary": "claude",
+      "safe_templates": [
+        "claude --version"
+      ],
+      "writes_repo": "requires explicit task packet",
+      "network": "model-provider",
+      "secret_policy": "keys only through provider auth, never in scripts",
+      "proof": "claude --version",
+      "detected": {
+        "ok": false,
+        "installed": true,
+        "command": "claude --version",
+        "stdout": "",
+        "stderr": "[Errno 8] Exec format error: 'claude'"
+      }
+    },
+    {
+      "id": "codex",
+      "label": "Codex CLI",
+      "kind": "agent",
+      "binary": "codex",
+      "safe_templates": [
+        "codex --version"
+      ],
+      "writes_repo": "requires explicit task packet",
+      "network": "model-provider",
+      "secret_policy": "keys only through provider auth, never in scripts",
+      "proof": "codex --version",
+      "detected": {
+        "ok": false,
+        "installed": false,
+        "command": "codex --version",
+        "stdout": "",
+        "stderr": "missing binary"
+      }
+    },
+    {
+      "id": "curl",
+      "label": "Curl",
+      "kind": "http-client",
+      "binary": "curl",
+      "safe_templates": [
+        "curl -fsS http://127.0.0.1:8765/"
+      ],
+      "writes_repo": false,
+      "network": "explicit URL only",
+      "secret_policy": "never place tokens in URL",
+      "proof": "curl --version",
+      "detected": {
+        "ok": true,
+        "installed": true,
+        "command": "curl --version",
+        "stdout": "curl 8.20.0 (aarch64-unknown-linux-android) libcurl/8.20.0 OpenSSL/3.6.2 zlib/1.3.2 libssh2/1.11.1 nghttp2/1.69.0 ngtcp2/1.23.0 nghttp3/1.16.0\nRelease-Date: 2026-04-29\nProtocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns mqtt mqtts pop3 pop3s rtsp scp sftp smtp smtps telnet tftp ws wss\nFeatures: alt-svc AsynchDNS HSTS HTTP2 HTTP3 HTTPS-proxy IPv6 Largefile libz SSL threadsafe UnixSockets\n",
+        "stderr": ""
+      }
+    }
+  ]
+}
