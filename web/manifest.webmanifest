@@ -1,0 +1,10 @@
+{
+  "name": "AI Workflow OS",
+  "short_name": "AIWOS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "description": "Terminal-first app factory and AI workflow control plane",
+  "icons": []
+}

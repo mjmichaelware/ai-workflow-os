@@ -4,36 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Workflow OS</title>
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
   <main class="shell">
     <section class="hero">
-      <div class="badge">terminal first app creator</div>
+      <div class="badge">terminal first app factory</div>
       <h1>AI Workflow OS</h1>
-      <p class="lede">Create app plans, generate local starter apps, inspect tools, build research graphs, and bootstrap the OS itself through permission-gated workflows.</p>
+      <p class="lede">Create, test, export, inspect, and build native targets from a phone terminal with permission gates.</p>
     </section>
-    <section class="panel creator">
+    <section class="panel">
       <h2>Create an application</h2>
       <label>Prompt</label>
       <textarea id="prompt">Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.</textarea>
-      <div class="row">
-        <input id="appName" value="phone-project-agent">
-        <input id="target" value="">
-      </div>
+      <input id="appName" value="phone-project-agent">
       <label class="check"><input type="checkbox" id="execute"> Approve local file generation under this repo</label>
       <div class="actions">
         <button id="researchBtn">Research graph</button>
         <button id="planBtn">Plan app</button>
         <button id="createBtn">Generate app</button>
+        <button id="testBtn">Test app</button>
+        <button id="exportBtn">Export to Downloads</button>
+        <button id="androidBtn">Native Android target</button>
         <button id="selfBtn">Self bootstrap</button>
       </div>
     </section>
     <section class="grid">
       <article class="card"><h3>Health</h3><pre id="health">loading</pre></article>
       <article class="card"><h3>Tools</h3><pre id="tools">loading</pre></article>
-      <article class="card"><h3>Providers</h3><pre id="providers">loading</pre></article>
-      <article class="card"><h3>Runs</h3><pre id="runs">loading</pre></article>
+      <article class="card"><h3>Android</h3><pre id="android">loading</pre></article>
+      <article class="card"><h3>Generated Apps</h3><pre id="apps">loading</pre></article>
     </section>
     <section class="panel">
       <h2>Output</h2>

@@ -1,0 +1,225 @@
+{
+  "created_at": "2026-06-08T20:59:12-0600",
+  "repo_root": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os",
+  "prompt": "Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.",
+  "principle": "The app creator can create and improve itself through the same gated workflow it applies to target apps.",
+  "hard_limits": [
+    "No fake claim of searching the entire web without approved live research adapters.",
+    "No secret values are printed.",
+    "No cloud writes or deploys without explicit approval.",
+    "Target app data never belongs in the generic OS repo."
+  ],
+  "research_graph": {
+    "prompt": "Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.",
+    "mode": "offline_seed_graph",
+    "limitation": "This is a bounded research graph. Live market research requires approved adapters.",
+    "nodes": [
+      {
+        "id": "prompt",
+        "kind": "seed",
+        "label": "Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.",
+        "rationale": "Original user application prompt."
+      },
+      {
+        "id": "ai_app_builder",
+        "kind": "category",
+        "label": "AI app builders",
+        "rationale": "Systems that create runnable apps from intent."
+      },
+      {
+        "id": "agent_os",
+        "kind": "category",
+        "label": "Agent operating systems",
+        "rationale": "Tool, model, permission, and workflow orchestration layers."
+      },
+      {
+        "id": "low_code",
+        "kind": "category",
+        "label": "Low-code and no-code platforms",
+        "rationale": "Related systems that compose apps from high-level instructions."
+      },
+      {
+        "id": "cloud_ide",
+        "kind": "category",
+        "label": "Cloud IDE automation",
+        "rationale": "Systems connecting files, terminal, git, deploy, and previews."
+      },
+      {
+        "id": "prompt_to_app",
+        "kind": "category",
+        "label": "Prompt-to-app workflows",
+        "rationale": "Natural language converted into files, APIs, UI, tests, and deployment plans."
+      },
+      {
+        "id": "provider_registry",
+        "kind": "pattern",
+        "label": "Provider registry",
+        "rationale": "Every model, API, CLI, storage, and search tool must be a typed adapter."
+      },
+      {
+        "id": "permission_gate",
+        "kind": "pattern",
+        "label": "Permission gates",
+        "rationale": "Dangerous actions require explicit approval manifests."
+      },
+      {
+        "id": "self_inspection",
+        "kind": "pattern",
+        "label": "Self inspection",
+        "rationale": "The app can inspect its own repo and generate improvement plans."
+      },
+      {
+        "id": "recursive_bootstrap",
+        "kind": "pattern",
+        "label": "Recursive bootstrap",
+        "rationale": "The system can apply its own workflow to improve itself."
+      },
+      {
+        "id": "proof_first",
+        "kind": "pattern",
+        "label": "Proof first execution",
+        "rationale": "Compile and proof gates precede commits and deployments."
+      },
+      {
+        "id": "mobile_terminal",
+        "kind": "constraint",
+        "label": "Mobile terminal first",
+        "rationale": "The system must work from Android Termux."
+      },
+      {
+        "id": "secret_manager",
+        "kind": "constraint",
+        "label": "Secret Manager first",
+        "rationale": "Credentials must be referenced safely and never printed."
+      }
+    ],
+    "edges": [
+      {
+        "source": "prompt",
+        "target": "ai_app_builder",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "agent_os",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "low_code",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "cloud_ide",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "prompt_to_app",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "provider_registry",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "permission_gate",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "self_inspection",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "recursive_bootstrap",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "proof_first",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "mobile_terminal",
+        "relation": "suggests"
+      },
+      {
+        "source": "prompt",
+        "target": "secret_manager",
+        "relation": "suggests"
+      }
+    ]
+  },
+  "research_queries": {
+    "prompt": "Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.",
+    "max_depth": 3,
+    "queries": [
+      "Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.",
+      "AI app builder agent platform terminal CLI",
+      "prompt to app generator architecture",
+      "agent operating system tool registry permission model",
+      "low code AI app generation workflow",
+      "self improving software agent repository inspection",
+      "mobile terminal development workflow Termux AI agent",
+      "application generator import export internal testing architecture"
+    ],
+    "execution": "planned_only",
+    "approval_required_for_live_web": true
+  },
+  "bootstrap_stages": [
+    {
+      "id": "B0",
+      "title": "Declare boundary",
+      "purpose": "Improve AI Workflow OS only. Do not contaminate target apps.",
+      "approval_required": false
+    },
+    {
+      "id": "B1",
+      "title": "Inspect self",
+      "purpose": "Inspect repo, CLI, dashboard, docs, adapters, and proof scripts.",
+      "approval_required": false
+    },
+    {
+      "id": "B2",
+      "title": "Build research graph",
+      "purpose": "Map market categories, patterns, APIs, CLIs, and app-builder ideas.",
+      "approval_required": false
+    },
+    {
+      "id": "B3",
+      "title": "Design next adapters",
+      "purpose": "Plan approved web, GitHub, package, model, and local-runtime adapters.",
+      "approval_required": true
+    },
+    {
+      "id": "B4",
+      "title": "Generate self patch plan",
+      "purpose": "Write an evidence-backed plan for improving this OS.",
+      "approval_required": true
+    },
+    {
+      "id": "B5",
+      "title": "Patch self",
+      "purpose": "Apply approved improvements to this repo only.",
+      "approval_required": true
+    },
+    {
+      "id": "B6",
+      "title": "Proof self",
+      "purpose": "Compile, verify CLI, verify UI endpoints, and write proof report.",
+      "approval_required": true
+    },
+    {
+      "id": "B7",
+      "title": "Commit self",
+      "purpose": "Commit proven self improvements.",
+      "approval_required": true
+    }
+  ]
+}

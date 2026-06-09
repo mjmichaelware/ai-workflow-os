@@ -1,48 +1,21 @@
-from __future__ import annotations
-
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import json
-
-APP_NAME = "Phone Project Agent"
-APP_PROMPT = "Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import export, and tests."
-ROOT = Path(__file__).resolve().parent
-
-def health_payload():
-    return {'ok': True, 'app': APP_NAME, 'prompt': APP_PROMPT}
-
+APP_NAME="Phone Project Agent"
+APP_PROMPT="Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import export, and tests."
+ROOT=Path(__file__).resolve().parent
+def health_payload(): return {"ok": True, "app": APP_NAME, "prompt": APP_PROMPT}
 class Handler(BaseHTTPRequestHandler):
-    def send_json(self, payload, status=200):
-        data = json.dumps(payload, indent=2).encode()
-        self.send_response(status)
-        self.send_header('content-type', 'application/json')
-        self.send_header('content-length', str(len(data)))
-        self.end_headers()
-        self.wfile.write(data)
-    def send_bytes(self, data, content_type, status=200):
-        self.send_response(status)
-        self.send_header('content-type', content_type)
-        self.send_header('content-length', str(len(data)))
-        self.end_headers()
-        self.wfile.write(data)
+    def send_json(self,payload,status=200):
+        data=json.dumps(payload,indent=2).encode(); self.send_response(status); self.send_header("content-type","application/json"); self.send_header("content-length",str(len(data))); self.end_headers(); self.wfile.write(data)
+    def send_bytes(self,data,ctype,status=200):
+        self.send_response(status); self.send_header("content-type",ctype); self.send_header("content-length",str(len(data))); self.end_headers(); self.wfile.write(data)
     def do_GET(self):
-        if self.path == '/api/health':
-            self.send_json(health_payload())
-            return
-        if self.path.startswith('/static/'):
-            rel = self.path.replace('/static/', '', 1)
-            file_path = ROOT / 'web/static' / rel
-            if file_path.exists():
-                ctype = 'text/css' if rel.endswith('.css') else 'application/javascript'
-                self.send_bytes(file_path.read_bytes(), ctype)
-                return
-        index = ROOT / 'web/index.html'
-        self.send_bytes(index.read_bytes() if index.exists() else ('<h1>' + APP_NAME + '</h1>').encode(), 'text/html; charset=utf-8')
-
-def run(host='127.0.0.1', port=8777):
-    server = ThreadingHTTPServer((host, port), Handler)
-    print(f'{APP_NAME}: http://{host}:{port}')
-    server.serve_forever()
-
-if __name__ == '__main__':
-    run()
+        if self.path=="/api/health": self.send_json(health_payload()); return
+        if self.path.startswith("/static/"):
+            rel=self.path.replace("/static/","",1); fp=ROOT/"web/static"/rel
+            if fp.exists(): self.send_bytes(fp.read_bytes(), "text/css" if rel.endswith(".css") else "application/javascript"); return
+        fp=ROOT/"web/index.html"; self.send_bytes(fp.read_bytes() if fp.exists() else ("<h1>"+APP_NAME+"</h1>").encode(), "text/html; charset=utf-8")
+def run(host="127.0.0.1", port=8777):
+    server=ThreadingHTTPServer((host,port),Handler); print(f"{APP_NAME}: http://{host}:{port}"); server.serve_forever()
+if __name__=="__main__": run()
