@@ -33,6 +33,14 @@ def _write(path: Path, text: str) -> None:
     path.write_text(text.rstrip() + "\n", encoding="utf-8")
 
 
+def termux_aapt2_override() -> str:
+    prefix = os.environ.get("PREFIX", "/data/data/com.termux/files/usr")
+    candidate = Path(prefix) / "bin" / "aapt2"
+    if candidate.exists() and os.access(candidate, os.X_OK):
+        return f"android.aapt2FromMavenOverride={candidate}\n"
+    return ""
+
+
 def create_real_apk_project(app_name: str = "AI Workflow OS", package_name: str = "com.aiworkflowos.mobile") -> Dict[str, Any]:
     out = EXPORT_ROOT / "ai-workflow-os-mobile"
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -60,7 +68,7 @@ plugins {
 android.useAndroidX=true
 android.nonTransitiveRClass=true
 org.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8
-""")
+""" + termux_aapt2_override())
 
     _write(out / "app" / "build.gradle", f"""
 plugins {{
@@ -173,6 +181,7 @@ No signing keys, passwords, API tokens, or keystores are stored here.
         "app_name": app_name,
         "package_name": package_name,
         "toolchain": detect_real_apk_toolchain(),
+        "aapt2_override": termux_aapt2_override().strip(),
         "keys_printed": False,
         "broad_permissions": False,
         "keystore_in_repo": False,

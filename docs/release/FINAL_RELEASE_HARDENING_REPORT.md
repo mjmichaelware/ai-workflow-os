@@ -1,8 +1,8 @@
 # Final Release Hardening Report
 
-- Created: `2026-06-09T21:36:40.094718+00:00`
-- Branch: `apk-toolchain-real-build-v1`
-- Head: `93c21f7`
+- Created: `2026-06-09T21:44:44.512094+00:00`
+- Branch: `termux-aapt2-override-v1`
+- Head: `36b5fc6`
 - OK: `True`
 - Keys printed: `False`
 - Broad permissions: `False`
