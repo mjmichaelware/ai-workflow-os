@@ -1,99 +1,145 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI Workflow OS</title>
+  <title>AI Workflow OS Console</title>
   <link rel="manifest" href="/manifest.webmanifest">
-  <meta name="theme-color" content="#0b5f8f">
+  <meta name="theme-color" content="#07111f">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="AI Workflow OS">
   <link rel="icon" type="image/png" sizes="192x192" href="/icons/ai-workflow-os-192.png">
   <link rel="apple-touch-icon" href="/icons/ai-workflow-os-192.png">
   <style>
-    :root{color-scheme:dark;--bg:#050912;--panel:#0a1424;--card:#0f2135;--line:#204763;--text:#edf8ff;--muted:#95b8c9;--hot:#61dafb;--green:#7cf2b4}
+    :root{color-scheme:dark;--bg:#07111f;--surface:#0c1728;--panel:#101e33;--card:#13243b;--line:#29425f;--text:#edf6ff;--muted:#9fb8ca;--blue:#7bdcff;--green:#74f0aa;--warn:#ffd166;--bad:#ff8080;--shadow:0 18px 60px rgba(0,0,0,.35)}
     *{box-sizing:border-box}
-    body{margin:0;background:radial-gradient(circle at top,#12304a,#050912 55%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
-    main{max-width:980px;margin:0 auto;padding:22px}
-    .hero{border:1px solid var(--line);border-radius:28px;padding:24px;background:linear-gradient(135deg,rgba(12,32,54,.96),rgba(4,10,21,.96));box-shadow:0 24px 80px rgba(0,0,0,.35)}
-    .brand{display:flex;gap:16px;align-items:center}
-    .logo{width:72px;height:72px;border-radius:22px;box-shadow:0 0 32px rgba(97,218,251,.45)}
-    h1{font-size:2rem;margin:0}
-    p{color:var(--muted);line-height:1.5}
-    textarea{width:100%;min-height:170px;border-radius:18px;border:1px solid var(--line);background:#020711;color:var(--text);padding:14px;font-size:1rem}
-    button{border:0;border-radius:999px;padding:12px 16px;margin:6px 6px 6px 0;background:var(--hot);color:#001018;font-weight:800}
-    button.secondary{background:#19344b;color:var(--text);border:1px solid var(--line)}
-    label{color:var(--muted)}
-    pre{white-space:pre-wrap;overflow:auto;max-height:520px;background:#020711;border:1px solid var(--line);border-radius:18px;padding:14px;color:#d9f7ff}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
-    .card{border:1px solid var(--line);background:rgba(15,33,53,.78);border-radius:20px;padding:14px}
-    .good{color:var(--green);font-weight:800}
-    a{color:var(--hot)}
+    body{margin:0;background:linear-gradient(180deg,#07111f,#0a1322 55%,#07111f);color:var(--text);font-family:Inter,Roboto,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
+    .app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+    aside{position:sticky;top:0;height:100vh;background:rgba(9,18,31,.96);border-right:1px solid var(--line);padding:18px}
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+    .brand img{width:46px;height:46px;border-radius:14px;box-shadow:0 0 28px rgba(123,220,255,.38)}
+    .brand b{display:block;font-size:1.05rem}
+    .brand span{display:block;color:var(--muted);font-size:.78rem}
+    nav button{width:100%;text-align:left;border:1px solid transparent;background:transparent;color:var(--muted);border-radius:14px;padding:11px 12px;margin:3px 0;font-weight:700}
+    nav button.active,nav button:hover{background:#10263f;color:var(--text);border-color:#244864}
+    main{min-width:0}
+    header{position:sticky;top:0;z-index:2;background:rgba(7,17,31,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 20px;display:flex;align-items:center;gap:14px;justify-content:space-between}
+    .title h1{margin:0;font-size:1.25rem}
+    .title p{margin:3px 0 0;color:var(--muted);font-size:.84rem}
+    .pill{border:1px solid var(--line);background:#0e2035;border-radius:999px;padding:8px 11px;color:var(--muted);font-size:.82rem}
+    .content{padding:20px;max-width:1280px;margin:0 auto}
+    .hero{border:1px solid var(--line);background:radial-gradient(circle at top left,rgba(123,220,255,.16),transparent 40%),linear-gradient(135deg,#10243b,#081222);border-radius:26px;padding:22px;box-shadow:var(--shadow)}
+    .hero h2{font-size:2rem;margin:0 0 8px}
+    .hero p{color:var(--muted);line-height:1.55;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:16px}
+    .card{grid-column:span 4;border:1px solid var(--line);background:rgba(19,36,59,.78);border-radius:20px;padding:16px;min-height:118px}
+    .card.wide{grid-column:span 8}
+    .card.full{grid-column:1/-1}
+    .label{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-weight:900}
+    .metric{font-size:1.85rem;font-weight:900;margin-top:7px}
+    .good{color:var(--green)} .warn{color:var(--warn)} .blue{color:var(--blue)}
+    textarea{width:100%;min-height:170px;border:1px solid var(--line);border-radius:18px;background:#050b15;color:var(--text);padding:14px;font-size:1rem;resize:vertical}
+    button.primary{border:0;background:var(--blue);color:#001320;border-radius:999px;padding:12px 16px;font-weight:900}
+    button.secondary{border:1px solid var(--line);background:#142940;color:var(--text);border-radius:999px;padding:12px 16px;font-weight:800}
+    .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    pre{white-space:pre-wrap;overflow:auto;max-height:520px;background:#050b15;border:1px solid var(--line);border-radius:18px;padding:14px;color:#dcf6ff}
+    .table{display:grid;gap:8px}
+    .row{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;padding:10px;border:1px solid #1e3954;border-radius:14px;background:#0d1b2d}
+    .dot{width:10px;height:10px;border-radius:999px;background:var(--green);box-shadow:0 0 18px rgba(116,240,170,.8)}
+    .mobilebar{display:none;position:fixed;left:10px;right:10px;bottom:10px;z-index:5;border:1px solid var(--line);background:rgba(10,20,36,.94);backdrop-filter:blur(16px);border-radius:24px;padding:8px;box-shadow:var(--shadow)}
+    .mobilebar button{flex:1;border:0;background:transparent;color:var(--muted);font-size:.74rem;font-weight:900}
+    @media(max-width:850px){.app{display:block}aside{display:none}.content{padding:14px}.card,.card.wide{grid-column:1/-1}header{padding:12px 14px}.hero h2{font-size:1.45rem}.mobilebar{display:flex}body{padding-bottom:78px}}
   </style>
 </head>
 <body>
-<main>
-  <section class="hero" id="operator-console-panel">
-    <div class="brand">
-      <img class="logo" src="/icons/ai-workflow-os-192.png" alt="AI Workflow OS icon">
-      <div>
-        <h1>AI Workflow OS Operator</h1>
-        <p>Phone-first local application factory. Prompt from the browser, execute approved work through Termux, test, export, and publish clean source. Keys are never printed.</p>
+<div class="app">
+  <aside>
+    <div class="brand"><img src="/icons/ai-workflow-os-192.png" alt=""><div><b>AI Workflow OS</b><span>Phone-native console</span></div></div>
+    <nav>
+      <button class="active" data-view="overview">Overview</button>
+      <button data-view="build">Build</button>
+      <button data-view="tools">Tools</button>
+      <button data-view="security">Security</button>
+      <button data-view="research">Research</button>
+      <button data-view="deploy">Deploy</button>
+      <button onclick="location.href="/legacy-dashboard.html"">Legacy</button>
+    </nav>
+  </aside>
+  <main>
+    <header>
+      <div class="title"><h1>AI Workflow OS Console</h1><p>Google-cloud-style control surface, local-first from your phone.</p></div>
+      <div class="pill" id="status-pill">Checking local operator...</div>
+    </header>
+    <section class="content">
+      <div class="hero">
+        <h2>Build software from the device in your pocket.</h2>
+        <p>Prompt from the phone, route through approved local actions, test, export, and publish clean source. Designed for Termux today and portable to desktop, SaaS, and team runners later.</p>
       </div>
-    </div>
 
-    <div class="grid">
-      <div class="card"><div class="good">Local</div><p>Runs on Android through Termux today.</p></div>
-      <div class="card"><div class="good">Portable</div><p>Designed for desktop, SaaS, and team modes later.</p></div>
-      <div class="card"><div class="good">Contributor Ready</div><p>AGENTS, Gemini, Claude, Codex, Copilot, Cursor, Cline, and Continue guidance included.</p></div>
-    </div>
+      <section class="grid view" id="view-overview">
+        <div class="card"><div class="label">Operator</div><div class="metric good" id="metric-operator">Live</div><p>Local approved prompt loop.</p></div>
+        <div class="card"><div class="label">Runtime</div><div class="metric blue">Phone</div><p>Android plus Termux first.</p></div>
+        <div class="card"><div class="label">Public repo</div><div class="metric good">Ready</div><p>CI, CodeQL, Dependabot, docs, templates.</p></div>
+        <div class="card wide"><div class="label">Status output</div><pre id="output">Loading operator status...</pre></div>
+        <div class="card"><div class="label">Next step</div><p>Use the Build panel to create app templates, then publish through GitHub proof.</p></div>
+      </section>
 
-    <textarea id="operator-prompt" placeholder="Build an application from inside this phone..."></textarea>
-    <p><label><input type="checkbox" id="operator-publish"> Commit and push after tests pass</label></p>
-    <button id="operator-run">Build From Prompt</button>
-    <button class="secondary" id="operator-status">Operator Status</button>
-    <button class="secondary" id="operator-export">Export Phone Bundle</button>
-    <button class="secondary" id="operator-legacy">Legacy Dashboard</button>
-    <pre id="operator-output">Operator ready.</pre>
-  </section>
-</main>
+      <section class="grid view" id="view-build" hidden>
+        <div class="card full">
+          <div class="label">Build from prompt</div>
+          <textarea id="operator-prompt" placeholder="Build an application from inside this phone..."></textarea>
+          <p><label><input type="checkbox" id="operator-publish"> Commit and push after tests pass</label></p>
+          <div class="actions">
+            <button class="primary" id="operator-run">Build From Prompt</button>
+            <button class="secondary" id="operator-status">Operator Status</button>
+            <button class="secondary" id="operator-export">Export Phone Bundle</button>
+          </div>
+        </div>
+      </section>
 
+      <section class="grid view" id="view-tools" hidden>
+        <div class="card full"><div class="label">Installed capabilities</div><div class="table" id="tools-table"></div></div>
+      </section>
+
+      <section class="grid view" id="view-security" hidden>
+        <div class="card"><div class="label">Secrets</div><div class="metric good">Values hidden</div><p>Presence only. No values stored or printed.</p></div>
+        <div class="card"><div class="label">Boundary</div><div class="metric good">Allowlisted</div><p>No arbitrary browser shell.</p></div>
+        <div class="card"><div class="label">Public repo</div><div class="metric good">Hardened</div><p>Security policy, CodeQL, Dependabot, hygiene scan.</p></div>
+      </section>
+
+      <section class="grid view" id="view-research" hidden>
+        <div class="card full"><div class="label">Public landscape</div><p>Use the repository research snapshots to track GitHub Actions, agent tools, Termux, PWA, local-first, and phone-first development signals.</p><pre id="research-output">Research snapshot is stored in docs/research after terminal research runs.</pre></div>
+      </section>
+
+      <section class="grid view" id="view-deploy" hidden>
+        <div class="card"><div class="label">Local</div><div class="metric good">Ready</div><p>PWA over localhost.</p></div>
+        <div class="card"><div class="label">Pages</div><div class="metric blue">Site</div><p>Public marketing site in /site.</p></div>
+        <div class="card"><div class="label">Future</div><div class="metric warn">SaaS</div><p>Control plane plus user-owned runners.</p></div>
+      </section>
+    </section>
+  </main>
+</div>
+<div class="mobilebar">
+  <button data-view="overview">Overview</button>
+  <button data-view="build">Build</button>
+  <button data-view="tools">Tools</button>
+  <button data-view="security">Security</button>
+  <button data-view="deploy">Deploy</button>
+</div>
 <script>
-async function jsonFetch(url, options){
-  const response = await fetch(url, Object.assign({cache:"no-store"}, options || {}));
-  const text = await response.text();
-  try{return JSON.stringify(JSON.parse(text), null, 2)}catch{return text}
-}
-async function showStatus(){
-  document.getElementById("operator-output").textContent = await jsonFetch("/api/operator/status");
-}
-async function runOperator(){
-  const prompt = document.getElementById("operator-prompt").value;
-  const publish = document.getElementById("operator-publish").checked;
-  document.getElementById("operator-output").textContent = "Running operator build...";
-  document.getElementById("operator-output").textContent = await jsonFetch("/api/operator/run", {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({prompt:prompt,publish:publish})
-  });
-}
-async function exportPhone(){
-  document.getElementById("operator-output").textContent = "Exporting phone bundle...";
-  document.getElementById("operator-output").textContent = await jsonFetch("/api/phone/export", {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:"{}"
-  });
-}
-document.getElementById("operator-run").onclick = runOperator;
-document.getElementById("operator-status").onclick = showStatus;
-document.getElementById("operator-export").onclick = exportPhone;
-document.getElementById("operator-legacy").onclick = () => { location.href = "/legacy-dashboard.html"; };
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
-}
-showStatus();
+const out = document.getElementById("output");
+function show(view){document.querySelectorAll(".view").forEach(v=>v.hidden=true);document.getElementById("view-"+view).hidden=false;document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===view));}
+document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>show(b.dataset.view));
+async function jsonFetch(url, options){const r=await fetch(url,Object.assign({cache:"no-store"},options||{}));const t=await r.text();try{return JSON.stringify(JSON.parse(t),null,2)}catch{return t}}
+async function status(){const text=await jsonFetch("/api/operator/status");out.textContent=text;document.getElementById("status-pill").textContent="Local operator online";try{const data=JSON.parse(text);const tools=data.inventory.tools;const table=document.getElementById("tools-table");table.innerHTML="";Object.keys(tools).forEach(k=>{const row=document.createElement("div");row.className="row";row.innerHTML="<b>"+k+"</b><span>"+(tools[k].path||"not installed")+"</span><span class=dot></span>";if(!tools[k].installed)row.querySelector(".dot").style.background="#ff8080";table.appendChild(row);});}catch(e){}}
+async function runBuild(){out.textContent="Running approved operator build...";out.textContent=await jsonFetch("/api/operator/run",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:document.getElementById("operator-prompt").value,publish:document.getElementById("operator-publish").checked})});show("overview");}
+async function exportPhone(){out.textContent=await jsonFetch("/api/phone/export",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});show("overview");}
+document.getElementById("operator-run").onclick=runBuild;
+document.getElementById("operator-status").onclick=status;
+document.getElementById("operator-export").onclick=exportPhone;
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));}
+status();
 </script>
 </body>
 </html>
