@@ -3,7 +3,7 @@
   "command_1": "Prompt Bridge API",
   "command_2": "Approval-gated Self Build Executor",
   "command_3": "Phone Wrapper Export Launcher",
-  "created_at": "2026-06-09T04:16:16.088785+00:00",
+  "created_at": "2026-06-09T04:20:29.887488+00:00",
   "endpoints": [
     "/api/prompts/manifest",
     "/api/self-build/manifest",
