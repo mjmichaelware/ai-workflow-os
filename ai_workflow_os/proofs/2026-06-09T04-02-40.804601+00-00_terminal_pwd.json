@@ -1,0 +1,14 @@
+{
+  "cmd": [
+    "pwd"
+  ],
+  "command_id": "pwd",
+  "finished_at": "2026-06-09T04:02:40.803507+00:00",
+  "label": "Print repo path",
+  "ok": true,
+  "returncode": 0,
+  "run_id": "b48875e5-fac2-4c2a-bc91-f8a3ff6fe031",
+  "started_at": "2026-06-09T04:02:40.784392+00:00",
+  "stderr": "",
+  "stdout": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os\n"
+}

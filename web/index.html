@@ -89,5 +89,50 @@
 })();
 </script>
 
+
+<section id="terminal-bridge-panel" style="border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px">
+  <h2>Termux Terminal Bridge</h2>
+  <p>Safe allowlisted commands only. Output is redacted before display.</p>
+  <select id="terminal-command-select"></select>
+  <button id="terminal-run-button">Run Terminal Command</button>
+  <pre id="terminal-command-output">Terminal bridge waiting...</pre>
+</section>
+<script>
+(function(){
+  async function terminalLoad(){
+    const sel = document.getElementById("terminal-command-select");
+    const out = document.getElementById("terminal-command-output");
+    const run = document.getElementById("terminal-run-button");
+    if(!sel || !out || !run) return;
+    out.textContent = "Loading terminal commands...";
+    try {
+      const r = await fetch("/api/terminal/commands", {cache:"no-store"});
+      const data = await r.json();
+      sel.innerHTML = "";
+      (data.commands || []).forEach(cmd => {
+        const opt = document.createElement("option");
+        opt.value = cmd.id;
+        opt.textContent = cmd.label + " [" + cmd.id + "]";
+        sel.appendChild(opt);
+      });
+      out.textContent = "Terminal commands loaded: " + (data.commands || []).length + "\nSecret env presence only: " + JSON.stringify(data.secret_env_presence, null, 2);
+      run.onclick = async () => {
+        out.textContent = "Running " + sel.value + "...";
+        const rr = await fetch("/api/terminal/run", {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({command_id: sel.value})
+        });
+        const result = await rr.json();
+        out.textContent = JSON.stringify(result, null, 2);
+      };
+    } catch(e) {
+      out.textContent = "Terminal bridge load failed: " + e.message;
+    }
+  }
+  window.addEventListener("DOMContentLoaded", terminalLoad);
+})();
+</script>
+
 </body>
 </html>

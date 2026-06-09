@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 # REGISTRY_BUTTONS_PATCH_V1
 from .registry_spine import build_registry, dispatch
+from .terminal_bridge import list_terminal_commands, run_terminal_command
 import urllib.parse
 
 from .android_builder import android_status, create_native_android_target
@@ -112,6 +113,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/api/terminal/commands":
+            self.send_json(list_terminal_commands())
+            return
         if path == "/api/actions":
             registry = build_registry()
             self.send_json(registry.manifest())
@@ -160,6 +164,20 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/api/terminal/run":
+            try:
+                length = int(self.headers.get("Content-Length", "0") or "0")
+                raw = self.rfile.read(length).decode("utf-8") if length else "{}"
+                body = json.loads(raw or "{}")
+                command_id = body.get("command_id")
+                if not command_id:
+                    self.send_json({"ok": False, "error": "missing command_id"}, status=400)
+                    return
+                self.send_json(run_terminal_command(command_id))
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
         if path == "/api/actions/run":
             try:
                 length = int(self.headers.get("Content-Length", "0") or "0")
