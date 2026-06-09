@@ -1,10 +1,37 @@
 {
   "name": "AI Workflow OS",
-  "short_name": "AIWOS",
-  "start_url": "/",
+  "short_name": "AI OS",
+  "description": "Local-first self-building application OS running through Termux on this phone.",
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#07111f",
-  "theme_color": "#07111f",
-  "description": "Terminal-first app factory and AI workflow control plane",
-  "icons": []
+  "orientation": "portrait",
+  "background_color": "#06111f",
+  "theme_color": "#0b5f8f",
+  "categories": [
+    "productivity",
+    "developer",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/icons/ai-workflow-os-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/ai-workflow-os-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/ai-workflow-os-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }

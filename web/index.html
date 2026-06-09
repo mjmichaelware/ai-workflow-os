@@ -8,8 +8,71 @@
   <meta http-equiv="expires" content="0">
   <title>AI Workflow OS — No Cache App Factory</title>
   <link rel="stylesheet" href="/static/app.css?v=nocache-stage">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0b5f8f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI Workflow OS">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/ai-workflow-os-192.png">
+  <link rel="apple-touch-icon" href="/icons/ai-workflow-os-192.png">
 </head>
 <body>
+
+<section id="operator-console-panel" style="border:2px solid #61dafb;padding:18px;margin:12px 0;border-radius:18px;background:linear-gradient(135deg,#06111f,#0b2338);box-shadow:0 0 30px rgba(97,218,251,.25)">
+  <h2>AI Workflow OS Operator</h2>
+  <p>Build applications from this phone through Termux. The operator uses approved prompts, CLI inventory, tests, export, and optional GitHub publish. Keys are never printed.</p>
+  <textarea id="operator-prompt" rows="7" style="width:100%;border-radius:12px;padding:12px;background:#020814;color:#e8f7ff;border:1px solid #1d5f7d" placeholder="Build an application from inside this phone..."></textarea>
+  <div style="margin-top:10px">
+    <label><input type="checkbox" id="operator-publish"> Commit and push after tests pass</label>
+  </div>
+  <div style="margin-top:10px">
+    <button id="operator-run">Build From Prompt</button>
+    <button id="operator-status">Operator Status</button>
+    <button id="operator-export">Export Phone Bundle</button>
+  </div>
+  <pre id="operator-output" style="white-space:pre-wrap;max-height:420px;overflow:auto">Operator ready.</pre>
+</section>
+<script>
+(function(){
+  async function showStatus(){
+    const out = document.getElementById("operator-output");
+    const r = await fetch("/api/operator/status", {cache:"no-store"});
+    out.textContent = JSON.stringify(await r.json(), null, 2);
+  }
+  async function runOperator(){
+    const out = document.getElementById("operator-output");
+    const prompt = document.getElementById("operator-prompt").value;
+    const publish = document.getElementById("operator-publish").checked;
+    out.textContent = "Running operator build...";
+    const r = await fetch("/api/operator/run", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({prompt, publish})
+    });
+    out.textContent = JSON.stringify(await r.json(), null, 2);
+  }
+  async function exportPhone(){
+    const out = document.getElementById("operator-output");
+    out.textContent = "Exporting phone bundle...";
+    const r = await fetch("/api/phone/export", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
+    out.textContent = JSON.stringify(await r.json(), null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const run = document.getElementById("operator-run");
+    const status = document.getElementById("operator-status");
+    const exp = document.getElementById("operator-export");
+    if(run) run.onclick = runOperator;
+    if(status) status.onclick = showStatus;
+    if(exp) exp.onclick = exportPhone;
+    showStatus().catch(e => {
+      const out = document.getElementById("operator-output");
+      if(out) out.textContent = "Operator status failed: " + e.message;
+    });
+  });
+})();
+</script>
+
+
   <main class="shell">
     <section class="hero">
       <div class="badge">NO CACHE BUILD · BUTTON PROOF · APP FACTORY</div>
@@ -236,5 +299,12 @@
 })();
 </script>
 
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(err => console.log("service worker registration failed", err));
+  });
+}
+</script>
 </body>
 </html>

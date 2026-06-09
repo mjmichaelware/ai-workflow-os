@@ -43,25 +43,12 @@ def phone_manifest() -> Dict[str, Any]:
     return data
 
 def create_launcher() -> Dict[str, Any]:
-    path = ROOT / 'bin' / 'open-ai-workflow-os-phone'
-    lines = [
-        '#!/data/data/com.termux/files/usr/bin/bash',
-        'set -euo pipefail',
-        'cd $HOME/Workspaces/AI_Workflow_OS/ai-workflow-os',
-        'mkdir -p $HOME/tmp',
-        'if curl -fsS http://127.0.0.1:8765/api/phone/status >/dev/null 2>&1; then URL=http://127.0.0.1:8765/?t=$(date +%s); echo OPEN: $URL; if command -v termux-open-url >/dev/null 2>&1; then termux-open-url $URL; fi; exit 0; fi',
-        'nohup bin/ai-workflow-os serve --host 127.0.0.1 --port 8765 > $HOME/tmp/ai_workflow_os_dashboard.log 2>&1 &',
-        'echo $! > $HOME/tmp/ai_workflow_os_dashboard.pid',
-        'sleep 2',
-        'URL=http://127.0.0.1:8765/?t=$(date +%s)',
-        'echo OPEN: $URL',
-        'if command -v termux-open-url >/dev/null 2>&1; then termux-open-url $URL; fi',
-    ]
+    path = ROOT / "bin" / "open-ai-workflow-os-phone"
+    script = '#!/data/data/com.termux/files/usr/bin/bash\nset -euo pipefail\ncd "$HOME/Workspaces/AI_Workflow_OS/ai-workflow-os"\nmkdir -p "$HOME/tmp"\nURL="http://127.0.0.1:8765/?t=$(date +%s)"\nif python3 -m ai_workflow_os.process_guard pwa-ready | grep -q "\\"ok\\": true"; then\n  echo "OPEN: $URL"\n  if command -v termux-open-url >/dev/null 2>&1; then termux-open-url "$URL"; fi\n  exit 0\nfi\npython3 -m ai_workflow_os.process_guard kill-server >/dev/null\nnohup bin/ai-workflow-os serve --host 127.0.0.1 --port 8765 > "$HOME/tmp/ai_workflow_os_dashboard.log" 2>&1 &\necho $! > "$HOME/tmp/ai_workflow_os_dashboard.pid"\nsleep 2\npython3 -m ai_workflow_os.process_guard pwa-ready\npython3 -m ai_workflow_os.process_guard pwa-ready | grep -q "\\"ok\\": true"\necho "OPEN: $URL"\nif command -v termux-open-url >/dev/null 2>&1; then termux-open-url "$URL"; fi\n'
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(chr(10).join(lines) + chr(10), encoding='utf-8')
+    path.write_text(script, encoding="utf-8")
     path.chmod(0o755)
-    return {'ok': True, 'path': str(path.relative_to(ROOT)), 'command': str(path)}
-
+    return {"ok": True, "path": str(path.relative_to(ROOT)), "command": str(path)}
 def export_phone_bundle() -> Dict[str, Any]:
     EXPORT_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS.mkdir(parents=True, exist_ok=True)

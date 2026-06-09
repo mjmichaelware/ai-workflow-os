@@ -9,6 +9,7 @@ from .terminal_bridge import list_terminal_commands, run_terminal_command
 from .prompt_bridge import bridge_manifest, submit_prompt, approve_prompt, complete_prompt, list_prompts, next_approved_prompt
 from .self_build_executor import self_build_manifest, run_next_self_build
 from .phone_wrapper import phone_manifest, phone_status, export_phone_bundle, create_launcher
+from .operator_console import operator_manifest, operator_status, operator_run, operator_publish
 import urllib.parse
 
 from .android_builder import android_status, create_native_android_target
@@ -116,6 +117,27 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/manifest.webmanifest":
+            self.send_bytes((ROOT / "web" / "manifest.webmanifest").read_bytes(), "application/manifest+json; charset=utf-8")
+            return
+
+        if path == "/sw.js":
+            self.send_bytes((ROOT / "web" / "sw.js").read_bytes(), "application/javascript; charset=utf-8")
+            return
+
+        if path.startswith("/icons/"):
+            icon_path = (ROOT / "web" / path.lstrip("/"))
+            if icon_path.exists() and icon_path.is_file():
+                self.send_bytes(icon_path.read_bytes(), "image/png")
+                return
+
+        if path == "/api/operator/manifest":
+            self.send_json(operator_manifest())
+            return
+
+        if path == "/api/operator/status":
+            self.send_json(operator_status())
+            return
         if path == "/api/phone/manifest":
             self.send_json(phone_manifest())
             return
@@ -165,6 +187,15 @@ class Handler(BaseHTTPRequestHandler):
         path = urllib.parse.urlparse(self.path).path
         if path == "/":
             self.send_bytes((ROOT / "web/index.html").read_bytes(), "text/html; charset=utf-8"); return
+        if path == "/sw.js":
+            self.send_bytes((ROOT / "web" / "sw.js").read_bytes(), "application/javascript; charset=utf-8")
+            return
+
+        if path.startswith("/icons/"):
+            icon_path = (ROOT / "web" / path.lstrip("/"))
+            if icon_path.exists() and icon_path.is_file():
+                self.send_bytes(icon_path.read_bytes(), "image/png")
+                return
         if path == "/manifest.webmanifest":
             self.send_bytes((ROOT / "web/manifest.webmanifest").read_bytes(), "application/manifest+json"); return
         if path == "/service-worker.js":
@@ -188,6 +219,24 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/api/operator/run":
+            try:
+                length = int(self.headers.get("Content-Length", "0") or "0")
+                raw = self.rfile.read(length).decode("utf-8") if length else "{}"
+                body = json.loads(raw or "{}")
+                self.send_json(operator_run(body.get("prompt", ""), bool(body.get("publish", False))))
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
+
+        if path == "/api/operator/publish":
+            try:
+                self.send_json(operator_publish("Operator build"))
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
         if path == "/api/phone/export":
             try:
                 self.send_json(export_phone_bundle())

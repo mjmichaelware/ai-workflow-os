@@ -1,11 +1,18 @@
 #!/data/data/com.termux/files/usr/bin/bash
 set -euo pipefail
-cd $HOME/Workspaces/AI_Workflow_OS/ai-workflow-os
-mkdir -p $HOME/tmp
-if curl -fsS http://127.0.0.1:8765/api/phone/status >/dev/null 2>&1; then URL=http://127.0.0.1:8765/?t=$(date +%s); echo OPEN: $URL; if command -v termux-open-url >/dev/null 2>&1; then termux-open-url $URL; fi; exit 0; fi
-nohup bin/ai-workflow-os serve --host 127.0.0.1 --port 8765 > $HOME/tmp/ai_workflow_os_dashboard.log 2>&1 &
-echo $! > $HOME/tmp/ai_workflow_os_dashboard.pid
+cd "$HOME/Workspaces/AI_Workflow_OS/ai-workflow-os"
+mkdir -p "$HOME/tmp"
+URL="http://127.0.0.1:8765/?t=$(date +%s)"
+if python3 -m ai_workflow_os.process_guard pwa-ready | grep -q "\"ok\": true"; then
+  echo "OPEN: $URL"
+  if command -v termux-open-url >/dev/null 2>&1; then termux-open-url "$URL"; fi
+  exit 0
+fi
+python3 -m ai_workflow_os.process_guard kill-server >/dev/null
+nohup bin/ai-workflow-os serve --host 127.0.0.1 --port 8765 > "$HOME/tmp/ai_workflow_os_dashboard.log" 2>&1 &
+echo $! > "$HOME/tmp/ai_workflow_os_dashboard.pid"
 sleep 2
-URL=http://127.0.0.1:8765/?t=$(date +%s)
-echo OPEN: $URL
-if command -v termux-open-url >/dev/null 2>&1; then termux-open-url $URL; fi
+python3 -m ai_workflow_os.process_guard pwa-ready
+python3 -m ai_workflow_os.process_guard pwa-ready | grep -q "\"ok\": true"
+echo "OPEN: $URL"
+if command -v termux-open-url >/dev/null 2>&1; then termux-open-url "$URL"; fi
