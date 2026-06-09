@@ -79,3 +79,7 @@ The repository includes a public landscape research script:
 python3 scripts/research_public_landscape.py
 
 It snapshots public GitHub signals for Actions, CodeQL, devcontainers, PWA, Termux, local-first, and agentic coding tools.
+
+## Decoupled console shell
+
+The console shell is split into HTML, CSS, JavaScript, metadata, tests, proof scripts, and compressed context packets. The browser stays local-only and every material button maps to a proven endpoint.

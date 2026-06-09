@@ -16,7 +16,9 @@ def test_pwa_icons_and_service_worker_exist():
     assert Path("web/icons/ai-workflow-os-maskable-512.png").exists()
 
 def test_index_links_manifest_and_service_worker():
-    s = Path("web/index.html").read_text()
-    assert "/manifest.webmanifest" in s
-    assert "navigator.serviceWorker.register" in s
+    html = Path("web/index.html").read_text()
+    js_path = Path("web/assets/console.js")
+    js = js_path.read_text() if js_path.exists() else ""
+    assert "/manifest.webmanifest" in html
+    assert "navigator.serviceWorker.register" in (html + js)
 

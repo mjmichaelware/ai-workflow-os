@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "name": "AI Workflow OS decoupled console",
+  "assets": [
+    "web/index.html",
+    "web/assets/console.css",
+    "web/assets/console.js"
+  ],
+  "local_only": true,
+  "inline_runtime": false,
+  "no_external_fonts": true,
+  "no_external_scripts": true
+}
