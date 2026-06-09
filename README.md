@@ -1,17 +1,20 @@
 # AI Workflow OS
 
-Reusable AI-agent workflow control plane for creating and repairing applications.
+Reusable AI-agent workflow control plane for creating and repairing applications from terminal-first workflows.
 
 This repo is generic. It must not contain target-app missions, bug ledgers, patch plans, proof reports, or app handoff packets.
 
-## Current capabilities
+## Capabilities
 
 - Python CLI
 - Local dashboard
 - Provider registry
 - Permission model
-- Google Secret Manager reference layer
+- Google Secret Manager reference checks
 - Dry-run agent planning
+- Approval manifests
+- Run logs
+- Tool adapters for repo inspection, files, shell, git, gh, and gcloud status
 - Target-project installer
 - Handoff packet exporter
 
@@ -23,18 +26,18 @@ bash scripts/verify_workflow_app.sh
 
 bash scripts/run_dashboard.sh
 
-## CLI
+## Create an app plan
 
-bin/ai-workflow-os doctor
-bin/ai-workflow-os catalog
-bin/ai-workflow-os providers
-bin/ai-workflow-os permissions
-bin/ai-workflow-os secret-status SECRET_NAME --project PROJECT_ID
-bin/ai-workflow-os agent-plan "Create an app that does X" --target /path/to/app
-bin/ai-workflow-os agent-run runs/RUN_ID/plan.json
+bin/ai-workflow-os agent-plan "Create an app that does X" --target /path/to/app --out runs
 
-## Boundary
+## Approve and run
 
-AI Workflow OS is the process engine. Each target app owns its own project data.
+bin/ai-workflow-os approve-run RUN_ID --out approvals
+bin/ai-workflow-os agent-run runs/RUN_ID/plan.json --approve --approval-file approvals/RUN_ID.approval.json
 
-Secret values are never printed and never committed.
+## Safety
+
+- Secret values are never printed.
+- Dry-run is the default.
+- Approval is required for side effects.
+- Git push, cloud writes, live APIs, and deploys are not part of default approval.

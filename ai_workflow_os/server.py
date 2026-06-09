@@ -9,6 +9,8 @@ from .catalog import CATALOG
 from .core import scan_project
 from .permissions import default_policy_json
 from .providers import list_providers
+from .runlog import list_runs
+from .tools import tool_inventory
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -48,9 +50,15 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/permissions":
             self.send_json(default_policy_json())
             return
+        if path == "/api/tools":
+            self.send_json(tool_inventory())
+            return
+        if path == "/api/runs":
+            self.send_json({"runs": list_runs(ROOT)})
+            return
         if path == "/api/workflow-files":
             files = []
-            for base in ["workflow", "standards", "docs", "scripts", "ai_workflow_os"]:
+            for base in ["workflow", "standards", "docs", "scripts", "ai_workflow_os", "policies"]:
                 folder = ROOT / base
                 if folder.exists():
                     for item in sorted(folder.glob("**/*")):
