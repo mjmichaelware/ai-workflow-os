@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import json
 APP_NAME="Phone Project Agent"
-APP_PROMPT="Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import export, and tests."
+APP_PROMPT="Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, native targets, and tests."
 ROOT=Path(__file__).resolve().parent
 def health_payload(): return {"ok": True, "app": APP_NAME, "prompt": APP_PROMPT}
 class Handler(BaseHTTPRequestHandler):

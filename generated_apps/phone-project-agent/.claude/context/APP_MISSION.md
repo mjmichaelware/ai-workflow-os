@@ -3,4 +3,4 @@
 App name: Phone Project Agent
 
 Prompt:
-Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import export, and tests.
+Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, native targets, and tests.
