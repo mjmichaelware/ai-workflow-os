@@ -9,3 +9,4 @@ ai_workflow_os/prompt_bridge/*.sqlite3
 ai_workflow_os/prompt_bridge/*.jsonl
 ai_workflow_os/self_build_runs/*.json
 ai_workflow_os/self_build_runs/*.jsonl
+phone_exports/

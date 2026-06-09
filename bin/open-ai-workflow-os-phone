@@ -1,0 +1,12 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+cd "$HOME/Workspaces/AI_Workflow_OS/ai-workflow-os"
+pkill -f ai_workflow_os.cli >/dev/null 2>&1 || true
+pkill -f ai-workflow-os >/dev/null 2>&1 || true
+mkdir -p "$HOME/tmp"
+nohup bin/ai-workflow-os serve --host 127.0.0.1 --port 8765 > "$HOME/tmp/ai_workflow_os_dashboard.log" 2>&1 &
+echo $! > "$HOME/tmp/ai_workflow_os_dashboard.pid"
+sleep 2
+URL="http://127.0.0.1:8765/?t=$(date +%s)"
+echo "OPEN: $URL"
+if command -v termux-open-url >/dev/null 2>&1; then termux-open-url "$URL"; fi

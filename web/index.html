@@ -199,5 +199,42 @@
 })();
 </script>
 
+<section id="phone-wrapper-panel" style="border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px">
+  <h2>Phone Wrapper / Export</h2>
+  <p>Creates a phone-openable local launcher and exports the AI Workflow OS bundle to Downloads.</p>
+  <button id="phone-status-button">Phone Status</button>
+  <button id="phone-export-button">Export Phone Bundle</button>
+  <pre id="phone-wrapper-output">Phone wrapper waiting...</pre>
+</section>
+<script>
+(function(){
+  async function phoneStatus(){
+    const out = document.getElementById("phone-wrapper-output");
+    if(!out) return;
+    const r = await fetch("/api/phone/status", {cache:"no-store"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  async function phoneExport(){
+    const out = document.getElementById("phone-wrapper-output");
+    if(!out) return;
+    out.textContent = "Exporting phone bundle...";
+    const r = await fetch("/api/phone/export", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const s = document.getElementById("phone-status-button");
+    const e = document.getElementById("phone-export-button");
+    if(s) s.onclick = phoneStatus;
+    if(e) e.onclick = phoneExport;
+    phoneStatus().catch(err => {
+      const out = document.getElementById("phone-wrapper-output");
+      if(out) out.textContent = "Phone wrapper load failed: " + err.message;
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
