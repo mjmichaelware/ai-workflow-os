@@ -1,0 +1,51 @@
+{
+  "commands": [
+    {
+      "available": true,
+      "name": "python3",
+      "path": "/data/data/com.termux/files/usr/bin/python3"
+    },
+    {
+      "available": true,
+      "name": "git",
+      "path": "/data/data/com.termux/files/usr/bin/git"
+    },
+    {
+      "available": true,
+      "name": "gh",
+      "path": "/data/data/com.termux/files/usr/bin/gh"
+    },
+    {
+      "available": true,
+      "name": "gcloud",
+      "path": "/data/data/com.termux/files/home/google-cloud-sdk/bin/gcloud"
+    },
+    {
+      "available": true,
+      "name": "node",
+      "path": "/data/data/com.termux/files/usr/bin/node"
+    },
+    {
+      "available": true,
+      "name": "npm",
+      "path": "/data/data/com.termux/files/usr/bin/npm"
+    },
+    {
+      "available": true,
+      "name": "rg",
+      "path": "/data/data/com.termux/files/usr/bin/rg"
+    },
+    {
+      "available": true,
+      "name": "jq",
+      "path": "/data/data/com.termux/files/usr/bin/jq"
+    },
+    {
+      "available": true,
+      "name": "curl",
+      "path": "/data/data/com.termux/files/usr/bin/curl"
+    }
+  ],
+  "name": "cli_registry",
+  "updated_at": "2026-06-09T03:45:57.141669+00:00"
+}

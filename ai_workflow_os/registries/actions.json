@@ -1,0 +1,67 @@
+{
+  "actions": [
+    {
+      "description": "Rebuild all registries.",
+      "event_type": "registry.rebuild.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "registry.rebuild",
+      "label": "Rebuild Registries",
+      "material_effect": "writes local registry files",
+      "permission": "local_write",
+      "required": []
+    },
+    {
+      "description": "Return OS state.",
+      "event_type": "system.health.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "system.health",
+      "label": "Health",
+      "material_effect": "none",
+      "permission": "read",
+      "required": []
+    },
+    {
+      "description": "Compile Python files.",
+      "event_type": "verify.python.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "verify.python",
+      "label": "Compile Python",
+      "material_effect": "runs compile check",
+      "permission": "local_execute",
+      "required": []
+    },
+    {
+      "description": "Run workflow verification.",
+      "event_type": "verify.workflow.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "verify.workflow",
+      "label": "Verify Workflow",
+      "material_effect": "runs verify script",
+      "permission": "local_execute",
+      "required": []
+    }
+  ],
+  "count": 4,
+  "name": "action_registry",
+  "updated_at": "2026-06-09T03:45:56.792224+00:00"
+}

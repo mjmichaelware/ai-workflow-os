@@ -1,0 +1,112 @@
+{
+  "count": 15,
+  "items": [
+    {
+      "content_hash": "f1a5341a90aa3198da744af8ae34347dbf1a5ac8435f928773113c3f99b89f13",
+      "id": "f1a5341a90aa3198",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/INSTALL.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/f1a5341a90aa3198_INSTALL.md",
+      "title": "INSTALL.md"
+    },
+    {
+      "content_hash": "141c7ad6fe495d2a7fdaf2dae3303f795399d8ed376fb5feb5014d4f74450122",
+      "id": "141c7ad6fe495d2a",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/PROJECT_STRUCTURE.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/141c7ad6fe495d2a_PROJECT_STRUCTURE.md",
+      "title": "PROJECT_STRUCTURE.md"
+    },
+    {
+      "content_hash": "2a8e42d1b2620bb0bfc69b17c88656faa1a62c45ad6073707bde565f1bbebbe5",
+      "id": "2a8e42d1b2620bb0",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/ARCHITECTURE.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/2a8e42d1b2620bb0_ARCHITECTURE.md",
+      "title": "ARCHITECTURE.md"
+    },
+    {
+      "content_hash": "c1f2c418be883d4ed509cc0b2ab0f8d3fd8379f4606e6185a067783cda17c7a6",
+      "id": "c1f2c418be883d4e",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/CLI.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/c1f2c418be883d4e_CLI.md",
+      "title": "CLI.md"
+    },
+    {
+      "content_hash": "09bd78558ce9bdfa4e1973413c2657b2abe40502310e583edae8504c594a2ca7",
+      "id": "09bd78558ce9bdfa",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/SECRET_MANAGER.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/09bd78558ce9bdfa_SECRET_MANAGER.md",
+      "title": "SECRET_MANAGER.md"
+    },
+    {
+      "content_hash": "9d9539db37d24cd20d5e69622d831d18c8327e48973652f33d0ca6cf1e57a71b",
+      "id": "9d9539db37d24cd2",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/PROVIDER_PLUGIN_SYSTEM.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/9d9539db37d24cd2_PROVIDER_PLUGIN_SYSTEM.md",
+      "title": "PROVIDER_PLUGIN_SYSTEM.md"
+    },
+    {
+      "content_hash": "93d694150ba24f742723ec1702a436c6ef35ec2193236f9e92bd0674138b41e5",
+      "id": "93d694150ba24f74",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/LIVE_AGENT_ROADMAP.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/93d694150ba24f74_LIVE_AGENT_ROADMAP.md",
+      "title": "LIVE_AGENT_ROADMAP.md"
+    },
+    {
+      "content_hash": "8b6baf4c1b235d643e1a57633d65a83d24cc6fd5f0ec815015c8d3a1a1ad6e6e",
+      "id": "8b6baf4c1b235d64",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/APP_CREATOR_AGENT.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/8b6baf4c1b235d64_APP_CREATOR_AGENT.md",
+      "title": "APP_CREATOR_AGENT.md"
+    },
+    {
+      "content_hash": "9b826a813f833ec544163d5dd3bf595d42781fb3b83414ce817f348c4f4c2118",
+      "id": "9b826a813f833ec5",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/TOOL_ADAPTER_STANDARD.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/9b826a813f833ec5_TOOL_ADAPTER_STANDARD.md",
+      "title": "TOOL_ADAPTER_STANDARD.md"
+    },
+    {
+      "content_hash": "d6a4311e62dc1aae2548707c121eb5f7b02776a7bda60afa44476b742d1c3f51",
+      "id": "d6a4311e62dc1aae",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/APPROVAL_MANIFEST_STANDARD.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/d6a4311e62dc1aae_APPROVAL_MANIFEST_STANDARD.md",
+      "title": "APPROVAL_MANIFEST_STANDARD.md"
+    },
+    {
+      "content_hash": "e64446fa43fd684123a7b3f0d6c7bb647e33892d04e27efab7bf686ad1e55530",
+      "id": "e64446fa43fd6841",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/APP_BUILDER_UI.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/e64446fa43fd6841_APP_BUILDER_UI.md",
+      "title": "APP_BUILDER_UI.md"
+    },
+    {
+      "content_hash": "80daf707569f847950ab6b029d851cf96c2e198338593a1332bfc150b6a14a1c",
+      "id": "80daf707569f8479",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/IMPORT_EXPORT_TEST_LAYER.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/80daf707569f8479_IMPORT_EXPORT_TEST_LAYER.md",
+      "title": "IMPORT_EXPORT_TEST_LAYER.md"
+    },
+    {
+      "content_hash": "c69492147e8223ecd22119727ae91e32b69216a3b80671b541e6e0a0249d12c4",
+      "id": "c69492147e8223ec",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/AI_WORKFLOW_OS_REGISTRY_SPINE.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/c69492147e8223ec_AI_WORKFLOW_OS_REGISTRY_SPINE.md",
+      "title": "AI_WORKFLOW_OS_REGISTRY_SPINE.md"
+    },
+    {
+      "content_hash": "c40f119690ca6c7f6b984cbb915077dd870fab4f66e4fc7d686cf3452df9718d",
+      "id": "c40f119690ca6c7f",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/NO_FRAGILE_PASTE_PROTOCOL.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/c40f119690ca6c7f_NO_FRAGILE_PASTE_PROTOCOL.md",
+      "title": "NO_FRAGILE_PASTE_PROTOCOL.md"
+    },
+    {
+      "content_hash": "93d149ffb2dd50597ac376961097f6bc64b9aeaf83a5b1563c695674038b0461",
+      "id": "93d149ffb2dd5059",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/AGENT_MISTAKE_REGISTRY.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/93d149ffb2dd5059_AGENT_MISTAKE_REGISTRY.md",
+      "title": "AGENT_MISTAKE_REGISTRY.md"
+    }
+  ],
+  "name": "knowledge_registry",
+  "updated_at": "2026-06-09T03:45:57.269924+00:00"
+}

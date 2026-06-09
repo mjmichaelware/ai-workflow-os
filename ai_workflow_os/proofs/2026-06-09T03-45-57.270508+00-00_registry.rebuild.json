@@ -1,0 +1,677 @@
+{
+  "action": {
+    "description": "Rebuild all registries.",
+    "event_type": "registry.rebuild.requested",
+    "forbidden": [
+      "secret",
+      "token",
+      "password",
+      "api_key"
+    ],
+    "id": "registry.rebuild",
+    "label": "Rebuild Registries",
+    "material_effect": "writes local registry files",
+    "permission": "local_write",
+    "required": []
+  },
+  "created_at": "2026-06-09T03:45:57.270489+00:00",
+  "event": {
+    "created_at": "2026-06-09T03:45:56.793812+00:00",
+    "id": "a97e4858-75ba-4dc0-ba8f-005bb2d51663",
+    "payload": {
+      "action_id": "registry.rebuild",
+      "payload": {},
+      "validation": {
+        "forbidden_present": [],
+        "missing": [],
+        "ok": true,
+        "payload_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+      }
+    },
+    "source": "bootstrap",
+    "type": "registry.rebuild.requested"
+  },
+  "output": {
+    "apis": {
+      "apis": [
+        {
+          "id": "local_sqlite",
+          "kind": "free_local_database",
+          "secret_policy": "no_plaintext_secrets"
+        },
+        {
+          "id": "github",
+          "kind": "developer_api",
+          "secret_policy": "approved_auth_only"
+        },
+        {
+          "id": "google_secret_manager",
+          "kind": "secret_store",
+          "secret_policy": "secret_values_never_printed"
+        },
+        {
+          "id": "supabase",
+          "kind": "free_database_option",
+          "secret_policy": "keys_never_committed"
+        }
+      ],
+      "name": "api_registry",
+      "updated_at": "2026-06-09T03:45:57.146833+00:00"
+    },
+    "cli": {
+      "commands": [
+        {
+          "available": true,
+          "name": "python3",
+          "path": "/data/data/com.termux/files/usr/bin/python3"
+        },
+        {
+          "available": true,
+          "name": "git",
+          "path": "/data/data/com.termux/files/usr/bin/git"
+        },
+        {
+          "available": true,
+          "name": "gh",
+          "path": "/data/data/com.termux/files/usr/bin/gh"
+        },
+        {
+          "available": true,
+          "name": "gcloud",
+          "path": "/data/data/com.termux/files/home/google-cloud-sdk/bin/gcloud"
+        },
+        {
+          "available": true,
+          "name": "node",
+          "path": "/data/data/com.termux/files/usr/bin/node"
+        },
+        {
+          "available": true,
+          "name": "npm",
+          "path": "/data/data/com.termux/files/usr/bin/npm"
+        },
+        {
+          "available": true,
+          "name": "rg",
+          "path": "/data/data/com.termux/files/usr/bin/rg"
+        },
+        {
+          "available": true,
+          "name": "jq",
+          "path": "/data/data/com.termux/files/usr/bin/jq"
+        },
+        {
+          "available": true,
+          "name": "curl",
+          "path": "/data/data/com.termux/files/usr/bin/curl"
+        }
+      ],
+      "name": "cli_registry",
+      "updated_at": "2026-06-09T03:45:57.141669+00:00"
+    },
+    "knowledge": {
+      "count": 15,
+      "items": [
+        {
+          "content_hash": "f1a5341a90aa3198da744af8ae34347dbf1a5ac8435f928773113c3f99b89f13",
+          "id": "f1a5341a90aa3198",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/INSTALL.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/f1a5341a90aa3198_INSTALL.md",
+          "title": "INSTALL.md"
+        },
+        {
+          "content_hash": "141c7ad6fe495d2a7fdaf2dae3303f795399d8ed376fb5feb5014d4f74450122",
+          "id": "141c7ad6fe495d2a",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/PROJECT_STRUCTURE.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/141c7ad6fe495d2a_PROJECT_STRUCTURE.md",
+          "title": "PROJECT_STRUCTURE.md"
+        },
+        {
+          "content_hash": "2a8e42d1b2620bb0bfc69b17c88656faa1a62c45ad6073707bde565f1bbebbe5",
+          "id": "2a8e42d1b2620bb0",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/ARCHITECTURE.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/2a8e42d1b2620bb0_ARCHITECTURE.md",
+          "title": "ARCHITECTURE.md"
+        },
+        {
+          "content_hash": "c1f2c418be883d4ed509cc0b2ab0f8d3fd8379f4606e6185a067783cda17c7a6",
+          "id": "c1f2c418be883d4e",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/CLI.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/c1f2c418be883d4e_CLI.md",
+          "title": "CLI.md"
+        },
+        {
+          "content_hash": "09bd78558ce9bdfa4e1973413c2657b2abe40502310e583edae8504c594a2ca7",
+          "id": "09bd78558ce9bdfa",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/SECRET_MANAGER.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/09bd78558ce9bdfa_SECRET_MANAGER.md",
+          "title": "SECRET_MANAGER.md"
+        },
+        {
+          "content_hash": "9d9539db37d24cd20d5e69622d831d18c8327e48973652f33d0ca6cf1e57a71b",
+          "id": "9d9539db37d24cd2",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/PROVIDER_PLUGIN_SYSTEM.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/9d9539db37d24cd2_PROVIDER_PLUGIN_SYSTEM.md",
+          "title": "PROVIDER_PLUGIN_SYSTEM.md"
+        },
+        {
+          "content_hash": "93d694150ba24f742723ec1702a436c6ef35ec2193236f9e92bd0674138b41e5",
+          "id": "93d694150ba24f74",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/LIVE_AGENT_ROADMAP.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/93d694150ba24f74_LIVE_AGENT_ROADMAP.md",
+          "title": "LIVE_AGENT_ROADMAP.md"
+        },
+        {
+          "content_hash": "8b6baf4c1b235d643e1a57633d65a83d24cc6fd5f0ec815015c8d3a1a1ad6e6e",
+          "id": "8b6baf4c1b235d64",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/APP_CREATOR_AGENT.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/8b6baf4c1b235d64_APP_CREATOR_AGENT.md",
+          "title": "APP_CREATOR_AGENT.md"
+        },
+        {
+          "content_hash": "9b826a813f833ec544163d5dd3bf595d42781fb3b83414ce817f348c4f4c2118",
+          "id": "9b826a813f833ec5",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/TOOL_ADAPTER_STANDARD.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/9b826a813f833ec5_TOOL_ADAPTER_STANDARD.md",
+          "title": "TOOL_ADAPTER_STANDARD.md"
+        },
+        {
+          "content_hash": "d6a4311e62dc1aae2548707c121eb5f7b02776a7bda60afa44476b742d1c3f51",
+          "id": "d6a4311e62dc1aae",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/APPROVAL_MANIFEST_STANDARD.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/d6a4311e62dc1aae_APPROVAL_MANIFEST_STANDARD.md",
+          "title": "APPROVAL_MANIFEST_STANDARD.md"
+        },
+        {
+          "content_hash": "e64446fa43fd684123a7b3f0d6c7bb647e33892d04e27efab7bf686ad1e55530",
+          "id": "e64446fa43fd6841",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/APP_BUILDER_UI.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/e64446fa43fd6841_APP_BUILDER_UI.md",
+          "title": "APP_BUILDER_UI.md"
+        },
+        {
+          "content_hash": "80daf707569f847950ab6b029d851cf96c2e198338593a1332bfc150b6a14a1c",
+          "id": "80daf707569f8479",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/IMPORT_EXPORT_TEST_LAYER.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/80daf707569f8479_IMPORT_EXPORT_TEST_LAYER.md",
+          "title": "IMPORT_EXPORT_TEST_LAYER.md"
+        },
+        {
+          "content_hash": "c69492147e8223ecd22119727ae91e32b69216a3b80671b541e6e0a0249d12c4",
+          "id": "c69492147e8223ec",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/AI_WORKFLOW_OS_REGISTRY_SPINE.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/c69492147e8223ec_AI_WORKFLOW_OS_REGISTRY_SPINE.md",
+          "title": "AI_WORKFLOW_OS_REGISTRY_SPINE.md"
+        },
+        {
+          "content_hash": "c40f119690ca6c7f6b984cbb915077dd870fab4f66e4fc7d686cf3452df9718d",
+          "id": "c40f119690ca6c7f",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/NO_FRAGILE_PASTE_PROTOCOL.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/c40f119690ca6c7f_NO_FRAGILE_PASTE_PROTOCOL.md",
+          "title": "NO_FRAGILE_PASTE_PROTOCOL.md"
+        },
+        {
+          "content_hash": "93d149ffb2dd50597ac376961097f6bc64b9aeaf83a5b1563c695674038b0461",
+          "id": "93d149ffb2dd5059",
+          "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/AGENT_MISTAKE_REGISTRY.md",
+          "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/93d149ffb2dd5059_AGENT_MISTAKE_REGISTRY.md",
+          "title": "AGENT_MISTAKE_REGISTRY.md"
+        }
+      ],
+      "name": "knowledge_registry",
+      "updated_at": "2026-06-09T03:45:57.269924+00:00"
+    },
+    "libraries": {
+      "name": "library_registry",
+      "python": [
+        {
+          "ecosystem": "python",
+          "name": "annotated-types",
+          "version": "0.7.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "anthropic",
+          "version": "0.100.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "anyio",
+          "version": "4.13.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "attrs",
+          "version": "26.1.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "blinker",
+          "version": "1.9.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "cbor2",
+          "version": "6.0.1"
+        },
+        {
+          "ecosystem": "python",
+          "name": "certifi",
+          "version": "2026.4.22"
+        },
+        {
+          "ecosystem": "python",
+          "name": "cffi",
+          "version": "2.0.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "charset-normalizer",
+          "version": "3.4.7"
+        },
+        {
+          "ecosystem": "python",
+          "name": "click",
+          "version": "8.4.1"
+        },
+        {
+          "ecosystem": "python",
+          "name": "cryptography",
+          "version": "48.0.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "cyclopts",
+          "version": "4.11.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "detect_agent",
+          "version": "0.2.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "distro",
+          "version": "1.9.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "docstring_parser",
+          "version": "0.18.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "docutils",
+          "version": "0.22.4"
+        },
+        {
+          "ecosystem": "python",
+          "name": "filelock",
+          "version": "3.29.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "Flask",
+          "version": "3.1.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-ai-generativelanguage",
+          "version": "0.6.15"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-api-core",
+          "version": "2.30.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-api-python-client",
+          "version": "2.196.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-auth",
+          "version": "2.53.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-auth",
+          "version": "2.50.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-auth-httplib2",
+          "version": "0.4.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-auth-oauthlib",
+          "version": "1.4.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-genai",
+          "version": "1.75.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "google-generativeai",
+          "version": "0.8.6"
+        },
+        {
+          "ecosystem": "python",
+          "name": "googleapis-common-protos",
+          "version": "1.74.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "groq",
+          "version": "1.2.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "grpcio",
+          "version": "1.81.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "grpcio-status",
+          "version": "1.71.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "gunicorn",
+          "version": "26.0.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "h11",
+          "version": "0.16.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "httpcore",
+          "version": "1.0.9"
+        },
+        {
+          "ecosystem": "python",
+          "name": "httplib2",
+          "version": "0.31.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "httpx",
+          "version": "0.28.1"
+        },
+        {
+          "ecosystem": "python",
+          "name": "idna",
+          "version": "3.13"
+        },
+        {
+          "ecosystem": "python",
+          "name": "iniconfig",
+          "version": "2.3.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "itsdangerous",
+          "version": "2.2.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "Jinja2",
+          "version": "3.1.6"
+        },
+        {
+          "ecosystem": "python",
+          "name": "jiter",
+          "version": "0.14.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "markdown-it-py",
+          "version": "4.1.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "MarkupSafe",
+          "version": "3.0.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "mdurl",
+          "version": "0.1.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "numpy",
+          "version": "2.4.4"
+        },
+        {
+          "ecosystem": "python",
+          "name": "oauthlib",
+          "version": "3.3.1"
+        },
+        {
+          "ecosystem": "python",
+          "name": "openai",
+          "version": "2.36.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "packaging",
+          "version": "26.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pillow",
+          "version": "12.2.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pip",
+          "version": "26.1.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pluggy",
+          "version": "1.6.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "prompt_toolkit",
+          "version": "3.0.52"
+        },
+        {
+          "ecosystem": "python",
+          "name": "proot-distro",
+          "version": "5.1.5"
+        },
+        {
+          "ecosystem": "python",
+          "name": "proto-plus",
+          "version": "1.27.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "protobuf",
+          "version": "5.29.6"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pyasn1",
+          "version": "0.6.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pyasn1_modules",
+          "version": "0.4.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pycparser",
+          "version": "3.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pydantic",
+          "version": "2.13.4"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pydantic_core",
+          "version": "2.46.4"
+        },
+        {
+          "ecosystem": "python",
+          "name": "Pygments",
+          "version": "2.20.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pyparsing",
+          "version": "3.3.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "pytest",
+          "version": "9.0.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "python-dotenv",
+          "version": "1.2.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "PyYAML",
+          "version": "6.0.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "questionary",
+          "version": "2.1.1"
+        },
+        {
+          "ecosystem": "python",
+          "name": "requests",
+          "version": "2.34.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "requests",
+          "version": "2.33.1"
+        },
+        {
+          "ecosystem": "python",
+          "name": "requests-oauthlib",
+          "version": "2.0.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "rich",
+          "version": "15.0.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "rich-rst",
+          "version": "1.3.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "sniffio",
+          "version": "1.3.1"
+        },
+        {
+          "ecosystem": "python",
+          "name": "tabulate",
+          "version": "0.10.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "tenacity",
+          "version": "9.1.4"
+        },
+        {
+          "ecosystem": "python",
+          "name": "together",
+          "version": "2.12.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "tqdm",
+          "version": "4.67.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "types-PyYAML",
+          "version": "6.0.12.20260408"
+        },
+        {
+          "ecosystem": "python",
+          "name": "types-requests",
+          "version": "2.33.0.20260503"
+        },
+        {
+          "ecosystem": "python",
+          "name": "types-tabulate",
+          "version": "0.10.0.20260408"
+        },
+        {
+          "ecosystem": "python",
+          "name": "types-tqdm",
+          "version": "4.67.3.20260408"
+        },
+        {
+          "ecosystem": "python",
+          "name": "typing-inspection",
+          "version": "0.4.2"
+        },
+        {
+          "ecosystem": "python",
+          "name": "typing_extensions",
+          "version": "4.15.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "uritemplate",
+          "version": "4.2.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "urllib3",
+          "version": "2.6.3"
+        },
+        {
+          "ecosystem": "python",
+          "name": "vercel",
+          "version": "0.5.8"
+        },
+        {
+          "ecosystem": "python",
+          "name": "vercel-workers",
+          "version": "0.0.22"
+        },
+        {
+          "ecosystem": "python",
+          "name": "wcwidth",
+          "version": "0.7.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "websockets",
+          "version": "16.0"
+        },
+        {
+          "ecosystem": "python",
+          "name": "Werkzeug",
+          "version": "3.1.8"
+        }
+      ],
+      "python_count": 89,
+      "updated_at": "2026-06-09T03:45:57.141042+00:00"
+    }
+  }
+}

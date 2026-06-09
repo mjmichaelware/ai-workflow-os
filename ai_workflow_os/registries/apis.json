@@ -1,0 +1,26 @@
+{
+  "apis": [
+    {
+      "id": "local_sqlite",
+      "kind": "free_local_database",
+      "secret_policy": "no_plaintext_secrets"
+    },
+    {
+      "id": "github",
+      "kind": "developer_api",
+      "secret_policy": "approved_auth_only"
+    },
+    {
+      "id": "google_secret_manager",
+      "kind": "secret_store",
+      "secret_policy": "secret_values_never_printed"
+    },
+    {
+      "id": "supabase",
+      "kind": "free_database_option",
+      "secret_policy": "keys_never_committed"
+    }
+  ],
+  "name": "api_registry",
+  "updated_at": "2026-06-09T03:45:57.146833+00:00"
+}

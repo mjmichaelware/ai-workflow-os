@@ -1,0 +1,452 @@
+{
+  "name": "library_registry",
+  "python": [
+    {
+      "ecosystem": "python",
+      "name": "annotated-types",
+      "version": "0.7.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "anthropic",
+      "version": "0.100.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "anyio",
+      "version": "4.13.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "blinker",
+      "version": "1.9.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "cbor2",
+      "version": "6.0.1"
+    },
+    {
+      "ecosystem": "python",
+      "name": "certifi",
+      "version": "2026.4.22"
+    },
+    {
+      "ecosystem": "python",
+      "name": "cffi",
+      "version": "2.0.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "charset-normalizer",
+      "version": "3.4.7"
+    },
+    {
+      "ecosystem": "python",
+      "name": "click",
+      "version": "8.4.1"
+    },
+    {
+      "ecosystem": "python",
+      "name": "cryptography",
+      "version": "48.0.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "cyclopts",
+      "version": "4.11.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "detect_agent",
+      "version": "0.2.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "distro",
+      "version": "1.9.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "docstring_parser",
+      "version": "0.18.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "docutils",
+      "version": "0.22.4"
+    },
+    {
+      "ecosystem": "python",
+      "name": "filelock",
+      "version": "3.29.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "Flask",
+      "version": "3.1.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-ai-generativelanguage",
+      "version": "0.6.15"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-api-core",
+      "version": "2.30.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-api-python-client",
+      "version": "2.196.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-auth",
+      "version": "2.53.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-auth",
+      "version": "2.50.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-auth-httplib2",
+      "version": "0.4.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-auth-oauthlib",
+      "version": "1.4.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-genai",
+      "version": "1.75.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "google-generativeai",
+      "version": "0.8.6"
+    },
+    {
+      "ecosystem": "python",
+      "name": "googleapis-common-protos",
+      "version": "1.74.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "groq",
+      "version": "1.2.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "grpcio",
+      "version": "1.81.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "grpcio-status",
+      "version": "1.71.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "gunicorn",
+      "version": "26.0.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "httpcore",
+      "version": "1.0.9"
+    },
+    {
+      "ecosystem": "python",
+      "name": "httplib2",
+      "version": "0.31.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "httpx",
+      "version": "0.28.1"
+    },
+    {
+      "ecosystem": "python",
+      "name": "idna",
+      "version": "3.13"
+    },
+    {
+      "ecosystem": "python",
+      "name": "iniconfig",
+      "version": "2.3.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "itsdangerous",
+      "version": "2.2.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "ecosystem": "python",
+      "name": "jiter",
+      "version": "0.14.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "markdown-it-py",
+      "version": "4.1.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "MarkupSafe",
+      "version": "3.0.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "mdurl",
+      "version": "0.1.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "numpy",
+      "version": "2.4.4"
+    },
+    {
+      "ecosystem": "python",
+      "name": "oauthlib",
+      "version": "3.3.1"
+    },
+    {
+      "ecosystem": "python",
+      "name": "openai",
+      "version": "2.36.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "packaging",
+      "version": "26.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pillow",
+      "version": "12.2.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pip",
+      "version": "26.1.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pluggy",
+      "version": "1.6.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "prompt_toolkit",
+      "version": "3.0.52"
+    },
+    {
+      "ecosystem": "python",
+      "name": "proot-distro",
+      "version": "5.1.5"
+    },
+    {
+      "ecosystem": "python",
+      "name": "proto-plus",
+      "version": "1.27.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "protobuf",
+      "version": "5.29.6"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pyasn1",
+      "version": "0.6.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pyasn1_modules",
+      "version": "0.4.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pycparser",
+      "version": "3.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pydantic",
+      "version": "2.13.4"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pydantic_core",
+      "version": "2.46.4"
+    },
+    {
+      "ecosystem": "python",
+      "name": "Pygments",
+      "version": "2.20.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pyparsing",
+      "version": "3.3.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "pytest",
+      "version": "9.0.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "python-dotenv",
+      "version": "1.2.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "questionary",
+      "version": "2.1.1"
+    },
+    {
+      "ecosystem": "python",
+      "name": "requests",
+      "version": "2.34.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "requests",
+      "version": "2.33.1"
+    },
+    {
+      "ecosystem": "python",
+      "name": "requests-oauthlib",
+      "version": "2.0.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "rich",
+      "version": "15.0.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "rich-rst",
+      "version": "1.3.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "sniffio",
+      "version": "1.3.1"
+    },
+    {
+      "ecosystem": "python",
+      "name": "tabulate",
+      "version": "0.10.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "tenacity",
+      "version": "9.1.4"
+    },
+    {
+      "ecosystem": "python",
+      "name": "together",
+      "version": "2.12.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "tqdm",
+      "version": "4.67.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "types-PyYAML",
+      "version": "6.0.12.20260408"
+    },
+    {
+      "ecosystem": "python",
+      "name": "types-requests",
+      "version": "2.33.0.20260503"
+    },
+    {
+      "ecosystem": "python",
+      "name": "types-tabulate",
+      "version": "0.10.0.20260408"
+    },
+    {
+      "ecosystem": "python",
+      "name": "types-tqdm",
+      "version": "4.67.3.20260408"
+    },
+    {
+      "ecosystem": "python",
+      "name": "typing-inspection",
+      "version": "0.4.2"
+    },
+    {
+      "ecosystem": "python",
+      "name": "typing_extensions",
+      "version": "4.15.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "uritemplate",
+      "version": "4.2.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "urllib3",
+      "version": "2.6.3"
+    },
+    {
+      "ecosystem": "python",
+      "name": "vercel",
+      "version": "0.5.8"
+    },
+    {
+      "ecosystem": "python",
+      "name": "vercel-workers",
+      "version": "0.0.22"
+    },
+    {
+      "ecosystem": "python",
+      "name": "wcwidth",
+      "version": "0.7.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "websockets",
+      "version": "16.0"
+    },
+    {
+      "ecosystem": "python",
+      "name": "Werkzeug",
+      "version": "3.1.8"
+    }
+  ],
+  "python_count": 89,
+  "updated_at": "2026-06-09T03:45:57.141042+00:00"
+}
