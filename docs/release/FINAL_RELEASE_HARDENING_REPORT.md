@@ -1,8 +1,8 @@
 # Final Release Hardening Report
 
-- Created: `2026-06-09T21:44:44.512094+00:00`
-- Branch: `termux-aapt2-override-v1`
-- Head: `36b5fc6`
+- Created: `2026-06-09T22:07:49.623456+00:00`
+- Branch: `termux-native-manual-apk-v1`
+- Head: `764f5eb`
 - OK: `True`
 - Keys printed: `False`
 - Broad permissions: `False`
