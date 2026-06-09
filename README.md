@@ -1,13 +1,13 @@
 # AI Workflow OS
 
-Reusable AI-agent workflow control plane for creating and repairing applications from terminal-first workflows.
+Reusable AI-agent workflow control plane and terminal-first application creator.
 
 This repo is generic. It must not contain target-app missions, bug ledgers, patch plans, proof reports, or app handoff packets.
 
 ## Capabilities
 
 - Python CLI
-- Local dashboard
+- Interactive browser dashboard
 - Provider registry
 - Permission model
 - Google Secret Manager reference checks
@@ -15,6 +15,10 @@ This repo is generic. It must not contain target-app missions, bug ledgers, patc
 - Approval manifests
 - Run logs
 - Tool adapters for repo inspection, files, shell, git, gh, and gcloud status
+- Market research seed graphs
+- Recursive self-bootstrap planning
+- Local app generator
+- Generated-app import/export/test layer
 - Target-project installer
 - Handoff packet exporter
 
@@ -22,22 +26,22 @@ This repo is generic. It must not contain target-app missions, bug ledgers, patc
 
 bash scripts/verify_workflow_app.sh
 
-## Dashboard
+## Run dashboard
 
 bash scripts/run_dashboard.sh
 
-## Create an app plan
+Open http://127.0.0.1:8765 in the browser.
 
-bin/ai-workflow-os agent-plan "Create an app that does X" --target /path/to/app --out runs
+## Create an app
 
-## Approve and run
-
-bin/ai-workflow-os approve-run RUN_ID --out approvals
-bin/ai-workflow-os agent-run runs/RUN_ID/plan.json --approve --approval-file approvals/RUN_ID.approval.json
+bin/ai-workflow-os create-app "Create an app that does X" --target generated_apps/demo --name demo --execute
+bin/ai-workflow-os test-app generated_apps/demo
+bin/ai-workflow-os export-app generated_apps/demo --out runs/demo_manifest.json
 
 ## Safety
 
 - Secret values are never printed.
-- Dry-run is the default.
+- Dry-run is the default for agent runs.
 - Approval is required for side effects.
 - Git push, cloud writes, live APIs, and deploys are not part of default approval.
+- Entire-web research is implemented as bounded recursive research graphs, not fake infinite crawling.

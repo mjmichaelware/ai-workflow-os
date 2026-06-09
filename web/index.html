@@ -4,44 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Workflow OS</title>
-  <style>
-    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background: #07111f; color: #eef6ff; }
-    body { margin: 0; padding: 24px; }
-    .shell { max-width: 1200px; margin: 0 auto; }
-    .hero { padding: 28px; border: 1px solid #28435f; border-radius: 24px; background: linear-gradient(135deg, #102542, #0b1728); box-shadow: 0 20px 80px #0008; }
-    h1 { margin: 0 0 8px; font-size: clamp(32px, 6vw, 72px); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px; }
-    .card { border: 1px solid #2b4865; border-radius: 18px; padding: 18px; background: #0d1b2f; }
-    pre { background: #030812; color: #d7f7ff; border-radius: 12px; padding: 12px; overflow: auto; max-height: 420px; }
-    .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #12395a; color: #9ee7ff; font-size: 12px; }
-  </style>
+  <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
   <main class="shell">
     <section class="hero">
-      <span class="badge">generic workflow control plane</span>
+      <div class="badge">terminal first app creator</div>
       <h1>AI Workflow OS</h1>
-      <p>Reusable agent workflow kit for app audits, specs, bug ledgers, patch plans, proof reports, and handoff packets.</p>
+      <p class="lede">Create app plans, generate local starter apps, inspect tools, build research graphs, and bootstrap the OS itself through permission-gated workflows.</p>
+    </section>
+    <section class="panel creator">
+      <h2>Create an application</h2>
+      <label>Prompt</label>
+      <textarea id="prompt">Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.</textarea>
+      <div class="row">
+        <input id="appName" value="phone-project-agent">
+        <input id="target" value="">
+      </div>
+      <label class="check"><input type="checkbox" id="execute"> Approve local file generation under this repo</label>
+      <div class="actions">
+        <button id="researchBtn">Research graph</button>
+        <button id="planBtn">Plan app</button>
+        <button id="createBtn">Generate app</button>
+        <button id="selfBtn">Self bootstrap</button>
+      </div>
     </section>
     <section class="grid">
-      <article class="card"><h2>Health</h2><pre id="health">loading</pre></article>
-      <article class="card"><h2>Catalog</h2><pre id="catalog">loading</pre></article>
-      <article class="card"><h2>Files</h2><pre id="files">loading</pre></article>
+      <article class="card"><h3>Health</h3><pre id="health">loading</pre></article>
+      <article class="card"><h3>Tools</h3><pre id="tools">loading</pre></article>
+      <article class="card"><h3>Providers</h3><pre id="providers">loading</pre></article>
+      <article class="card"><h3>Runs</h3><pre id="runs">loading</pre></article>
+    </section>
+    <section class="panel">
+      <h2>Output</h2>
+      <pre id="output">Ready.</pre>
     </section>
   </main>
-  <script>
-    async function load(id, url) {
-      const el = document.getElementById(id);
-      try {
-        const res = await fetch(url);
-        el.textContent = JSON.stringify(await res.json(), null, 2);
-      } catch (err) {
-        el.textContent = String(err);
-      }
-    }
-    load("health", "/api/health");
-    load("catalog", "/api/catalog");
-    load("files", "/api/workflow-files");
-  </script>
+  <script src="/static/app.js"></script>
 </body>
 </html>
