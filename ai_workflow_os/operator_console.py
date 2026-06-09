@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 import sys
+from .generated_app_shell import ensure_generated_app_shell, build_shell_packet
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNS = ROOT / "ai_workflow_os" / "operator_runs"
@@ -183,3 +184,23 @@ def _contract_app(prompt: str) -> Dict[str, Any]:
     test_result = subprocess.run([sys.executable, "-m", "pytest", str(tests_dir), "-q", "--import-mode=importlib"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     ok = compile_app.returncode == 0 and compile_builder.returncode == 0 and test_result.returncode == 0
     return {"ok": ok, "name": slug, "path": str(app_dir), "relative_path": str(app_dir.relative_to(ROOT)), "compile": {"app_ok": compile_app.returncode == 0, "builder_ok": compile_builder.returncode == 0, "stdout": (compile_app.stdout + compile_builder.stdout)[-1200:], "stderr": (compile_app.stderr + compile_builder.stderr)[-1200:]}, "tests": {"ok": test_result.returncode == 0, "stdout": test_result.stdout[-1200:], "stderr": test_result.stderr[-1200:]}, "manifest": manifest}
+
+# === GENERATED APP SHELL INHERITANCE V2 OVERRIDE ===
+_base_contract_app_shell_v2 = _contract_app
+
+def _contract_app(prompt: str) -> Dict[str, Any]:
+    result = _base_contract_app_shell_v2(prompt)
+    if not result.get("ok"):
+        return result
+    app_dir = Path(result.get("path", ""))
+    title = result.get("manifest", {}).get("title") or result.get("name", app_dir.name).replace("-", " ").title()
+    shell_proof = ensure_generated_app_shell(app_dir, title)
+    shell_packet = build_shell_packet(app_dir)
+    result["shell"] = shell_proof
+    result["shell_packet"] = {
+        "ok": shell_packet.get("ok"),
+        "format": shell_packet.get("format"),
+        "bytes": shell_packet.get("bytes"),
+    }
+    result["ok"] = bool(result.get("ok")) and bool(shell_proof.get("ok")) and bool(shell_packet.get("ok"))
+    return result
