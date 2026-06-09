@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "created_at": "2026-06-09T22:07:49.623456+00:00",
-  "branch": "termux-native-manual-apk-v1",
-  "head": "764f5eb",
+  "created_at": "2026-06-09T22:13:52.110096+00:00",
+  "branch": "manual-apk-manifest-package-fix-v1",
+  "head": "1df328f",
   "checks": [
     {
       "cmd": [
@@ -88,7 +88,7 @@
       ],
       "ok": true,
       "returncode": 0,
-      "stdout_tail": "....................................................................     [100%]\n68 passed in 22.61s\n",
+      "stdout_tail": "....................................................................     [100%]\n68 passed in 10.08s\n",
       "stderr_tail": ""
     },
     {
@@ -126,7 +126,7 @@
     "scripts/prove_generated_app_shell.py": true,
     "scripts/prove_recursive_app_factory.py": true
   },
-  "git_status_short": "M ai_workflow_os/registries/generated_app_preflight.json\n M ai_workflow_os/registries/mistake_prevention.json\n M ai_workflow_os/registries/operating_boundary.json\n M ai_workflow_os/registries/operating_memory.json\n M ai_workflow_os/registries/phone_wrapper.json\n M ai_workflow_os/registries/pumps.json\n M ai_workflow_os/registries/standards.json\n M docs/capabilities/TOOL_AGENT_CAPABILITY_MATRIX.json\n M docs/context/AI_WORKFLOW_OS_CONTEXT_PACKET.json\n M docs/proof/FINAL_PERFECTION_REPORT.json\n M docs/release/FINAL_RELEASE_HARDENING_REPORT.json\n M docs/release/FINAL_RELEASE_HARDENING_REPORT.md\n M generated_apps/create-a-small-proof-app-from-self-build-test/APP_MANIFEST.json\n M scripts/context_packet.py\n?? ai_workflow_os/manual_apk_builder.py\n?? docs/apk/MANUAL_APK_BUILD_REPORT.json\n?? docs/standards/TERMUX_NATIVE_MANUAL_APK_V1_STANDARD.md\n?? scripts/prove_manual_apk_build.py\n?? tests/test_manual_apk_builder.py",
+  "git_status_short": "M ai_workflow_os/manual_apk_builder.py\n M ai_workflow_os/registries/generated_app_preflight.json\n M ai_workflow_os/registries/mistake_prevention.json\n M ai_workflow_os/registries/operating_boundary.json\n M ai_workflow_os/registries/operating_memory.json\n M ai_workflow_os/registries/phone_wrapper.json\n M ai_workflow_os/registries/pumps.json\n M ai_workflow_os/registries/standards.json\n M docs/apk/MANUAL_APK_BUILD_REPORT.json\n M docs/capabilities/TOOL_AGENT_CAPABILITY_MATRIX.json\n M docs/context/AI_WORKFLOW_OS_CONTEXT_PACKET.json\n M docs/proof/FINAL_PERFECTION_REPORT.json\n M docs/release/FINAL_RELEASE_HARDENING_REPORT.json\n M docs/release/FINAL_RELEASE_HARDENING_REPORT.md\n M generated_apps/create-a-small-proof-app-from-self-build-test/APP_MANIFEST.json",
   "release_readiness": {
     "operator_console": true,
     "mobile_command_menu": true,

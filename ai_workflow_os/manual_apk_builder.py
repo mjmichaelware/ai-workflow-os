@@ -74,7 +74,7 @@ def create_manual_apk_source(app_name: str = "AI Workflow OS", package_name: str
 """)
 
     _write(out / "AndroidManifest.xml", f"""
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="{package_name}">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="{app_name}"
@@ -216,7 +216,6 @@ def build_manual_debug_apk() -> Dict[str, Any]:
         "--manifest", str(project_dir / "AndroidManifest.xml"),
         "-I", str(android_jar),
         "--java", str(gen_java),
-        "--rename-manifest-package", package_name,
         "--min-sdk-version", "26",
         "--target-sdk-version", "36",
         "--version-code", "1",
