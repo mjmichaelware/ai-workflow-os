@@ -11,6 +11,12 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_final_release_hardening.py",
+    "docs/standards/FINAL_RELEASE_HARDENING_V1_STANDARD.md",
+    "docs/release/FINAL_RELEASE_HARDENING_REPORT.md",
+    "docs/release/FINAL_RELEASE_HARDENING_REPORT.json",
+    "docs/release/RELEASE_NOTES_V1.md",
+    "scripts/final_release_hardening.py",
     "tests/test_recursive_grandchild_inheritance.py",
     "docs/standards/RECURSIVE_GRANDCHILD_INHERITANCE_V1_STANDARD.md",
     "docs/RECURSIVE_GRANDCHILD_INHERITANCE.md",
