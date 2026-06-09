@@ -1,8 +1,8 @@
 # Final Release Hardening Report
 
-- Created: `2026-06-09T22:13:52.110096+00:00`
-- Branch: `manual-apk-manifest-package-fix-v1`
-- Head: `1df328f`
+- Created: `2026-06-09T22:30:37.676604+00:00`
+- Branch: `github-actions-debug-apk-v1`
+- Head: `c7174c9`
 - OK: `True`
 - Keys printed: `False`
 - Broad permissions: `False`
