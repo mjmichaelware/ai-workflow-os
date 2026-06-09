@@ -1,0 +1,62 @@
+from __future__ import annotations
+
+from pathlib import Path
+import base64
+import datetime
+import gzip
+import hashlib
+import io
+import json
+import tarfile
+
+ROOT = Path(__file__).resolve().parents[1]
+FILES = [
+    "README.md",
+    "AGENTS.md",
+    "GEMINI.md",
+    "CLAUDE.md",
+    "CODEX.md",
+    "SECURITY.md",
+    "PRIVACY.md",
+    "LICENSE",
+    "ai_workflow_os/operator_console.py",
+    "ai_workflow_os/server.py",
+    "web/index.html",
+    "web/assets/console.css",
+    "web/assets/console.js",
+    "web/assets/console.meta.json",
+    "scripts/prove_operator_button_flow.py",
+    "tests/test_console_ui.py",
+    "docs/FRONTEND_ARCHITECTURE.md",
+    "docs/standards/UI_PACKET_ARCHITECTURE_STANDARD.md",
+]
+
+def build_packet() -> dict:
+    raw = io.BytesIO()
+    with tarfile.open(fileobj=raw, mode="w") as tar:
+        for rel in FILES:
+            path = ROOT / rel
+            if path.exists():
+                tar.add(path, arcname=rel)
+    gz = gzip.compress(raw.getvalue(), compresslevel=9)
+    encoded = base64.b64encode(gz).decode("ascii")
+    return {
+        "ok": True,
+        "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "format": "tar.gz.base64",
+        "sha256": hashlib.sha256(gz).hexdigest(),
+        "bytes": len(gz),
+        "files": [rel for rel in FILES if (ROOT / rel).exists()],
+        "payload": encoded,
+    }
+
+def main() -> int:
+    out = ROOT / "docs" / "context" / "AI_WORKFLOW_OS_CONTEXT_PACKET.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    packet = build_packet()
+    out.write_text(json.dumps(packet, indent=2), encoding="utf-8")
+    print(json.dumps({key: packet[key] for key in ["ok", "created_at", "format", "sha256", "bytes", "files"]}, indent=2))
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())

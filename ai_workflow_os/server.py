@@ -124,6 +124,19 @@ class Handler(BaseHTTPRequestHandler):
             self.send_bytes((ROOT / "web" / "manifest.webmanifest").read_bytes(), "application/manifest+json; charset=utf-8")
             return
 
+        if path.startswith("/assets/"):
+            asset = (ROOT / "web" / path.lstrip("/")).resolve()
+            web_root = (ROOT / "web").resolve()
+            if str(asset).startswith(str(web_root)) and asset.exists() and asset.is_file():
+                if asset.suffix == ".css":
+                    self.send_bytes(asset.read_bytes(), "text/css; charset=utf-8")
+                    return
+                if asset.suffix == ".js":
+                    self.send_bytes(asset.read_bytes(), "application/javascript; charset=utf-8")
+                    return
+                if asset.suffix == ".json":
+                    self.send_bytes(asset.read_bytes(), "application/json; charset=utf-8")
+                    return
         if path == "/sw.js":
             self.send_bytes((ROOT / "web" / "sw.js").read_bytes(), "application/javascript; charset=utf-8")
             return
