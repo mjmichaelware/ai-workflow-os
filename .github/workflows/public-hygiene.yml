@@ -1,0 +1,44 @@
+name: Public Hygiene
+
+on:
+  push:
+    branches: [master, main, public-contributor-readiness]
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Reject obvious secret-like tokens
+        run: |
+          if git grep -I -n -E "AIza[0-9A-Za-z_-]{20,}|sk-[0-9A-Za-z_-]{20,}|ghp_[0-9A-Za-z_]{20,}" -- .; then
+            echo "Secret-like token pattern found"
+            exit 1
+          fi
+      - name: Require public repo files
+        run: |
+          test -f README.md
+          test -f SECURITY.md
+          test -f AGENTS.md
+          test -f GEMINI.md
+          test -f CLAUDE.md
+          test -f CODEX.md
+          test -f CONTRIBUTING.md
+          test -f .github/copilot-instructions.md
+          test -f .cursor/rules/ai-workflow-os.mdc
+          test -f .clinerules
+          test -f .continue/rules/ai-workflow-os.md
+      - name: Root pytest must not collect generated apps
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pytest --collect-only -q > /tmp/collect.txt
+          if grep -q "generated_apps/" /tmp/collect.txt; then
+            cat /tmp/collect.txt
+            exit 1
+          fi

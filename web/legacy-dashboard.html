@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="cache-control" content="no-store">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>AI Workflow OS — No Cache App Factory</title>
+  <link rel="stylesheet" href="/static/app.css?v=nocache-stage">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0b5f8f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI Workflow OS">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/ai-workflow-os-192.png">
+  <link rel="apple-touch-icon" href="/icons/ai-workflow-os-192.png">
+</head>
+<body>
+
+<section id="operator-console-panel" style="border:2px solid #61dafb;padding:18px;margin:12px 0;border-radius:18px;background:linear-gradient(135deg,#06111f,#0b2338);box-shadow:0 0 30px rgba(97,218,251,.25)">
+  <h2>AI Workflow OS Operator</h2>
+  <p>Build applications from this phone through Termux. The operator uses approved prompts, CLI inventory, tests, export, and optional GitHub publish. Keys are never printed.</p>
+  <textarea id="operator-prompt" rows="7" style="width:100%;border-radius:12px;padding:12px;background:#020814;color:#e8f7ff;border:1px solid #1d5f7d" placeholder="Build an application from inside this phone..."></textarea>
+  <div style="margin-top:10px">
+    <label><input type="checkbox" id="operator-publish"> Commit and push after tests pass</label>
+  </div>
+  <div style="margin-top:10px">
+    <button id="operator-run">Build From Prompt</button>
+    <button id="operator-status">Operator Status</button>
+    <button id="operator-export">Export Phone Bundle</button>
+  </div>
+  <pre id="operator-output" style="white-space:pre-wrap;max-height:420px;overflow:auto">Operator ready.</pre>
+</section>
+<script>
+(function(){
+  async function showStatus(){
+    const out = document.getElementById("operator-output");
+    const r = await fetch("/api/operator/status", {cache:"no-store"});
+    out.textContent = JSON.stringify(await r.json(), null, 2);
+  }
+  async function runOperator(){
+    const out = document.getElementById("operator-output");
+    const prompt = document.getElementById("operator-prompt").value;
+    const publish = document.getElementById("operator-publish").checked;
+    out.textContent = "Running operator build...";
+    const r = await fetch("/api/operator/run", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({prompt, publish})
+    });
+    out.textContent = JSON.stringify(await r.json(), null, 2);
+  }
+  async function exportPhone(){
+    const out = document.getElementById("operator-output");
+    out.textContent = "Exporting phone bundle...";
+    const r = await fetch("/api/phone/export", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
+    out.textContent = JSON.stringify(await r.json(), null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const run = document.getElementById("operator-run");
+    const status = document.getElementById("operator-status");
+    const exp = document.getElementById("operator-export");
+    if(run) run.onclick = runOperator;
+    if(status) status.onclick = showStatus;
+    if(exp) exp.onclick = exportPhone;
+    showStatus().catch(e => {
+      const out = document.getElementById("operator-output");
+      if(out) out.textContent = "Operator status failed: " + e.message;
+    });
+  });
+})();
+</script>
+
+
+  <main class="shell">
+    <section class="hero">
+      <div class="badge">NO CACHE BUILD · BUTTON PROOF · APP FACTORY</div>
+      <h1>AI Workflow OS</h1>
+      <p class="lede">Same repo works in Termux, VS Code, GitHub, and desktop CLI. Local first. Cloud capable. Secret values never printed.</p>
+    </section>
+    <section class="panel">
+      <h2>Create an application</h2>
+      <label>Prompt</label>
+      <textarea id="prompt">Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, native targets, and tests.</textarea>
+      <label>Application name</label>
+      <input id="appName" value="phone-project-agent">
+      <label class="check"><input type="checkbox" id="execute" checked> Approve local file generation under this repo</label>
+      <div class="actions">
+        <button id="researchBtn">Research graph</button>
+        <button id="planBtn">Plan app</button>
+        <button id="createBtn">Generate app</button>
+        <button id="testBtn">Test app</button>
+        <button id="exportBtn">Export to Downloads</button>
+        <button id="androidBtn">Native Android target</button>
+        <button id="selfBtn">Self bootstrap</button>
+      </div>
+    </section>
+    <section class="grid">
+      <article class="card"><h3>Health</h3><pre id="health">loading</pre></article>
+      <article class="card"><h3>Generated Apps</h3><pre id="apps">loading</pre></article>
+      <article class="card"><h3>Android/Native Status</h3><pre id="android">loading</pre></article>
+      <article class="card"><h3>Tools</h3><pre id="tools">loading</pre></article>
+    </section>
+    <section class="panel">
+      <h2>Button Output</h2>
+      <pre id="output">Ready. This panel must change when a button is pressed.</pre>
+    </section>
+  </main>
+  <script src="/static/app.js?v=nocache-stage"></script>
+
+<section id="registry-actions-panel" style="border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px">
+  <h2>Registry Actions</h2>
+  <p>These buttons are loaded from the action registry. A button without a registered action is not real.</p>
+  <div id="registry-action-buttons"></div>
+  <pre id="registry-action-output">Registry action panel waiting...</pre>
+</section>
+<script>
+(function(){
+  async function registryLoad(){
+    const out = document.getElementById("registry-action-output");
+    const box = document.getElementById("registry-action-buttons");
+    if(!out || !box) return;
+    out.textContent = "Loading registry actions...";
+    try {
+      const r = await fetch("/api/actions", {cache:"no-store"});
+      const data = await r.json();
+      box.innerHTML = "";
+      (data.actions || []).forEach(action => {
+        const b = document.createElement("button");
+        b.textContent = action.label || action.id;
+        b.dataset.actionId = action.id;
+        b.style.margin = "4px";
+        b.onclick = async () => {
+          out.textContent = "Running " + action.id + "...";
+          const rr = await fetch("/api/actions/run", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({action_id: action.id, payload: {}})
+          });
+          const result = await rr.json();
+          out.textContent = JSON.stringify(result, null, 2);
+        };
+        box.appendChild(b);
+      });
+      out.textContent = "Registry buttons loaded: " + (data.actions || []).length;
+    } catch(e) {
+      out.textContent = "Registry button load failed: " + e.message;
+    }
+  }
+  window.addEventListener("DOMContentLoaded", registryLoad);
+})();
+</script>
+
+
+<section id="terminal-bridge-panel" style="border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px">
+  <h2>Termux Terminal Bridge</h2>
+  <p>Safe allowlisted commands only. Output is redacted before display.</p>
+  <select id="terminal-command-select"></select>
+  <button id="terminal-run-button">Run Terminal Command</button>
+  <pre id="terminal-command-output">Terminal bridge waiting...</pre>
+</section>
+<script>
+(function(){
+  async function terminalLoad(){
+    const sel = document.getElementById("terminal-command-select");
+    const out = document.getElementById("terminal-command-output");
+    const run = document.getElementById("terminal-run-button");
+    if(!sel || !out || !run) return;
+    out.textContent = "Loading terminal commands...";
+    try {
+      const r = await fetch("/api/terminal/commands", {cache:"no-store"});
+      const data = await r.json();
+      sel.innerHTML = "";
+      (data.commands || []).forEach(cmd => {
+        const opt = document.createElement("option");
+        opt.value = cmd.id;
+        opt.textContent = cmd.label + " [" + cmd.id + "]";
+        sel.appendChild(opt);
+      });
+      out.textContent = "Terminal commands loaded: " + (data.commands || []).length + "\nSecret env presence only: " + JSON.stringify(data.secret_env_presence, null, 2);
+      run.onclick = async () => {
+        out.textContent = "Running " + sel.value + "...";
+        const rr = await fetch("/api/terminal/run", {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({command_id: sel.value})
+        });
+        const result = await rr.json();
+        out.textContent = JSON.stringify(result, null, 2);
+      };
+    } catch(e) {
+      out.textContent = "Terminal bridge load failed: " + e.message;
+    }
+  }
+  window.addEventListener("DOMContentLoaded", terminalLoad);
+})();
+</script>
+
+
+<section id=\"prompt-bridge-panel\" style=\"border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px\">
+  <h2>Prompt Bridge</h2>
+  <p>Prompts become local approved events. Command 2 consumes approved prompts. Command 3 packages the phone wrapper.</p>
+  <textarea id=\"prompt-bridge-input\" rows=\"6\" style=\"width:100%\" placeholder=\"Tell AI Workflow OS what to build next...\"></textarea>
+  <br>
+  <button id=\"prompt-bridge-submit\">Submit Prompt</button>
+  <button id=\"prompt-bridge-refresh\">Refresh Prompt Queue</button>
+  <pre id=\"prompt-bridge-output\">Prompt bridge waiting...</pre>
+</section>
+<script>
+(function(){
+  async function promptRefresh(){
+    const out = document.getElementById("prompt-bridge-output");
+    if(!out) return;
+    const r = await fetch("/api/prompts", {cache:"no-store"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  async function promptSubmit(){
+    const inp = document.getElementById("prompt-bridge-input");
+    const out = document.getElementById("prompt-bridge-output");
+    if(!inp || !out) return;
+    out.textContent = "Submitting prompt...";
+    const r = await fetch("/api/prompts/submit", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({prompt:inp.value, source:"dashboard", target:"self_build"})});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const submit = document.getElementById("prompt-bridge-submit");
+    const refresh = document.getElementById("prompt-bridge-refresh");
+    if(submit) submit.onclick = promptSubmit;
+    if(refresh) refresh.onclick = promptRefresh;
+    promptRefresh().catch(e => {
+      const out = document.getElementById("prompt-bridge-output");
+      if(out) out.textContent = "Prompt bridge load failed: " + e.message;
+    });
+  });
+})();
+</script>
+
+
+<section id=\"self-build-panel\" style=\"border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px\">
+  <h2>Approval-Gated Self Builder</h2>
+  <p>Consumes the next approved prompt and creates repo-scoped generated app files with compile/test proof.</p>
+  <button id=\"self-build-run-next\">Run Next Approved Prompt</button>
+  <pre id=\"self-build-output\">Self builder waiting...</pre>
+</section>
+<script>
+(function(){
+  async function runSelfBuild(){
+    const out = document.getElementById("self-build-output");
+    if(!out) return;
+    out.textContent = "Running next approved prompt...";
+    const r = await fetch("/api/self-build/run-next", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const b = document.getElementById("self-build-run-next");
+    if(b) b.onclick = runSelfBuild;
+  });
+})();
+</script>
+
+<section id="phone-wrapper-panel" style="border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px">
+  <h2>Phone Wrapper / Export</h2>
+  <p>Creates a phone-openable local launcher and exports the AI Workflow OS bundle to Downloads.</p>
+  <button id="phone-status-button">Phone Status</button>
+  <button id="phone-export-button">Export Phone Bundle</button>
+  <pre id="phone-wrapper-output">Phone wrapper waiting...</pre>
+</section>
+<script>
+(function(){
+  async function phoneStatus(){
+    const out = document.getElementById("phone-wrapper-output");
+    if(!out) return;
+    const r = await fetch("/api/phone/status", {cache:"no-store"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  async function phoneExport(){
+    const out = document.getElementById("phone-wrapper-output");
+    if(!out) return;
+    out.textContent = "Exporting phone bundle...";
+    const r = await fetch("/api/phone/export", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const s = document.getElementById("phone-status-button");
+    const e = document.getElementById("phone-export-button");
+    if(s) s.onclick = phoneStatus;
+    if(e) e.onclick = phoneExport;
+    phoneStatus().catch(err => {
+      const out = document.getElementById("phone-wrapper-output");
+      if(out) out.textContent = "Phone wrapper load failed: " + err.message;
+    });
+  });
+})();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(err => console.log("service worker registration failed", err));
+  });
+}
+</script>
+</body>
+</html>

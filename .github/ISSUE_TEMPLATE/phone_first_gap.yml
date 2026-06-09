@@ -1,0 +1,21 @@
+name: Phone-first gap
+description: Report a workflow that still forces a desktop but should work from a phone.
+title: "[Phone Gap]: "
+labels: ["phone-first", "product-gap"]
+body:
+  - type: textarea
+    id: blocked
+    attributes:
+      label: What workflow is blocked?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should the phone-first flow be?
+    validations:
+      required: true
+  - type: textarea
+    id: proof
+    attributes:
+      label: Screenshots, logs, or proof
