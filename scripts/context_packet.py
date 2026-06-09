@@ -11,6 +11,12 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_editorial_ux_v6.py",
+    "docs/standards/EDITORIAL_UX_V6_STANDARD.md",
+    "web/assets/page-content-v2.data.json",
+    "web/assets/native-app-mode.js",
+    "web/assets/editorial-pages.js",
+    "web/assets/editorial-ux-v6.css",
     "tests/test_runtime_console_ux_density.py",
     "docs/standards/RUNTIME_CONSOLE_UX_DENSITY_STANDARD.md",
     "web/assets/verbose-pages.data.json",
