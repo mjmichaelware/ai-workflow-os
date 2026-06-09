@@ -11,6 +11,11 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_manual_apk_builder.py",
+    "docs/standards/TERMUX_NATIVE_MANUAL_APK_V1_STANDARD.md",
+    "docs/apk/MANUAL_APK_BUILD_REPORT.json",
+    "scripts/prove_manual_apk_build.py",
+    "ai_workflow_os/manual_apk_builder.py",
     "tests/test_real_apk_project.py",
     "docs/standards/REAL_APK_BUILD_ATTEMPT_V1_STANDARD.md",
     "docs/apk/REAL_APK_BUILD_ATTEMPT_REPORT.json",

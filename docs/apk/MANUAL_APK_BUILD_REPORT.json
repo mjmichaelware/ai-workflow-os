@@ -1,0 +1,77 @@
+{
+  "ok": false,
+  "stage": "compile",
+  "project": {
+    "ok": true,
+    "created_at": "2026-06-09T22:07:12.063358+00:00",
+    "path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/exports/manual_apk_project/ai-workflow-os-manual",
+    "package_name": "com.aiworkflowos.manual",
+    "keys_printed": false,
+    "broad_permissions": false
+  },
+  "toolchain": {
+    "ok": true,
+    "tools": {
+      "java": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/java"
+      },
+      "javac": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/javac"
+      },
+      "keytool": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/keytool"
+      },
+      "aapt2": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/aapt2"
+      },
+      "d8": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/cmdline-tools/latest/bin/d8"
+      },
+      "zipalign": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/usr/bin/zipalign"
+      },
+      "apksigner": {
+        "installed": true,
+        "path": "/data/data/com.termux/files/home/android-sdk/build-tools/36.0.0/apksigner"
+      }
+    },
+    "android_home_present": true,
+    "android_jar": "/data/data/com.termux/files/home/android-sdk/platforms/android-36/android.jar",
+    "android_jar_exists": true,
+    "keys_printed": false
+  },
+  "steps": [
+    {
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "ok": false,
+      "returncode": 1,
+      "stdout_tail": "",
+      "stderr_tail": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/exports/manual_apk_project/ai-workflow-os-manual/AndroidManifest.xml: error: <manifest> must have a 'package' attribute.\nerror: failed to load include path /data/data/com.termux/files/home/android-sdk/platforms/android-36/android.jar.\n"
+    },
+    {
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "",
+      "stderr_tail": "warning: [options] bootstrap class path not set in conjunction with -source 8\nwarning: [options] source value 8 is obsolete and will be removed in a future release\nwarning: [options] target value 8 is obsolete and will be removed in a future release\nwarning: [options] To suppress warnings about obsolete options, use -Xlint:-options.\nNote: /data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/exports/manual_apk_project/ai-workflow-os-manual/src/com/aiworkflowos/manual/MainActivity.java uses or overrides a deprecated API.\nNote: Recompile with -Xlint:deprecation for details.\n4 warnings\n"
+    },
+    {
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    }
+  ],
+  "keys_printed": false,
+  "broad_permissions": false
+}
