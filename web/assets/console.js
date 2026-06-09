@@ -5,6 +5,7 @@ const NAV = [
   {id:"apps",label:"Apps",hint:"Browse generated applications and material proof files.",subs:["Generated apps","Manifests","Smoke tests"]},
   {id:"graph",label:"Graph",hint:"Map every data point, endpoint, proof, packet, and app as a local node.",subs:["Endpoint map","Proof nodes","Context packets","Generated apps"]},
   {id:"proof",label:"Proof",hint:"View final proof dashboard, CI scaffold, security checks, and release claims.",subs:["Final report","CI scaffold","Security proof","Release state"]},
+  {id:"runtime",label:"Runtime",hint:"Read-only inline terminal logs, proof assets, generated apps, exports, and safety state.",subs:["Inline logs","Proof files","Generated apps","Safety state"]},
   {id:"tools",label:"Tools",hint:"Inspect local command capabilities without printing secrets.",subs:["CLI inventory","Provider surfaces","Install gaps"]},
   {id:"security",label:"Security",hint:"Review the local boundary, privacy rules, and repository hardening.",subs:["Secrets hidden","Local only","CSP","Branch protection"]},
   {id:"research",label:"Research",hint:"Track public signals and repository landscape snapshots.",subs:["GitHub signals","Agent tools","Platform targets"]},
