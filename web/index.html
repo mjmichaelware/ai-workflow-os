@@ -134,5 +134,46 @@
 })();
 </script>
 
+
+<section id=\"prompt-bridge-panel\" style=\"border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px\">
+  <h2>Prompt Bridge</h2>
+  <p>Prompts become local approved events. Command 2 consumes approved prompts. Command 3 packages the phone wrapper.</p>
+  <textarea id=\"prompt-bridge-input\" rows=\"6\" style=\"width:100%\" placeholder=\"Tell AI Workflow OS what to build next...\"></textarea>
+  <br>
+  <button id=\"prompt-bridge-submit\">Submit Prompt</button>
+  <button id=\"prompt-bridge-refresh\">Refresh Prompt Queue</button>
+  <pre id=\"prompt-bridge-output\">Prompt bridge waiting...</pre>
+</section>
+<script>
+(function(){
+  async function promptRefresh(){
+    const out = document.getElementById("prompt-bridge-output");
+    if(!out) return;
+    const r = await fetch("/api/prompts", {cache:"no-store"});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  async function promptSubmit(){
+    const inp = document.getElementById("prompt-bridge-input");
+    const out = document.getElementById("prompt-bridge-output");
+    if(!inp || !out) return;
+    out.textContent = "Submitting prompt...";
+    const r = await fetch("/api/prompts/submit", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({prompt:inp.value, source:"dashboard", target:"self_build"})});
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const submit = document.getElementById("prompt-bridge-submit");
+    const refresh = document.getElementById("prompt-bridge-refresh");
+    if(submit) submit.onclick = promptSubmit;
+    if(refresh) refresh.onclick = promptRefresh;
+    promptRefresh().catch(e => {
+      const out = document.getElementById("prompt-bridge-output");
+      if(out) out.textContent = "Prompt bridge load failed: " + e.message;
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

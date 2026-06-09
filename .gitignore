@@ -5,3 +5,5 @@ node_modules/
 .DS_Store
 packets/*.tar.gz
 .repair_backups/
+ai_workflow_os/prompt_bridge/*.sqlite3
+ai_workflow_os/prompt_bridge/*.jsonl

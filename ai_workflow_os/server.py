@@ -6,6 +6,7 @@ import json
 # REGISTRY_BUTTONS_PATCH_V1
 from .registry_spine import build_registry, dispatch
 from .terminal_bridge import list_terminal_commands, run_terminal_command
+from .prompt_bridge import bridge_manifest, submit_prompt, approve_prompt, complete_prompt, list_prompts, next_approved_prompt
 import urllib.parse
 
 from .android_builder import android_status, create_native_android_target
@@ -113,6 +114,17 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/api/prompts":
+            self.send_json(list_prompts())
+            return
+
+        if path == "/api/prompts/manifest":
+            self.send_json(bridge_manifest())
+            return
+
+        if path == "/api/prompts/next-approved":
+            self.send_json(next_approved_prompt())
+            return
         if path == "/api/terminal/commands":
             self.send_json(list_terminal_commands())
             return
@@ -164,6 +176,38 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/api/prompts/submit":
+            try:
+                length = int(self.headers.get("Content-Length", "0") or "0")
+                raw = self.rfile.read(length).decode("utf-8") if length else "{}"
+                body = json.loads(raw or "{}")
+                self.send_json(submit_prompt(body.get("prompt", ""), body.get("source", "dashboard"), body.get("target", "self_build")))
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
+
+        if path == "/api/prompts/approve":
+            try:
+                length = int(self.headers.get("Content-Length", "0") or "0")
+                raw = self.rfile.read(length).decode("utf-8") if length else "{}"
+                body = json.loads(raw or "{}")
+                self.send_json(approve_prompt(body.get("prompt_id", ""), bool(body.get("approved", True))))
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
+
+        if path == "/api/prompts/complete":
+            try:
+                length = int(self.headers.get("Content-Length", "0") or "0")
+                raw = self.rfile.read(length).decode("utf-8") if length else "{}"
+                body = json.loads(raw or "{}")
+                self.send_json(complete_prompt(body.get("prompt_id", ""), body.get("result", {})))
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
         if path == "/api/terminal/run":
             try:
                 length = int(self.headers.get("Content-Length", "0") or "0")
