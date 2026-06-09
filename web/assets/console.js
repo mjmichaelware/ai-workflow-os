@@ -42,6 +42,33 @@ async function loadApps(){STATE.apps=await jsonFetch("/api/operator/apps");if(ST
 async function runBuild(){const prompt=document.getElementById("operator-prompt").value.trim();if(!prompt){screen.insertAdjacentHTML("afterbegin",`<article class="card full"><div class="label">Required</div><p>Enter a prompt before building.</p></article>`);return;}screen.innerHTML=preCard("Build running","Running approved app factory build...");const publish=document.getElementById("operator-publish")?document.getElementById("operator-publish").checked:false;const result=await jsonFetch("/api/operator/run",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:prompt,publish:publish})});STATE.apps=await jsonFetch("/api/operator/apps");STATE.tab="apps";render();screen.insertAdjacentHTML("afterbegin",preCard("Build result",jsonText(result)));}
 async function exportPhone(){const result=await jsonFetch("/api/phone/export",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});STATE.tab="overview";render();screen.insertAdjacentHTML("afterbegin",preCard("Export result",jsonText(result)));}
 document.addEventListener("click",event=>{const action=event.target.closest("[data-action]");if(!action)return;if(action.dataset.action==="build")runBuild().catch(error=>screen.innerHTML=preCard("Build failed",error.message));if(action.dataset.action==="status")loadStatus();if(action.dataset.action==="export")exportPhone().catch(error=>screen.innerHTML=preCard("Export failed",error.message));if(action.dataset.action==="apps"){STATE.tab="apps";loadApps().then(render);}if(action.dataset.action==="legacy")location.href="/legacy-dashboard.html";});
+let installPrompt=null;
+window.addEventListener("beforeinstallprompt",event=>{event.preventDefault();installPrompt=event;const button=document.getElementById("install-app");if(button)button.hidden=false;});
+document.getElementById("install-app").onclick=async()=>{if(!installPrompt){alert("Use the browser menu to install this local app if the install prompt is not available yet.");return;}installPrompt.prompt();await installPrompt.userChoice.catch(()=>{});installPrompt=null;const button=document.getElementById("install-app");if(button)button.hidden=true;};
 document.getElementById("theme-toggle").onclick=()=>setTheme(STATE.theme==="dark"?"light":"dark");
 if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));
 setTheme(STATE.theme);drawNav();drawFlyout(NAV[0]);render();loadStatus().then(loadApps);
+
+// AIWOS_DENSITY_V2
+const installButton=document.getElementById("install-app");
+if(installButton){
+  installButton.hidden=false;
+  installButton.addEventListener("click",async()=>{
+    if(installPrompt){
+      installPrompt.prompt();
+      await installPrompt.userChoice.catch(()=>{});
+      installPrompt=null;
+      installButton.hidden=false;
+      return;
+    }
+    alert("Install fallback: open the browser menu and choose Install app or Add to Home screen. The PWA manifest, icon, and service worker are active.");
+  });
+}
+document.addEventListener("click",event=>{
+  const navButton=event.target.closest("#primary-nav button,#mobile-nav button");
+  if(navButton&&flyout){
+    const item=NAV.find(entry=>entry.id===navButton.dataset.tab);
+    if(item){drawFlyout(item);flyout.classList.add("open");}
+  }
+  if(!event.target.closest(".flyout,#primary-nav,#mobile-nav"))flyout&&flyout.classList.remove("open");
+});

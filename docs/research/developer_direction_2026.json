@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "created_at": "2026-06-09T06:22:51.484578+00:00",
+  "sources": [
+    {
+      "name": "GitHub Actions workflow syntax",
+      "ok": true,
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+      "title": ""
+    },
+    {
+      "name": "Code scanning",
+      "ok": true,
+      "url": "https://docs.github.com/en/code-security/concepts/code-scanning/code-scanning",
+      "title": ""
+    },
+    {
+      "name": "Repository custom instructions",
+      "ok": true,
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/add-custom-instructions/add-repository-instructions",
+      "title": ""
+    },
+    {
+      "name": "Dependabot alerts",
+      "ok": true,
+      "url": "https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-alerts",
+      "title": ""
+    }
+  ],
+  "direction": [
+    "Small explicit workflows",
+    "Code security by default",
+    "Repository instructions for agents",
+    "Dependency risk visibility",
+    "Agentic proof loops",
+    "Local-first generated-app inheritance"
+  ]
+}

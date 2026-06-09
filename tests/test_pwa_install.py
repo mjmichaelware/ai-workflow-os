@@ -21,4 +21,3 @@ def test_index_links_manifest_and_service_worker():
     js = js_path.read_text() if js_path.exists() else ""
     assert "/manifest.webmanifest" in html
     assert "navigator.serviceWorker.register" in (html + js)
-
