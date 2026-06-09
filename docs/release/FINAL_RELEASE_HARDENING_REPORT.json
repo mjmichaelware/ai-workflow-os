@@ -1,0 +1,138 @@
+{
+  "ok": true,
+  "created_at": "2026-06-09T17:10:45.592282+00:00",
+  "branch": "final-release-hardening-v1",
+  "head": "8b5a42e",
+  "checks": [
+    {
+      "cmd": [
+        "python3",
+        "-m",
+        "py_compile",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/__init__.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/catalog.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/core.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/cli.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/server.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/permissions.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/secrets.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/providers.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/orchestrator.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/executor.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/runlog.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/approvals.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/tools.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/research_graph.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/self_bootstrap.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/app_builder.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/import_export.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/app_index.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/android_builder.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/app_pumps.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/terminal_bridge.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/prompt_bridge.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/self_build_executor.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/phone_wrapper.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/operator_console.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/process_guard.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/generated_app_shell.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/native_android_wrapper.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/capability_matrix.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/runtime_console.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/agent_builder.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/apk_pipeline.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/recursive_inheritance.py"
+      ],
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "python3",
+        "-m",
+        "py_compile",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/stage_runner.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/registry_spine.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/research_public_landscape.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_operator_button_flow.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/context_packet.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/verify_public_surface.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_recursive_app_factory.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/research_developer_direction.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_generated_app_shell.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_native_android_wrapper.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_capability_matrix.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/final_perfection_report.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_agent_routed_builder.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_apk_pipeline.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/prove_recursive_grandchild_inheritance.py",
+        "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/scripts/final_release_hardening.py"
+      ],
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "................................................................         [100%]\n64 passed in 6.33s\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "bash",
+        "scripts/verify_workflow_app.sh"
+      ],
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "AI Workflow OS doctor\nroot=/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os\nPASS: core files exist\nPASS: AI Workflow OS app verifies.\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "python3",
+        "scripts/verify_public_surface.py"
+      ],
+      "ok": true,
+      "returncode": 0,
+      "stdout_tail": "PASS: browser assets are local-only; executable surfaces are brand-neutral and secret-clean\n",
+      "stderr_tail": ""
+    }
+  ],
+  "docs_present": {
+    "docs/APK_BUILD_SIGN_PIPELINE.md": true,
+    "docs/AGENT_ROUTED_BUILDER.md": true,
+    "docs/RECURSIVE_GRANDCHILD_INHERITANCE.md": true,
+    "docs/proof/FINAL_PERFECTION_REPORT.json": true,
+    "docs/context/AI_WORKFLOW_OS_CONTEXT_PACKET.json": true
+  },
+  "scripts_present": {
+    "scripts/prove_apk_pipeline.py": true,
+    "scripts/prove_agent_routed_builder.py": true,
+    "scripts/prove_recursive_grandchild_inheritance.py": true,
+    "scripts/prove_generated_app_shell.py": true,
+    "scripts/prove_recursive_app_factory.py": true
+  },
+  "git_status_short": "M ai_workflow_os/registries/generated_app_preflight.json\n M ai_workflow_os/registries/mistake_prevention.json\n M ai_workflow_os/registries/operating_boundary.json\n M ai_workflow_os/registries/operating_memory.json\n M ai_workflow_os/registries/phone_wrapper.json\n M ai_workflow_os/registries/pumps.json\n M ai_workflow_os/registries/standards.json\n M docs/context/AI_WORKFLOW_OS_CONTEXT_PACKET.json\n M docs/proof/FINAL_PERFECTION_REPORT.json\n M generated_apps/create-a-small-proof-app-from-self-build-test/APP_MANIFEST.json\n M scripts/context_packet.py\n?? docs/release/\n?? docs/standards/FINAL_RELEASE_HARDENING_V1_STANDARD.md\n?? scripts/final_release_hardening.py\n?? tests/test_final_release_hardening.py",
+  "release_readiness": {
+    "operator_console": true,
+    "mobile_command_menu": true,
+    "agent_routed_builder": true,
+    "apk_pipeline_scaffold": true,
+    "recursive_depth_4_proof": true,
+    "final_proof_report": true,
+    "keys_printed": false,
+    "broad_permissions": false
+  },
+  "keys_printed": false,
+  "broad_permissions": false
+}
