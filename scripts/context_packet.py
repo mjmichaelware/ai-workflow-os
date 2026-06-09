@@ -11,6 +11,11 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_generated_app_shell.py",
+    "docs/standards/GENERATED_APP_SHELL_INHERITANCE_V2_STANDARD.md",
+    "docs/GENERATED_APP_PACKAGING.md",
+    "scripts/prove_generated_app_shell.py",
+    "ai_workflow_os/generated_app_shell.py",
     "docs/standards/VISUAL_SYSTEM_V3_STANDARD.md",
     "web/assets/visual-system-v3.meta.json",
     "web/assets/endpoint-graph.data.json",
