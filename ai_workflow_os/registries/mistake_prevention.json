@@ -1,0 +1,14 @@
+{
+  "kind": "mistake_prevention_manifest",
+  "ok": true,
+  "rules": [
+    "no heredoc for core builds",
+    "no module package shadowing",
+    "compile proof is not runtime proof",
+    "registry button must have registered action",
+    "no fake proof",
+    "no silent failure",
+    "no secret print or commit"
+  ],
+  "updated_at": "2026-06-09T03:56:46.908726+00:00"
+}

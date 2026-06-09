@@ -10,6 +10,7 @@ import json
 import sqlite3
 import subprocess
 import uuid
+from ai_workflow_os.app_pumps import boundary_manifest, pump_manifest, standards_audit, generated_app_preflight, mistake_prevention_manifest, operating_memory_manifest
 
 ROOT = Path(__file__).resolve().parents[2]
 STATE = ROOT / "ai_workflow_os" / "persistence"
@@ -215,6 +216,23 @@ def build_registry() -> Registry:
     reg.register(ActionSpec("verify.workflow", "Verify Workflow", "verify.workflow.requested", "local_execute", "Run workflow verification.", [], forbidden, "runs verify script"),
                  lambda event: run_cmd(["bash", "scripts/verify_workflow_app.sh"]))
 
+    reg.register(ActionSpec("os.boundary", "OS App Boundary", "os.boundary.requested", "read", "Show boundary between AI Workflow OS and generated apps.", [], forbidden, "writes operating boundary registry"),
+                 lambda event: boundary_manifest())
+
+    reg.register(ActionSpec("pump.manifest", "Pump Manifest", "pump.manifest.requested", "local_write", "Write the self-building pump manifest.", [], forbidden, "writes pump registry"),
+                 lambda event: pump_manifest())
+
+    reg.register(ActionSpec("standards.audit", "Standards Audit", "standards.audit.requested", "local_write", "Audit OS standards that generated apps must inherit.", [], forbidden, "writes standards registry"),
+                 lambda event: standards_audit())
+
+    reg.register(ActionSpec("app_factory.preflight", "Generated App Preflight", "app_factory.preflight.requested", "local_write", "Inspect generated apps for inherited guardrails.", [], forbidden, "writes generated app preflight registry"),
+                 lambda event: generated_app_preflight())
+
+    reg.register(ActionSpec("mistakes.prevent", "Mistake Prevention", "mistakes.prevent.requested", "local_write", "Materialize mistake prevention rules.", [], forbidden, "writes mistake prevention registry"),
+                 lambda event: mistake_prevention_manifest())
+
+    reg.register(ActionSpec("memory.manifest", "Operating Memory", "memory.manifest.requested", "local_write", "Materialize operating memory layers.", [], forbidden, "writes operating memory registry"),
+                 lambda event: operating_memory_manifest())
     return reg
 
 def dispatch(action_id: str, payload: dict[str, Any] | None = None, source: str = "api") -> dict[str, Any]:

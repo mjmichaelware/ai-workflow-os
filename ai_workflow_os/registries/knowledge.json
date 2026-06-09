@@ -1,5 +1,5 @@
 {
-  "count": 15,
+  "count": 20,
   "items": [
     {
       "content_hash": "f1a5341a90aa3198da744af8ae34347dbf1a5ac8435f928773113c3f99b89f13",
@@ -100,13 +100,48 @@
       "title": "NO_FRAGILE_PASTE_PROTOCOL.md"
     },
     {
-      "content_hash": "ef4e7cc695008de7ee3ecaf9e0b4da58b5f14a9dae04bde27a7153c49f3ab358",
-      "id": "ef4e7cc695008de7",
+      "content_hash": "baacff86e35929c362e3b04a03a599c2576e91961548889e34afcb76a1d2fa61",
+      "id": "baacff86e35929c3",
       "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/AGENT_MISTAKE_REGISTRY.md",
-      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/ef4e7cc695008de7_AGENT_MISTAKE_REGISTRY.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/baacff86e35929c3_AGENT_MISTAKE_REGISTRY.md",
       "title": "AGENT_MISTAKE_REGISTRY.md"
+    },
+    {
+      "content_hash": "a7f0cbbfa5c3a291e53010cf61a501b3621d725220362b4fb01e798f5c2e8395",
+      "id": "a7f0cbbfa5c3a291",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/OPERATING_SYSTEM_APP_BOUNDARY.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/a7f0cbbfa5c3a291_OPERATING_SYSTEM_APP_BOUNDARY.md",
+      "title": "OPERATING_SYSTEM_APP_BOUNDARY.md"
+    },
+    {
+      "content_hash": "f5081e8ab03b5b28d0fa5f20b555ae7155baff29ac6fde66dfd11c2f7ae35983",
+      "id": "f5081e8ab03b5b28",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/SELF_BUILDING_PUMP_STANDARD.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/f5081e8ab03b5b28_SELF_BUILDING_PUMP_STANDARD.md",
+      "title": "SELF_BUILDING_PUMP_STANDARD.md"
+    },
+    {
+      "content_hash": "b05f06b0421e1063037ab0ab723b76edf6a4266f4906cfca3bd4ce4a9a931c8f",
+      "id": "b05f06b0421e1063",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/GENERATED_APP_INHERITANCE_STANDARD.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/b05f06b0421e1063_GENERATED_APP_INHERITANCE_STANDARD.md",
+      "title": "GENERATED_APP_INHERITANCE_STANDARD.md"
+    },
+    {
+      "content_hash": "e197a0e07a9ea6572bc04b9b114aedd94769388fe49ceebbc13c42efc2d284f9",
+      "id": "e197a0e07a9ea657",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/OPERATING_MEMORY_STANDARD.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/e197a0e07a9ea657_OPERATING_MEMORY_STANDARD.md",
+      "title": "OPERATING_MEMORY_STANDARD.md"
+    },
+    {
+      "content_hash": "40b2a28d406eccf26da8074a7b0886a8428ef2f650eb86771d60dc66e8ea604d",
+      "id": "40b2a28d406eccf2",
+      "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/NO_HEREDOC_CORE_BUILD_STANDARD.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/40b2a28d406eccf2_NO_HEREDOC_CORE_BUILD_STANDARD.md",
+      "title": "NO_HEREDOC_CORE_BUILD_STANDARD.md"
     }
   ],
   "name": "knowledge_registry",
-  "updated_at": "2026-06-09T03:50:41.747309+00:00"
+  "updated_at": "2026-06-09T03:56:45.917010+00:00"
 }

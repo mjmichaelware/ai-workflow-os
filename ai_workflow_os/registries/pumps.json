@@ -1,0 +1,18 @@
+{
+  "count": 10,
+  "kind": "pump_manifest",
+  "ok": true,
+  "pumps": [
+    "os.state",
+    "events",
+    "actions",
+    "ui.buttons",
+    "generated.apps",
+    "tests",
+    "knowledge.archive",
+    "mistake.prevention",
+    "libraries",
+    "import.export"
+  ],
+  "updated_at": "2026-06-09T03:56:46.903927+00:00"
+}

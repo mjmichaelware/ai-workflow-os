@@ -1,0 +1,13 @@
+{
+  "backwards": "Failures become prevention rules",
+  "generated_app_role": "material app output with inherited guardrails",
+  "inside_out": "OS standards generate app structure",
+  "kind": "operating_boundary",
+  "must_not_shadow": [
+    "ai_workflow_os/core.py with ai_workflow_os/core/"
+  ],
+  "ok": true,
+  "os_role": "self-building application builder",
+  "outside_in": "Observed app failures update OS knowledge and future templates",
+  "updated_at": "2026-06-09T03:56:46.903493+00:00"
+}

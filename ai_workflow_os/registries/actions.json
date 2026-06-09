@@ -1,6 +1,81 @@
 {
   "actions": [
     {
+      "description": "Inspect generated apps for inherited guardrails.",
+      "event_type": "app_factory.preflight.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "app_factory.preflight",
+      "label": "Generated App Preflight",
+      "material_effect": "writes generated app preflight registry",
+      "permission": "local_write",
+      "required": []
+    },
+    {
+      "description": "Materialize operating memory layers.",
+      "event_type": "memory.manifest.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "memory.manifest",
+      "label": "Operating Memory",
+      "material_effect": "writes operating memory registry",
+      "permission": "local_write",
+      "required": []
+    },
+    {
+      "description": "Materialize mistake prevention rules.",
+      "event_type": "mistakes.prevent.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "mistakes.prevent",
+      "label": "Mistake Prevention",
+      "material_effect": "writes mistake prevention registry",
+      "permission": "local_write",
+      "required": []
+    },
+    {
+      "description": "Show boundary between AI Workflow OS and generated apps.",
+      "event_type": "os.boundary.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "os.boundary",
+      "label": "OS App Boundary",
+      "material_effect": "writes operating boundary registry",
+      "permission": "read",
+      "required": []
+    },
+    {
+      "description": "Write the self-building pump manifest.",
+      "event_type": "pump.manifest.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "pump.manifest",
+      "label": "Pump Manifest",
+      "material_effect": "writes pump registry",
+      "permission": "local_write",
+      "required": []
+    },
+    {
       "description": "Rebuild all registries.",
       "event_type": "registry.rebuild.requested",
       "forbidden": [
@@ -12,6 +87,21 @@
       "id": "registry.rebuild",
       "label": "Rebuild Registries",
       "material_effect": "writes local registry files",
+      "permission": "local_write",
+      "required": []
+    },
+    {
+      "description": "Audit OS standards that generated apps must inherit.",
+      "event_type": "standards.audit.requested",
+      "forbidden": [
+        "secret",
+        "token",
+        "password",
+        "api_key"
+      ],
+      "id": "standards.audit",
+      "label": "Standards Audit",
+      "material_effect": "writes standards registry",
       "permission": "local_write",
       "required": []
     },
@@ -61,7 +151,7 @@
       "required": []
     }
   ],
-  "count": 4,
+  "count": 10,
   "name": "action_registry",
-  "updated_at": "2026-06-09T03:50:41.304495+00:00"
+  "updated_at": "2026-06-09T03:56:45.437930+00:00"
 }

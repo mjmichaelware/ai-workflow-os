@@ -1,0 +1,48 @@
+{
+  "action": {
+    "description": "Materialize mistake prevention rules.",
+    "event_type": "mistakes.prevent.requested",
+    "forbidden": [
+      "secret",
+      "token",
+      "password",
+      "api_key"
+    ],
+    "id": "mistakes.prevent",
+    "label": "Mistake Prevention",
+    "material_effect": "writes mistake prevention registry",
+    "permission": "local_write",
+    "required": []
+  },
+  "created_at": "2026-06-09T03:56:45.107927+00:00",
+  "event": {
+    "created_at": "2026-06-09T03:56:45.101314+00:00",
+    "id": "7f443234-dd5f-4fde-91af-25e7415c2dc0",
+    "payload": {
+      "action_id": "mistakes.prevent",
+      "payload": {},
+      "validation": {
+        "forbidden_present": [],
+        "missing": [],
+        "ok": true,
+        "payload_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+      }
+    },
+    "source": "cli",
+    "type": "mistakes.prevent.requested"
+  },
+  "output": {
+    "kind": "mistake_prevention_manifest",
+    "ok": true,
+    "rules": [
+      "no heredoc for core builds",
+      "no module package shadowing",
+      "compile proof is not runtime proof",
+      "registry button must have registered action",
+      "no fake proof",
+      "no silent failure",
+      "no secret print or commit"
+    ],
+    "updated_at": "2026-06-09T03:56:45.107395+00:00"
+  }
+}

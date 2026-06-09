@@ -1,0 +1,17 @@
+{
+  "kind": "operating_memory_manifest",
+  "layers": [
+    "current state",
+    "event journal",
+    "action result",
+    "local persistence",
+    "proof files",
+    "audit judgment",
+    "mistake registry",
+    "generated app inheritance",
+    "archived stale knowledge",
+    "promoted current knowledge"
+  ],
+  "ok": true,
+  "updated_at": "2026-06-09T03:56:46.909044+00:00"
+}

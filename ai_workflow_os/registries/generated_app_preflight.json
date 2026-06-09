@@ -1,0 +1,33 @@
+{
+  "apps": [
+    {
+      "file_count": 10,
+      "has_python_app": true,
+      "has_test": true,
+      "has_web_ui": true,
+      "name": "phone-project-agent",
+      "root": "generated_apps/phone-project-agent"
+    },
+    {
+      "file_count": 10,
+      "has_python_app": true,
+      "has_test": true,
+      "has_web_ui": true,
+      "name": "proof-app",
+      "root": "generated_apps/proof-app"
+    }
+  ],
+  "generated_app_count": 2,
+  "inherited_rules": [
+    "no fake proof",
+    "no silent button failure",
+    "no secret printing",
+    "runtime proof required",
+    "compile proof required",
+    "no module package shadowing",
+    "no heredoc core build"
+  ],
+  "kind": "generated_app_preflight",
+  "ok": true,
+  "updated_at": "2026-06-09T03:56:46.908384+00:00"
+}

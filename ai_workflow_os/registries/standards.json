@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "exists": true,
+      "hash": "c40f119690ca6c7f6b984cbb915077dd870fab4f66e4fc7d686cf3452df9718d",
+      "path": "docs/standards/NO_FRAGILE_PASTE_PROTOCOL.md"
+    },
+    {
+      "exists": true,
+      "hash": "baacff86e35929c362e3b04a03a599c2576e91961548889e34afcb76a1d2fa61",
+      "path": "docs/standards/AGENT_MISTAKE_REGISTRY.md"
+    },
+    {
+      "exists": true,
+      "hash": "a7f0cbbfa5c3a291e53010cf61a501b3621d725220362b4fb01e798f5c2e8395",
+      "path": "docs/standards/OPERATING_SYSTEM_APP_BOUNDARY.md"
+    },
+    {
+      "exists": true,
+      "hash": "f5081e8ab03b5b28d0fa5f20b555ae7155baff29ac6fde66dfd11c2f7ae35983",
+      "path": "docs/standards/SELF_BUILDING_PUMP_STANDARD.md"
+    },
+    {
+      "exists": true,
+      "hash": "b05f06b0421e1063037ab0ab723b76edf6a4266f4906cfca3bd4ce4a9a931c8f",
+      "path": "docs/standards/GENERATED_APP_INHERITANCE_STANDARD.md"
+    },
+    {
+      "exists": true,
+      "hash": "e197a0e07a9ea6572bc04b9b114aedd94769388fe49ceebbc13c42efc2d284f9",
+      "path": "docs/standards/OPERATING_MEMORY_STANDARD.md"
+    },
+    {
+      "exists": true,
+      "hash": "40b2a28d406eccf26da8074a7b0886a8428ef2f650eb86771d60dc66e8ea604d",
+      "path": "docs/standards/NO_HEREDOC_CORE_BUILD_STANDARD.md"
+    }
+  ],
+  "kind": "standards_audit",
+  "ok": true,
+  "updated_at": "2026-06-09T03:56:46.919978+00:00"
+}
