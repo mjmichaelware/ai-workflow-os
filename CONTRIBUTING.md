@@ -4,9 +4,7 @@ This repository accepts contributions that strengthen the phone-first local appl
 
 ## Required proof
 
-Run before opening a pull request:
-
-python3 -m py_compile $(find ai_workflow_os -name '*.py' -type f)
+python3 -m py_compile $(find ai_workflow_os -name "*.py" -type f)
 PYTHONPATH="$PWD" python3 -m pytest -q
 bash scripts/verify_workflow_app.sh
 
@@ -20,4 +18,3 @@ bash scripts/verify_workflow_app.sh
 - improve generated app quality
 - improve proof, audit, snapshots, and public repo hygiene
 - prepare future desktop, cloud, SaaS, and marketplace modes
-

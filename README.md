@@ -1,47 +1,53 @@
 # AI Workflow OS
 
-Reusable AI-agent workflow control plane and terminal-first application creator.
+[![CI](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/ci.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/ci.yml)
+[![Public Hygiene](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/public-hygiene.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/public-hygiene.yml)
 
-This repo is generic. It must not contain target-app missions, bug ledgers, patch plans, proof reports, or app handoff packets.
+AI Workflow OS is a phone-first local application factory.
 
-## Capabilities
+It starts on Android through Termux, but the architecture is designed to grow into desktop, SaaS, team, marketplace, and public-contributor workflows.
 
-- Python CLI
-- Interactive browser dashboard
-- Provider registry
-- Permission model
-- Google Secret Manager reference checks
-- Dry-run agent planning
-- Approval manifests
-- Run logs
-- Tool adapters for repo inspection, files, shell, git, gh, and gcloud status
-- Market research seed graphs
-- Recursive self-bootstrap planning
-- Local app generator
-- Generated-app import/export/test layer
-- Target-project installer
-- Handoff packet exporter
+## Why this exists
 
-## Verify
+Developer tooling still assumes a desktop-class setup. Many mobile apps expose only a limited subset of what the browser or desktop can do. AI Workflow OS starts from a different belief: the phone should be able to operate the build system.
 
-bash scripts/verify_workflow_app.sh
+## What it does now
 
-## Run dashboard
+- opens a local browser operator console
+- accepts prompts from the phone
+- uses approved local actions instead of raw browser shell
+- detects installed CLI tools without printing secrets
+- creates generated apps inside the repo
+- runs compile and test proof
+- exports a phone bundle to Downloads
+- installs as a PWA with a real icon
+- publishes clean source to GitHub
 
-bash scripts/run_dashboard.sh
+## Operator loop
 
-Open http://127.0.0.1:8765 in the browser.
+prompt -> event -> approval -> action -> CLI capability -> material code change -> compile -> test -> proof -> export -> publish
 
-## Create an app
+## Supported agent surfaces
 
-bin/ai-workflow-os create-app "Create an app that does X" --target generated_apps/demo --name demo --execute
-bin/ai-workflow-os test-app generated_apps/demo
-bin/ai-workflow-os export-app generated_apps/demo --out runs/demo_manifest.json
+- Gemini CLI through GEMINI.md
+- Claude Code through CLAUDE.md
+- Codex CLI through CODEX.md and AGENTS.md
+- GitHub Copilot through .github/copilot-instructions.md
+- Cursor through .cursor/rules
+- Cline through .clinerules
+- Continue through .continue/rules
 
-## Safety
+## Local launch
 
-- Secret values are never printed.
-- Dry-run is the default for agent runs.
-- Approval is required for side effects.
-- Git push, cloud writes, live APIs, and deploys are not part of default approval.
-- Entire-web research is implemented as bounded recursive research graphs, not fake infinite crawling.
+cd "$HOME/Workspaces/AI_Workflow_OS/ai-workflow-os"
+bin/open-ai-workflow-os-phone
+
+Open: http://127.0.0.1:8765
+
+## Security
+
+Secrets stay outside source. The app reports key presence only. It does not print or store key values.
+
+## Status
+
+Early public operator build. Phone-local first. Cross-device and SaaS paths are planned.

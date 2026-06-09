@@ -117,6 +117,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split("?", 1)[0]
 
+        if path == "/legacy-dashboard.html":
+            self.send_bytes((ROOT / "web" / "legacy-dashboard.html").read_bytes(), "text/html; charset=utf-8")
+            return
         if path == "/manifest.webmanifest":
             self.send_bytes((ROOT / "web" / "manifest.webmanifest").read_bytes(), "application/manifest+json; charset=utf-8")
             return
