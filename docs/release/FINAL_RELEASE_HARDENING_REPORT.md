@@ -1,8 +1,8 @@
 # Final Release Hardening Report
 
-- Created: `2026-06-09T22:07:49.623456+00:00`
-- Branch: `termux-native-manual-apk-v1`
-- Head: `764f5eb`
+- Created: `2026-06-09T22:13:52.110096+00:00`
+- Branch: `manual-apk-manifest-package-fix-v1`
+- Head: `1df328f`
 - OK: `True`
 - Keys printed: `False`
 - Broad permissions: `False`

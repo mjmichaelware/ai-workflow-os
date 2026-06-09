@@ -3,7 +3,7 @@
   "stage": "compile",
   "project": {
     "ok": true,
-    "created_at": "2026-06-09T22:07:12.063358+00:00",
+    "created_at": "2026-06-09T22:13:18.379966+00:00",
     "path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/exports/manual_apk_project/ai-workflow-os-manual",
     "package_name": "com.aiworkflowos.manual",
     "keys_printed": false,
@@ -57,7 +57,7 @@
       "ok": false,
       "returncode": 1,
       "stdout_tail": "",
-      "stderr_tail": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/exports/manual_apk_project/ai-workflow-os-manual/AndroidManifest.xml: error: <manifest> must have a 'package' attribute.\nerror: failed to load include path /data/data/com.termux/files/home/android-sdk/platforms/android-36/android.jar.\n"
+      "stderr_tail": "error: failed to load include path /data/data/com.termux/files/home/android-sdk/platforms/android-36/android.jar.\n"
     },
     {
       "ok": true,
