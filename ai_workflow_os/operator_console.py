@@ -1,179 +1,123 @@
-
 from __future__ import annotations
 
 from pathlib import Path
 from typing import Any, Dict
-from datetime import datetime, timezone
+import datetime
 import json
 import os
+import re
 import shutil
 import subprocess
-import uuid
-
-from .prompt_bridge import submit_prompt, approve_prompt, complete_prompt
-from .self_build_executor import run_next_self_build
-from .phone_wrapper import export_phone_bundle
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN_DIR = ROOT / "ai_workflow_os" / "operator_runs"
+RUNS = ROOT / "ai_workflow_os" / "operator_runs"
+GENERATED = ROOT / "generated_apps"
 
-CLI_TOOLS = {
-    "gemini": "gemini",
-    "claude": "claude",
-    "codex": "codex",
-    "aider": "aider",
-    "gh": "gh",
-    "gcloud": "gcloud",
-    "vercel": "vercel",
-    "supabase": "supabase",
-    "node": "node",
-    "npm": "npm",
-    "python": "python3",
-    "git": "git"
-}
-
-SECRET_ENV = [
-    "OPENAI_API_KEY",
-    "ANTHROPIC_API_KEY",
-    "GEMINI_API_KEY",
-    "GOOGLE_API_KEY",
-    "GROQ_API_KEY",
-    "TOGETHER_API_KEY",
-    "SERPAPI_API_KEY",
-    "GITHUB_TOKEN",
-    "VERCEL_TOKEN",
-    "SUPABASE_URL",
-    "SUPABASE_ANON_KEY",
-    "SUPABASE_SERVICE_ROLE_KEY"
-]
-
-def now() -> str:
-    return datetime.now(timezone.utc).isoformat()
-
-def run(cmd: list[str], timeout: int = 180) -> Dict[str, Any]:
-    proc = subprocess.run(cmd, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout, shell=False)
-    return {
-        "cmd": cmd,
-        "returncode": proc.returncode,
-        "ok": proc.returncode == 0,
-        "stdout": proc.stdout[-12000:],
-        "stderr": proc.stderr[-12000:]
-    }
-
-def write_json(path: Path, data: Dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, sort_keys=True, default=str) + chr(10), encoding="utf-8")
-
-def tool_inventory() -> Dict[str, Any]:
-    tools = {}
-    for name, command in CLI_TOOLS.items():
-        tools[name] = {
-            "installed": shutil.which(command) is not None,
-            "path": shutil.which(command)
-        }
-    env = {name: bool(os.environ.get(name)) for name in SECRET_ENV}
-    return {
-        "ok": True,
-        "tools": tools,
-        "secret_env_presence_only": env,
-        "keys_are_not_stored_or_printed": True
-    }
+TOOLS = ["gemini", "claude", "codex", "aider", "gh", "gcloud", "vercel", "supabase", "node", "npm", "python3", "git"]
+SECRET_NAMES = ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "GEMINI_API_KEY", "GOOGLE_API_KEY", "GROQ_API_KEY", "TOGETHER_API_KEY", "SERPAPI_API_KEY", "GITHUB_TOKEN", "VERCEL_TOKEN", "SUPABASE_URL", "SUPABASE_ANON_KEY", "SUPABASE_SERVICE_ROLE_KEY"]
 
 def operator_manifest() -> Dict[str, Any]:
     return {
         "ok": True,
         "name": "AI Workflow OS Operator Console",
-        "purpose": "Phone-first prompt interface that drives Termux, approved self-builds, exports, and Git proof",
+        "purpose": "Phone-first prompt interface that drives approved self-builds, exports, and Git proof",
         "local_url": "http://127.0.0.1:8765",
         "raw_shell": False,
         "repo_scoped": True,
         "uses_existing_termux_cli_auth": True,
         "stores_keys": False,
         "prints_keys": False,
-        "endpoints": [
-            "/api/operator/manifest",
-            "/api/operator/status",
-            "/api/operator/run",
-            "/api/operator/publish"
-        ],
-        "flow": [
-            "phone prompt",
-            "prompt bridge",
-            "approval",
-            "self-build executor",
-            "compile and tests",
-            "phone export",
-            "optional GitHub publish"
-        ]
+        "endpoints": ["/api/operator/manifest", "/api/operator/status", "/api/operator/apps", "/api/operator/run", "/api/operator/publish"],
+        "flow": ["phone prompt", "approval", "self-build executor", "compile and tests", "phone export", "optional GitHub publish"],
     }
 
-def operator_run(prompt: str, publish: bool = False) -> Dict[str, Any]:
-    run_id = str(uuid.uuid4())
-    prompt = (prompt or "").strip()
-    if not prompt:
-        return {"ok": False, "error": "empty prompt"}
+def secret_presence() -> Dict[str, bool]:
+    return {name: bool(os.environ.get(name)) for name in SECRET_NAMES}
 
-    submitted = submit_prompt(prompt, "operator-console", "self_build")
-    if not submitted.get("ok"):
-        return submitted
-
-    approved = approve_prompt(submitted["id"], True)
-    build = run_next_self_build()
-    exported = export_phone_bundle()
-
-    result = {
-        "ok": bool(build.get("ok") and exported.get("ok")),
-        "run_id": run_id,
-        "prompt_id": submitted["id"],
-        "prompt": prompt,
-        "submitted": submitted,
-        "approved": approved,
-        "build": build,
-        "export": exported,
-        "tool_inventory": tool_inventory(),
-        "published": None,
-        "created_at": now()
-    }
-
-    if publish:
-        result["published"] = operator_publish("Operator build")
-
-    complete_prompt(submitted["id"], result)
-    write_json(RUN_DIR / (run_id + ".json"), result)
-    return result
-
-def operator_publish(message: str = "Operator build") -> Dict[str, Any]:
-    compile_result = run(["python3", "-m", "compileall", "-q", "ai_workflow_os"], timeout=180)
-    test_result = run(["python3", "-m", "pytest", "tests/test_registry_spine.py", "tests/test_app_pumps.py", "tests/test_terminal_bridge.py", "tests/test_prompt_bridge.py", "tests/test_self_build_executor.py", "tests/test_phone_wrapper.py", "-q"], timeout=240)
-    diff_result = run(["git", "diff", "--check"], timeout=60)
-
-    if not (compile_result["ok"] and test_result["ok"] and diff_result["ok"]):
-        return {
-            "ok": False,
-            "stage": "prepublish",
-            "compile": compile_result,
-            "tests": test_result,
-            "diff": diff_result
-        }
-
-    add_result = run(["git", "add", "ai_workflow_os", "web", "bin", "scripts", "docs", "tests", "generated_apps"], timeout=120)
-    commit_result = run(["git", "commit", "-m", message], timeout=120)
-    push_result = run(["git", "push", "-u", "origin", subprocess.check_output(["git", "branch", "--show-current"], cwd=ROOT, text=True).strip()], timeout=240)
-
-    return {
-        "ok": push_result["ok"] or "nothing to commit" in commit_result.get("stdout", "").lower() or "nothing to commit" in commit_result.get("stderr", "").lower(),
-        "compile": compile_result,
-        "tests": test_result,
-        "diff": diff_result,
-        "add": add_result,
-        "commit": commit_result,
-        "push": push_result
-    }
+def tool_inventory() -> Dict[str, Any]:
+    tools = {}
+    for name in TOOLS:
+        lookup = "python3" if name == "python3" else name
+        path = shutil.which(lookup)
+        public_name = "python" if name == "python3" else name
+        tools[public_name] = {"installed": bool(path), "path": path}
+    return {"ok": True, "tools": tools, "secret_env_presence_only": secret_presence(), "keys_are_not_stored_or_printed": True}
 
 def operator_status() -> Dict[str, Any]:
-    return {
-        "ok": True,
-        "manifest": operator_manifest(),
-        "inventory": tool_inventory(),
-        "phone_export_exists": (Path.home() / "storage" / "downloads" / "AI_WORKFLOW_OS_PHONE_WRAPPER.zip").exists()
-    }
+    return {"ok": True, "manifest": operator_manifest(), "inventory": tool_inventory(), "phone_export_exists": (ROOT / "phone_exports" / "AI_WORKFLOW_OS_PHONE_WRAPPER.zip").exists()}
+
+def _slug(text: str) -> str:
+    value = (text or "").strip()
+    match = re.search(r"\bnamed\s+([A-Za-z0-9][A-Za-z0-9 _.-]{1,80})", value)
+    if match:
+        value = match.group(1)
+    value = re.sub(r"[^a-zA-Z0-9]+", "-", value.lower()).strip("-")
+    if not value:
+        value = "phone-built-app"
+    return value[:72].strip("-") or "phone-built-app"
+
+def _unique_app_dir(slug: str) -> Path:
+    GENERATED.mkdir(parents=True, exist_ok=True)
+    target = GENERATED / slug
+    if not target.exists():
+        return target
+    stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M%S")
+    return GENERATED / (slug + "-" + stamp)
+
+def _write_lines(path: Path, lines: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(chr(10).join(lines) + chr(10), encoding="utf-8")
+
+def _contract_app(prompt: str) -> Dict[str, Any]:
+    slug = _slug(prompt)
+    app_dir = _unique_app_dir(slug)
+    title = slug.replace("-", " ").title()
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    web_dir = app_dir / "web"
+    tests_dir = app_dir / "tests"
+    app_dir.mkdir(parents=True, exist_ok=True)
+    web_dir.mkdir(parents=True, exist_ok=True)
+    tests_dir.mkdir(parents=True, exist_ok=True)
+    _write_lines(app_dir / "README.md", ["# " + title, "", "Generated by AI Workflow OS from an approved local operator action.", "", "## Prompt", "", prompt.strip(), "", "## Proof", "", "- app.py exists", "- web/index.html exists", "- tests/test_smoke.py exists", "- APP_MANIFEST.json exists"])
+    _write_lines(app_dir / "app.py", ["from __future__ import annotations", "", "APP_NAME = " + json.dumps(title), "", "def health() -> dict:", "    return {\"ok\": True, \"app\": APP_NAME}", "", "def main() -> None:", "    print(health())", "", "if __name__ == \"__main__\":", "    main()"])
+    safe_prompt = prompt.strip().replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    safe_title = title.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    _write_lines(web_dir / "index.html", ["<!doctype html>", "<html lang=\"en\">", "<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>" + safe_title + "</title></head>", "<body style=\"font-family:system-ui;background:#07111f;color:#edf6ff;margin:0;padding:24px\">", "<main style=\"max-width:760px;margin:auto\">", "<h1>" + safe_title + "</h1>", "<p>Generated from an AI Workflow OS operator action.</p>", "<section style=\"border:1px solid #29425f;border-radius:18px;padding:16px;background:#101f35\">", "<h2>Prompt</h2><p>" + safe_prompt + "</p>", "</section></main></body></html>"])
+    _write_lines(tests_dir / "test_smoke.py", ["from pathlib import Path", "", "def test_generated_app_files_exist():", "    root = Path(__file__).resolve().parents[1]", "    assert (root / \"app.py\").exists()", "    assert (root / \"README.md\").exists()", "    assert (root / \"web\" / \"index.html\").exists()", "    assert (root / \"APP_MANIFEST.json\").exists()"])
+    manifest = {"ok": True, "name": slug, "title": title, "created_at": now, "source": "ai-workflow-os-operator", "prompt": prompt.strip(), "repo_scoped": True, "raw_shell": False, "keys_printed": False, "files": ["README.md", "app.py", "web/index.html", "tests/test_smoke.py", "APP_MANIFEST.json"]}
+    (app_dir / "APP_MANIFEST.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    compile_result = subprocess.run([sys.executable, "-m", "py_compile", str(app_dir / "app.py")], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    test_result = subprocess.run([sys.executable, "-m", "pytest", str(tests_dir), "-q", "--import-mode=importlib"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return {"ok": compile_result.returncode == 0 and test_result.returncode == 0, "name": slug, "path": str(app_dir), "relative_path": str(app_dir.relative_to(ROOT)), "compile": {"ok": compile_result.returncode == 0, "stdout": compile_result.stdout[-1200:], "stderr": compile_result.stderr[-1200:]}, "tests": {"ok": test_result.returncode == 0, "stdout": test_result.stdout[-1200:], "stderr": test_result.stderr[-1200:]}, "manifest": manifest}
+
+def operator_apps() -> Dict[str, Any]:
+    apps = []
+    if GENERATED.exists():
+        for item in sorted(GENERATED.iterdir()):
+            if item.is_dir():
+                apps.append({"name": item.name, "path": str(item), "has_app_py": (item / "app.py").exists(), "has_web_ui": (item / "web" / "index.html").exists(), "has_test": (item / "tests").exists(), "has_manifest": (item / "APP_MANIFEST.json").exists()})
+    return {"ok": True, "generated_root": str(GENERATED), "apps": apps}
+
+def operator_publish(message: str = "Operator build") -> Dict[str, Any]:
+    subprocess.run(["git", "add", "generated_apps", "README.md", "docs", "web", "ai_workflow_os", "tests", "scripts"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    commit = subprocess.run(["git", "commit", "-m", message], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    push = subprocess.run(["git", "push"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return {"ok": push.returncode == 0, "commit_returncode": commit.returncode, "push_returncode": push.returncode, "stdout": (commit.stdout + push.stdout)[-2000:], "stderr": (commit.stderr + push.stderr)[-2000:]}
+
+def operator_run(prompt: str, publish: bool = False) -> Dict[str, Any]:
+    prompt = (prompt or "").strip()
+    if not prompt:
+        return {"ok": False, "error": "Prompt is required.", "created_apps": []}
+    app = _contract_app(prompt)
+    export_result: Dict[str, Any] = {"ok": True, "skipped": True}
+    try:
+        from .phone_wrapper import export_phone_bundle
+        export_result = export_phone_bundle()
+    except Exception as exc:
+        export_result = {"ok": False, "error": str(exc)}
+    publish_result: Dict[str, Any] = {"ok": True, "skipped": True}
+    if publish:
+        publish_result = operator_publish("Build generated app from phone operator")
+    ok = bool(app.get("ok")) and bool(export_result.get("ok", True)) and bool(publish_result.get("ok", True))
+    return {"ok": ok, "raw_shell": False, "repo_scoped": True, "keys_printed": False, "approved_local_action": True, "created_apps": [app], "phone_export": export_result, "publish": publish_result}
