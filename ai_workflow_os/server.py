@@ -20,11 +20,18 @@ ROOT = Path(__file__).resolve().parents[1]
 DOWNLOADS = Path.home() / "storage/downloads"
 
 class Handler(BaseHTTPRequestHandler):
+    def _no_cache_headers(self):
+        self.send_header("cache-control", "no-store, no-cache, must-revalidate, max-age=0")
+        self.send_header("pragma", "no-cache")
+        self.send_header("expires", "0")
+        self.send_header("x-aiwos-build", "no-cache-stage")
+
     def send_json(self, payload, status=200):
         data = json.dumps(payload, indent=2).encode()
         self.send_response(status)
         self.send_header("content-type", "application/json; charset=utf-8")
         self.send_header("content-length", str(len(data)))
+        self._no_cache_headers()
         self.end_headers()
         self.wfile.write(data)
 
@@ -32,6 +39,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header("content-type", content_type)
         self.send_header("content-length", str(len(data)))
+        self._no_cache_headers()
         self.end_headers()
         self.wfile.write(data)
 
@@ -65,25 +73,26 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         try:
+            path = urllib.parse.urlparse(self.path).path
             data = self.read_json()
-            if self.path == "/api/research-graph":
+            if path == "/api/research-graph":
                 self.send_json(MarketResearchGraph().build_seed_graph(data.get("prompt", ""))); return
-            if self.path == "/api/research-queries":
+            if path == "/api/research-queries":
                 self.send_json(build_research_queries(data.get("prompt", ""), max_depth=int(data.get("depth", 2)))); return
-            if self.path == "/api/self-bootstrap":
+            if path == "/api/self-bootstrap":
                 out = ROOT / "runs/self_bootstrap_ui"
                 self.send_json({"self_bootstrap_plan": str(save_self_bootstrap_plan(ROOT, data.get("prompt", ""), out))}); return
-            if self.path == "/api/create-app":
+            if path == "/api/create-app":
                 name = data.get("name", "generated-app")
                 target = ROOT / "generated_apps" / name
                 self.send_json(create_generated_app(data.get("prompt", ""), target, name=name, execute=bool(data.get("execute", False)))); return
-            if self.path == "/api/test-app":
+            if path == "/api/test-app":
                 self.send_json(test_app_by_name(ROOT, data.get("name", ""))); return
-            if self.path == "/api/export-app-downloads":
+            if path == "/api/export-app-downloads":
                 self.send_json(export_app_to_downloads(ROOT, data.get("name", ""), DOWNLOADS)); return
-            if self.path == "/api/android/native-target":
+            if path == "/api/android/native-target":
                 self.send_json(create_native_android_target(ROOT, data.get("name", "generated-android-app"), data.get("prompt", ""))); return
-            self.send_json({"error": "not_found", "path": self.path}, status=404)
+            self.send_json({"error": "not_found", "path": path}, status=404)
         except Exception as exc:
             self.send_json({"error": "exception", "message": str(exc)}, status=500)
 

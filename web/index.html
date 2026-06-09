@@ -3,23 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI Workflow OS</title>
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="stylesheet" href="/static/app.css">
+  <meta http-equiv="cache-control" content="no-store">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <title>AI Workflow OS — No Cache App Factory</title>
+  <link rel="stylesheet" href="/static/app.css?v=nocache-stage">
 </head>
 <body>
   <main class="shell">
     <section class="hero">
-      <div class="badge">terminal first app factory</div>
+      <div class="badge">NO CACHE BUILD · BUTTON PROOF · APP FACTORY</div>
       <h1>AI Workflow OS</h1>
-      <p class="lede">Create, test, export, inspect, and build native targets from a phone terminal with permission gates.</p>
+      <p class="lede">Same repo works in Termux, VS Code, GitHub, and desktop CLI. Local first. Cloud capable. Secret values never printed.</p>
     </section>
     <section class="panel">
       <h2>Create an application</h2>
       <label>Prompt</label>
-      <textarea id="prompt">Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, and tests.</textarea>
+      <textarea id="prompt">Create an app that helps me manage projects from my phone terminal with APIs, CLI tools, browser UI, import/export, native targets, and tests.</textarea>
+      <label>Application name</label>
       <input id="appName" value="phone-project-agent">
-      <label class="check"><input type="checkbox" id="execute"> Approve local file generation under this repo</label>
+      <label class="check"><input type="checkbox" id="execute" checked> Approve local file generation under this repo</label>
       <div class="actions">
         <button id="researchBtn">Research graph</button>
         <button id="planBtn">Plan app</button>
@@ -32,15 +35,15 @@
     </section>
     <section class="grid">
       <article class="card"><h3>Health</h3><pre id="health">loading</pre></article>
-      <article class="card"><h3>Tools</h3><pre id="tools">loading</pre></article>
-      <article class="card"><h3>Android</h3><pre id="android">loading</pre></article>
       <article class="card"><h3>Generated Apps</h3><pre id="apps">loading</pre></article>
+      <article class="card"><h3>Android/Native Status</h3><pre id="android">loading</pre></article>
+      <article class="card"><h3>Tools</h3><pre id="tools">loading</pre></article>
     </section>
     <section class="panel">
-      <h2>Output</h2>
-      <pre id="output">Ready.</pre>
+      <h2>Button Output</h2>
+      <pre id="output">Ready. This panel must change when a button is pressed.</pre>
     </section>
   </main>
-  <script src="/static/app.js"></script>
+  <script src="/static/app.js?v=nocache-stage"></script>
 </body>
 </html>

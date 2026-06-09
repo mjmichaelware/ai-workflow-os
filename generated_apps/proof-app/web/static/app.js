@@ -1,0 +1,1 @@
+document.getElementById("b").onclick=async()=>{const r=await fetch("/api/health");document.getElementById("o").textContent=JSON.stringify(await r.json(),null,2)}
