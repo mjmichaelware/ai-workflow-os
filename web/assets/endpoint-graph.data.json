@@ -1,0 +1,104 @@
+{
+  "ok": true,
+  "name": "AI Workflow OS Endpoint Graph",
+  "nodes": [
+    {
+      "id": "operator",
+      "label": "Operator",
+      "kind": "runtime",
+      "endpoint": "/api/operator/status",
+      "x": 18,
+      "y": 18
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "kind": "action",
+      "endpoint": "/api/operator/run",
+      "x": 50,
+      "y": 22
+    },
+    {
+      "id": "apps",
+      "label": "Apps",
+      "kind": "registry",
+      "endpoint": "/api/operator/apps",
+      "x": 82,
+      "y": 18
+    },
+    {
+      "id": "phone",
+      "label": "Phone Export",
+      "kind": "package",
+      "endpoint": "/api/phone/export",
+      "x": 22,
+      "y": 55
+    },
+    {
+      "id": "context",
+      "label": "Context Packet",
+      "kind": "packet",
+      "endpoint": "docs/context/AI_WORKFLOW_OS_CONTEXT_PACKET.json",
+      "x": 50,
+      "y": 52
+    },
+    {
+      "id": "recursive",
+      "label": "Recursive App",
+      "kind": "proof",
+      "endpoint": "scripts/prove_recursive_app_factory.py",
+      "x": 78,
+      "y": 58
+    },
+    {
+      "id": "security",
+      "label": "Hygiene",
+      "kind": "proof",
+      "endpoint": "scripts/verify_public_surface.py",
+      "x": 36,
+      "y": 84
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "kind": "signal",
+      "endpoint": "docs/research/DEVELOPER_DIRECTION_2026.md",
+      "x": 66,
+      "y": 84
+    }
+  ],
+  "edges": [
+    [
+      "operator",
+      "build"
+    ],
+    [
+      "build",
+      "apps"
+    ],
+    [
+      "build",
+      "phone"
+    ],
+    [
+      "apps",
+      "recursive"
+    ],
+    [
+      "recursive",
+      "context"
+    ],
+    [
+      "context",
+      "security"
+    ],
+    [
+      "research",
+      "context"
+    ],
+    [
+      "security",
+      "operator"
+    ]
+  ]
+}
