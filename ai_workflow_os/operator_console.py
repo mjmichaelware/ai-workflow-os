@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 import sys
+from .agent_builder import route_prompt_to_agents, attach_agent_route_to_manifest, should_route_prompt_to_agents, skipped_agent_route, failed_agent_route
 from .generated_app_shell import ensure_generated_app_shell, build_shell_packet
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -203,4 +204,38 @@ def _contract_app(prompt: str) -> Dict[str, Any]:
         "bytes": shell_packet.get("bytes"),
     }
     result["ok"] = bool(result.get("ok")) and bool(shell_proof.get("ok")) and bool(shell_packet.get("ok"))
+    return result
+
+# === AGENT ROUTED BUILDER V1 OVERRIDE ===
+_base_contract_app_agent_routed_v1 = _contract_app
+
+def _contract_app(prompt: str) -> Dict[str, Any]:
+    result = _base_contract_app_agent_routed_v1(prompt)
+    if not result.get("ok"):
+        return result
+
+    app_dir = Path(result.get("path", ""))
+    try:
+        if should_route_prompt_to_agents(prompt):
+            route = route_prompt_to_agents(prompt, app_dir)
+        else:
+            route = skipped_agent_route(app_dir)
+    except Exception as exc:
+        route = failed_agent_route(app_dir, str(exc))
+
+    try:
+        attach_agent_route_to_manifest(app_dir, route)
+    except Exception as exc:
+        route = failed_agent_route(app_dir, "manifest attach failed: " + str(exc))
+
+    result["agent_route"] = {
+        "ok": route.get("ok"),
+        "skipped": route.get("skipped", False),
+        "used_agents": route.get("used_agents", []),
+        "successful_agents": route.get("successful_agents", []),
+        "agent_count": len(route.get("agents", [])),
+        "keys_printed": False,
+        "broad_permissions": False,
+        "raw_shell_from_agents_executed": False,
+    }
     return result

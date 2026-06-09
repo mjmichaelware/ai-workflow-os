@@ -11,6 +11,11 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_agent_routed_builder.py",
+    "docs/standards/AGENT_ROUTED_BUILDER_V1_STANDARD.md",
+    "docs/AGENT_ROUTED_BUILDER.md",
+    "scripts/prove_agent_routed_builder.py",
+    "ai_workflow_os/agent_builder.py",
     "tests/test_mobile_command_v7.py",
     "docs/standards/MOBILE_COMMAND_SURFACE_V7_STANDARD.md",
     "web/assets/mobile-command-v7.js",
