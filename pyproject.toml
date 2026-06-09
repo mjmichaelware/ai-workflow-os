@@ -1,0 +1,9 @@
+[project]
+name = "ai-workflow-os"
+version = "1.0.0"
+description = "Reusable AI agent workflow control plane"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+ai-workflow-os = "ai_workflow_os.cli:main"

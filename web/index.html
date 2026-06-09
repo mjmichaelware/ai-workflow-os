@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Workflow OS</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background: #07111f; color: #eef6ff; }
+    body { margin: 0; padding: 24px; }
+    .shell { max-width: 1200px; margin: 0 auto; }
+    .hero { padding: 28px; border: 1px solid #28435f; border-radius: 24px; background: linear-gradient(135deg, #102542, #0b1728); box-shadow: 0 20px 80px #0008; }
+    h1 { margin: 0 0 8px; font-size: clamp(32px, 6vw, 72px); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px; }
+    .card { border: 1px solid #2b4865; border-radius: 18px; padding: 18px; background: #0d1b2f; }
+    pre { background: #030812; color: #d7f7ff; border-radius: 12px; padding: 12px; overflow: auto; max-height: 420px; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; background: #12395a; color: #9ee7ff; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <span class="badge">generic workflow control plane</span>
+      <h1>AI Workflow OS</h1>
+      <p>Reusable agent workflow kit for app audits, specs, bug ledgers, patch plans, proof reports, and handoff packets.</p>
+    </section>
+    <section class="grid">
+      <article class="card"><h2>Health</h2><pre id="health">loading</pre></article>
+      <article class="card"><h2>Catalog</h2><pre id="catalog">loading</pre></article>
+      <article class="card"><h2>Files</h2><pre id="files">loading</pre></article>
+    </section>
+  </main>
+  <script>
+    async function load(id, url) {
+      const el = document.getElementById(id);
+      try {
+        const res = await fetch(url);
+        el.textContent = JSON.stringify(await res.json(), null, 2);
+      } catch (err) {
+        el.textContent = String(err);
+      }
+    }
+    load("health", "/api/health");
+    load("catalog", "/api/catalog");
+    load("files", "/api/workflow-files");
+  </script>
+</body>
+</html>

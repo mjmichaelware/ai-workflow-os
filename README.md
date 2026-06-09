@@ -1,42 +1,24 @@
 # AI Workflow OS
 
-Reusable AI-agent workflow kit for building, auditing, repairing, handing off, and deploying software projects across Claude, Codex, Gemini, ChatGPT, and future agents.
+Reusable AI-agent workflow kit for creating and repairing applications.
 
-This is a GitHub-based workflow control plane. It is not a separate cloud project and does not require Google Cloud.
+This repo is generic. It must not contain app-specific missions, bug ledgers, patch plans, or handoff packets.
 
-## What it gives you
+## Verify
 
-- durable AI context
-- contradiction audits
-- canonical specs
-- bug ledgers
-- patch plans
-- proof reports
-- UI/backend parity workflows
-- provider registry standards
-- ARM64 Termux safety rules
-- portable handoff archives
+bash scripts/verify_workflow_app.sh
 
-## Start prompt
+## Run dashboard
 
-Read `workflow/MASTER_AGENT_START_PROMPT.md` and follow it exactly.
+bash scripts/run_dashboard.sh
 
-## Install into another repo
+## CLI
 
-Run:
+bin/ai-workflow-os doctor
+bin/ai-workflow-os catalog
+bin/ai-workflow-os init-project /path/to/app --name MyApp
+bin/ai-workflow-os export-packet /path/to/app --out $HOME/storage/downloads
 
-```bash
-bash scripts/install_into_project.sh /path/to/target/repo
-```
+## Boundary
 
-## Proof
-
-Run:
-
-```bash
-bash scripts/verify_workflow_repo.sh
-```
-
-## Non-goal
-
-This repository does not contain every possible computer science fact. It contains a practical operating workflow that future agents can extend.
+AI Workflow OS is the process engine. Each target app owns its own project data.

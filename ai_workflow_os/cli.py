@@ -1,0 +1,71 @@
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+from .core import scan_project, install_into_project, export_packet, catalog_json
+
+
+def cmd_doctor(args: argparse.Namespace) -> int:
+    root = Path.cwd()
+    required = ["README.md", "ai_workflow_os/core.py", "ai_workflow_os/server.py", "ai_workflow_os/cli.py", "workflow/MASTER_AGENT_START_PROMPT.md", "standards/OMEGA_ALPHA_STANDARD.md"]
+    missing = [p for p in required if not (root / p).exists()]
+    print("AI Workflow OS doctor")
+    print(f"root={root}")
+    if missing:
+        print("missing:")
+        for item in missing:
+            print(f"- {item}")
+        return 1
+    print("PASS: core files exist")
+    return 0
+
+
+def cmd_catalog(args: argparse.Namespace) -> int:
+    print(catalog_json())
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    print(json.dumps(scan_project(Path(args.target)).__dict__, indent=2))
+    return 0
+
+
+def cmd_init_project(args: argparse.Namespace) -> int:
+    print(json.dumps(install_into_project(Path(args.target), app_name=args.name), indent=2))
+    return 0
+
+
+def cmd_export(args: argparse.Namespace) -> int:
+    archive = export_packet(Path(args.target), Path(args.out))
+    print(f"exported={archive}")
+    return 0
+
+
+def cmd_serve(args: argparse.Namespace) -> int:
+    from .server import run_server
+    run_server(host=args.host, port=args.port)
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="ai-workflow-os", description="AI Workflow OS CLI")
+    sub = parser.add_subparsers(dest="command", required=True)
+    p = sub.add_parser("doctor"); p.set_defaults(func=cmd_doctor)
+    p = sub.add_parser("catalog"); p.set_defaults(func=cmd_catalog)
+    p = sub.add_parser("status"); p.add_argument("target", nargs="?", default="."); p.set_defaults(func=cmd_status)
+    p = sub.add_parser("init-project"); p.add_argument("target"); p.add_argument("--name", default="REPLACE_ME"); p.set_defaults(func=cmd_init_project)
+    p = sub.add_parser("export-packet"); p.add_argument("target"); p.add_argument("--out", default=str(Path.home() / "storage/downloads")); p.set_defaults(func=cmd_export)
+    p = sub.add_parser("serve"); p.add_argument("--host", default="127.0.0.1"); p.add_argument("--port", type=int, default=8765); p.set_defaults(func=cmd_serve)
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
+    args = parser.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
