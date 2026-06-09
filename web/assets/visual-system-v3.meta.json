@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "name": "Visual System v3",
+  "assets": [
+    "web/assets/visual-system-v3.css",
+    "web/assets/endpoint-graph.js",
+    "web/assets/endpoint-graph.data.json"
+  ],
+  "local_only": true,
+  "external_fonts": false,
+  "external_scripts": false,
+  "animations": true,
+  "endpoint_graph": true,
+  "decoupled": true
+}

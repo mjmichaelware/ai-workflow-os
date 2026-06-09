@@ -11,6 +11,11 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "docs/standards/VISUAL_SYSTEM_V3_STANDARD.md",
+    "web/assets/visual-system-v3.meta.json",
+    "web/assets/endpoint-graph.data.json",
+    "web/assets/endpoint-graph.js",
+    "web/assets/visual-system-v3.css",
     "README.md",
     "AGENTS.md",
     "GEMINI.md",
