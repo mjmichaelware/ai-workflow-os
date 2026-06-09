@@ -11,6 +11,10 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_mobile_command_v7.py",
+    "docs/standards/MOBILE_COMMAND_SURFACE_V7_STANDARD.md",
+    "web/assets/mobile-command-v7.js",
+    "web/assets/mobile-command-v7.css",
     "tests/test_editorial_ux_v6.py",
     "docs/standards/EDITORIAL_UX_V6_STANDARD.md",
     "web/assets/page-content-v2.data.json",
