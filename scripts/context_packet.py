@@ -11,6 +11,12 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_runtime_console_ux_density.py",
+    "docs/standards/RUNTIME_CONSOLE_UX_DENSITY_STANDARD.md",
+    "web/assets/verbose-pages.data.json",
+    "web/assets/ux-density-v5.css",
+    "web/assets/runtime-console.js",
+    "ai_workflow_os/runtime_console.py",
     "tests/test_final_proof_dashboard.py",
     "docs/standards/FINAL_PROOF_DASHBOARD_STANDARD.md",
     "docs/proof/FINAL_PERFECTION_REPORT.md",
