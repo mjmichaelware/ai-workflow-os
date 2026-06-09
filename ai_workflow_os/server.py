@@ -7,9 +7,10 @@ import urllib.parse
 
 from .catalog import CATALOG
 from .core import scan_project
+from .permissions import default_policy_json
+from .providers import list_providers
 
 ROOT = Path(__file__).resolve().parents[1]
-
 
 class Handler(BaseHTTPRequestHandler):
     def send_json(self, payload, status=200):
@@ -41,9 +42,15 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/catalog":
             self.send_json(CATALOG)
             return
+        if path == "/api/providers":
+            self.send_json({"providers": list_providers()})
+            return
+        if path == "/api/permissions":
+            self.send_json(default_policy_json())
+            return
         if path == "/api/workflow-files":
             files = []
-            for base in ["workflow", "standards", "docs", "scripts"]:
+            for base in ["workflow", "standards", "docs", "scripts", "ai_workflow_os"]:
                 folder = ROOT / base
                 if folder.exists():
                     for item in sorted(folder.glob("**/*")):
@@ -57,7 +64,6 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(scan_project(target).__dict__)
             return
         self.send_json({"error": "not_found", "path": path}, status=404)
-
 
 def run_server(host="127.0.0.1", port=8765):
     server = ThreadingHTTPServer((host, port), Handler)
