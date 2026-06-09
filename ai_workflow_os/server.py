@@ -9,7 +9,7 @@ from .terminal_bridge import list_terminal_commands, run_terminal_command
 from .prompt_bridge import bridge_manifest, submit_prompt, approve_prompt, complete_prompt, list_prompts, next_approved_prompt
 from .self_build_executor import self_build_manifest, run_next_self_build
 from .phone_wrapper import phone_manifest, phone_status, export_phone_bundle, create_launcher
-from .operator_console import operator_manifest, operator_status, operator_run, operator_publish
+from .operator_console import operator_manifest, operator_status, operator_run, operator_publish, operator_apps, operator_apps
 import urllib.parse
 
 from .android_builder import android_status, create_native_android_target
@@ -136,6 +136,10 @@ class Handler(BaseHTTPRequestHandler):
 
         if path == "/api/operator/manifest":
             self.send_json(operator_manifest())
+            return
+
+        if path == "/api/operator/apps":
+            self.send_json(operator_apps())
             return
 
         if path == "/api/operator/status":
