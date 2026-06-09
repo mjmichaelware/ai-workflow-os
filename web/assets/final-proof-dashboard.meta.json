@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "name": "Final Proof Dashboard",
+  "local_only": true,
+  "external_fonts": false,
+  "external_scripts": false,
+  "visual_max": "v4",
+  "proof_dashboard": true,
+  "animations": true
+}

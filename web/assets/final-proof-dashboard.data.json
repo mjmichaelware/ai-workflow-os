@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "name": "AI Workflow OS Final Proof Dashboard",
+  "proofs": [
+    {
+      "id": "tests",
+      "label": "Test Suite",
+      "status": "proof-gated",
+      "artifact": "python3 -m pytest -q"
+    },
+    {
+      "id": "workflow",
+      "label": "Workflow App",
+      "status": "verified",
+      "artifact": "scripts/verify_workflow_app.sh"
+    },
+    {
+      "id": "visual",
+      "label": "Visual System",
+      "status": "v4",
+      "artifact": "web/assets/visual-max-v4.css"
+    },
+    {
+      "id": "graph",
+      "label": "Endpoint Graph",
+      "status": "active",
+      "artifact": "web/assets/endpoint-graph.data.json"
+    },
+    {
+      "id": "factory",
+      "label": "App Factory",
+      "status": "recursive",
+      "artifact": "scripts/prove_recursive_app_factory.py"
+    },
+    {
+      "id": "shell",
+      "label": "Generated Shell",
+      "status": "inherited",
+      "artifact": "scripts/prove_generated_app_shell.py"
+    },
+    {
+      "id": "android",
+      "label": "Android Scaffold",
+      "status": "exportable",
+      "artifact": "scripts/prove_native_android_wrapper.py"
+    },
+    {
+      "id": "capability",
+      "label": "Capability Matrix",
+      "status": "scoped",
+      "artifact": "scripts/prove_capability_matrix.py"
+    },
+    {
+      "id": "security",
+      "label": "Security Hygiene",
+      "status": "local-only",
+      "artifact": "scripts/verify_public_surface.py"
+    }
+  ]
+}
