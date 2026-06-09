@@ -11,6 +11,17 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_final_proof_dashboard.py",
+    "docs/standards/FINAL_PROOF_DASHBOARD_STANDARD.md",
+    "docs/proof/FINAL_PERFECTION_REPORT.md",
+    "docs/proof/FINAL_PERFECTION_REPORT.json",
+    "scripts/final_perfection_report.py",
+    "web/assets/final-proof-dashboard.meta.json",
+    "web/assets/final-proof-dashboard.data.json",
+    "web/assets/final-proof-dashboard.js",
+    "web/assets/visual-max-v4.css",
+    ".github/dependabot.yml",
+    ".github/workflows/ci.yml",
     "tests/test_capability_matrix.py",
     "docs/standards/CAPABILITY_MATRIX_STANDARD.md",
     "docs/capabilities/TOOL_AGENT_CAPABILITY_MATRIX.md",
