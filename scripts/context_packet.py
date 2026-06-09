@@ -11,6 +11,11 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_apk_pipeline.py",
+    "docs/standards/APK_BUILD_SIGN_PIPELINE_V1_STANDARD.md",
+    "docs/APK_BUILD_SIGN_PIPELINE.md",
+    "scripts/prove_apk_pipeline.py",
+    "ai_workflow_os/apk_pipeline.py",
     "tests/test_agent_routed_builder.py",
     "docs/standards/AGENT_ROUTED_BUILDER_V1_STANDARD.md",
     "docs/AGENT_ROUTED_BUILDER.md",

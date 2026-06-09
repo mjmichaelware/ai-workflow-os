@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "created_at": "2026-06-09T15:15:21.500480+00:00",
-  "git_head": "6a46af0 Merge mobile command surface v7",
+  "created_at": "2026-06-09T15:26:32.788033+00:00",
+  "git_head": "b5651d1 Merge safe prompt scoped agent routed builder v1",
   "checks": [
     {
       "name": "tests",
       "ok": true,
       "returncode": 0,
-      "stdout_tail": ".........................................................                [100%]\n57 passed in 16.39s\n",
+      "stdout_tail": "............................................................             [100%]\n60 passed in 4.73s\n",
       "stderr_tail": ""
     },
     {
