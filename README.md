@@ -1,6 +1,7 @@
 # AI Workflow OS
 
 [![CI](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/ci.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/codeql.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/codeql.yml)
 [![Public Hygiene](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/public-hygiene.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/public-hygiene.yml)
 
 AI Workflow OS is a phone-first local application factory.
@@ -9,19 +10,21 @@ It starts on Android through Termux, but the architecture is designed to grow in
 
 ## Why this exists
 
-Developer tooling still assumes a desktop-class setup. Many mobile apps expose only a limited subset of what the browser or desktop can do. AI Workflow OS starts from a different belief: the phone should be able to operate the build system.
+Developer tooling still assumes a desktop-class setup. Mobile apps often expose only a limited subset of what browser and desktop workflows can do. AI Workflow OS starts from a different belief:
+
+The phone should be able to operate the build system.
 
 ## What it does now
 
-- opens a local browser operator console
-- accepts prompts from the phone
-- uses approved local actions instead of raw browser shell
-- detects installed CLI tools without printing secrets
-- creates generated apps inside the repo
-- runs compile and test proof
-- exports a phone bundle to Downloads
-- installs as a PWA with a real icon
-- publishes clean source to GitHub
+- Opens a local browser operator console
+- Accepts prompts from the phone
+- Uses approved local actions instead of raw browser shell
+- Detects installed CLI tools without printing secrets
+- Creates generated apps inside the repo
+- Runs compile and test proof
+- Exports a phone bundle to Downloads
+- Installs as a PWA with a real icon
+- Publishes clean source to GitHub
 
 ## Operator loop
 
@@ -42,11 +45,21 @@ prompt -> event -> approval -> action -> CLI capability -> material code change 
 cd "$HOME/Workspaces/AI_Workflow_OS/ai-workflow-os"
 bin/open-ai-workflow-os-phone
 
-Open: http://127.0.0.1:8765
+Open http://127.0.0.1:8765
 
 ## Security
 
 Secrets stay outside source. The app reports key presence only. It does not print or store key values.
+
+## Contributor paths
+
+- Phone-first UX
+- Termux ARM64 reliability
+- Generated app templates
+- Proof and audit reports
+- Native Android packaging
+- GitHub, Vercel, Supabase, Google Cloud, Gemini, Claude, Codex, Copilot, Cursor, Cline, and Continue integrations
+- Desktop and SaaS runner paths
 
 ## Status
 

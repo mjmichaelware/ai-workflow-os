@@ -4,8 +4,6 @@ Describe what changed and why.
 
 ## Proof
 
-Run and paste the result:
-
 python3 -m py_compile $(find ai_workflow_os -name "*.py" -type f)
 PYTHONPATH="$PWD" python3 -m pytest -q
 bash scripts/verify_workflow_app.sh

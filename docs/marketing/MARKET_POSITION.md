@@ -10,10 +10,10 @@ Phone-first local app factory for Android plus Termux.
 
 ## Expansion
 
-- desktop local runner
+- Desktop local runner
 - GitHub Codespaces mode
-- cloud runner mode
+- Cloud runner mode
 - SaaS control plane
-- team approvals
-- app marketplace
-- generated app template ecosystem
+- Team approvals
+- App marketplace
+- Generated app template ecosystem

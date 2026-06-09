@@ -4,16 +4,19 @@ A public operator project must look trustworthy.
 
 ## Required
 
-- clean README
-- contributor instructions
-- issue templates
-- pull request template
+- Clean README
+- Contributor instructions
+- Security policy
+- Issue templates
+- Pull request template
 - CI workflow
-- secret-pattern scan
-- agent compatibility files
-- no runtime noise in commits
-- no fake testimonials
-- no unproven claims
+- CodeQL workflow
+- Dependabot config
+- Secret-pattern scan
+- Agent compatibility files
+- No runtime noise in commits
+- No fake testimonials
+- No unproven claims
 
 ## Commit rule
 

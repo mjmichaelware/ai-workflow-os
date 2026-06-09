@@ -2,43 +2,43 @@
 
 ## Phase 1: Phone-local operator
 
-- clean operator PWA
+- Clean operator PWA
 - Termux launcher
-- prompt bridge
-- self-build executor
-- export bundle
-- public repo instructions
+- Prompt bridge
+- Self-build executor
+- Export bundle
+- Public repo instructions
 
 ## Phase 2: Contributor quality
 
-- issue templates
-- pull request template
+- Issue templates
+- Pull request template
 - CI and public hygiene workflows
-- runtime snapshot workflow
-- clean generated app templates
-- richer proof reports
+- Runtime snapshot workflow
+- Clean generated app templates
+- Richer proof reports
 
 ## Phase 3: Phone-first power tools
 
-- better mobile operator UI
-- one-tap generated app preview
+- Better mobile operator UI
+- One-tap generated app preview
 - GitHub PR creation from phone
-- template marketplace
-- proof report viewer
-- local model and cloud model routing
+- Template marketplace
+- Proof report viewer
+- Local model and cloud model routing
 
 ## Phase 4: Cross-device packaging
 
-- desktop launcher
+- Desktop launcher
 - Docker dev mode
 - Codespaces mode
-- packaged PWA
-- optional APK or wrapper target
+- Packaged PWA
+- Optional APK or wrapper target
 
 ## Phase 5: SaaS option
 
-- hosted control plane
-- user-owned runner agents
-- secret manager integrations
-- team approvals
-- marketplace-ready generated apps
+- Hosted control plane
+- User-owned runner agents
+- Secret manager integrations
+- Team approvals
+- Marketplace-ready generated apps

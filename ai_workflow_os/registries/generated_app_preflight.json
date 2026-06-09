@@ -1,7 +1,15 @@
 {
   "apps": [
     {
-      "file_count": 10,
+      "file_count": 4,
+      "has_python_app": true,
+      "has_test": true,
+      "has_web_ui": true,
+      "name": "create-a-small-proof-app-from-self-build-test",
+      "root": "generated_apps/create-a-small-proof-app-from-self-build-test"
+    },
+    {
+      "file_count": 9,
       "has_python_app": true,
       "has_test": true,
       "has_web_ui": true,
@@ -9,7 +17,15 @@
       "root": "generated_apps/phone-project-agent"
     },
     {
-      "file_count": 10,
+      "file_count": 4,
+      "has_python_app": true,
+      "has_test": true,
+      "has_web_ui": true,
+      "name": "phone-wrapper-control-app",
+      "root": "generated_apps/phone-wrapper-control-app"
+    },
+    {
+      "file_count": 9,
       "has_python_app": true,
       "has_test": true,
       "has_web_ui": true,
@@ -17,7 +33,7 @@
       "root": "generated_apps/proof-app"
     }
   ],
-  "generated_app_count": 2,
+  "generated_app_count": 4,
   "inherited_rules": [
     "no fake proof",
     "no silent button failure",
@@ -29,5 +45,5 @@
   ],
   "kind": "generated_app_preflight",
   "ok": true,
-  "updated_at": "2026-06-09T03:56:46.908384+00:00"
+  "updated_at": "2026-06-09T05:09:04.227333+00:00"
 }

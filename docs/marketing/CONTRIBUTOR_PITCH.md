@@ -6,10 +6,10 @@ If you believe phones should be first-class development machines, this project i
 
 ## Contribute if you care about
 
-- building software from Android
+- Building software from Android
 - Termux as a real local operating layer
-- agentic coding workflows
-- safer browser-to-local automation
-- clean generated apps
-- testable app templates
-- portable local-to-cloud architecture
+- Agentic coding workflows
+- Safer browser-to-local automation
+- Clean generated apps
+- Testable app templates
+- Portable local-to-cloud architecture
