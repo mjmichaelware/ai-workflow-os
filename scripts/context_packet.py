@@ -11,6 +11,9 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_github_actions_apk_workflow.py",
+    "docs/apk/GITHUB_ACTIONS_APK_BUILD.md",
+    ".github/workflows/android-debug-apk.yml",
     "tests/test_manual_apk_builder.py",
     "docs/standards/TERMUX_NATIVE_MANUAL_APK_V1_STANDARD.md",
     "docs/apk/MANUAL_APK_BUILD_REPORT.json",
