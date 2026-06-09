@@ -9,5 +9,10 @@
   "local_only": true,
   "inline_runtime": false,
   "no_external_fonts": true,
-  "no_external_scripts": true
+  "no_external_scripts": true,
+  "installable_pwa": true,
+  "install_button": true,
+  "generated_app_inheritance": true,
+  "density_pass": "AIWOS_DENSITY_V2",
+  "mobile_flyout": true
 }
