@@ -100,13 +100,13 @@
       "title": "NO_FRAGILE_PASTE_PROTOCOL.md"
     },
     {
-      "content_hash": "93d149ffb2dd50597ac376961097f6bc64b9aeaf83a5b1563c695674038b0461",
-      "id": "93d149ffb2dd5059",
+      "content_hash": "ef4e7cc695008de7ee3ecaf9e0b4da58b5f14a9dae04bde27a7153c49f3ab358",
+      "id": "ef4e7cc695008de7",
       "source_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/docs/standards/AGENT_MISTAKE_REGISTRY.md",
-      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/93d149ffb2dd5059_AGENT_MISTAKE_REGISTRY.md",
+      "stored_path": "/data/data/com.termux/files/home/Workspaces/AI_Workflow_OS/ai-workflow-os/ai_workflow_os/knowledge/imported/ef4e7cc695008de7_AGENT_MISTAKE_REGISTRY.md",
       "title": "AGENT_MISTAKE_REGISTRY.md"
     }
   ],
   "name": "knowledge_registry",
-  "updated_at": "2026-06-09T03:45:57.269924+00:00"
+  "updated_at": "2026-06-09T03:50:41.747309+00:00"
 }

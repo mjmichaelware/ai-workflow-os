@@ -3,6 +3,8 @@ from __future__ import annotations
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import json
+# REGISTRY_BUTTONS_PATCH_V1
+from .registry_spine import build_registry, dispatch
 import urllib.parse
 
 from .android_builder import android_status, create_native_android_target
@@ -18,6 +20,66 @@ from .tools import tool_inventory
 
 ROOT = Path(__file__).resolve().parents[1]
 DOWNLOADS = Path.home() / "storage/downloads"
+
+
+# REGISTRY_DASHBOARD_INJECTOR_V1
+def _registry_panel_html() -> str:
+    return """
+<section id="registry-actions-panel" style="border:1px solid #555;padding:12px;margin:12px 0;border-radius:12px">
+  <h2>Registry Actions</h2>
+  <p>These buttons are loaded from the action registry. A button without a registered action is not real.</p>
+  <div id="registry-action-buttons"></div>
+  <pre id="registry-action-output">Registry action panel waiting...</pre>
+</section>
+<script>
+(function(){
+  async function registryLoad(){
+    const out = document.getElementById("registry-action-output");
+    const box = document.getElementById("registry-action-buttons");
+    if(!out || !box) return;
+    out.textContent = "Loading registry actions...";
+    try {
+      const r = await fetch("/api/actions", {cache:"no-store"});
+      const data = await r.json();
+      box.innerHTML = "";
+      (data.actions || []).forEach(action => {
+        const b = document.createElement("button");
+        b.textContent = action.label || action.id;
+        b.dataset.actionId = action.id;
+        b.style.margin = "4px";
+        b.onclick = async () => {
+          out.textContent = "Running " + action.id + "...";
+          const rr = await fetch("/api/actions/run", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({action_id: action.id, payload: {}})
+          });
+          const result = await rr.json();
+          out.textContent = JSON.stringify(result, null, 2);
+        };
+        box.appendChild(b);
+      });
+      out.textContent = "Registry buttons loaded: " + (data.actions || []).length;
+    } catch(e) {
+      out.textContent = "Registry button load failed: " + e.message;
+    }
+  }
+  window.addEventListener("DOMContentLoaded", registryLoad);
+})();
+</script>
+"""
+
+def _inject_registry_panel(html: str) -> str:
+    if not isinstance(html, str):
+        return html
+    if "registry-action-buttons" in html:
+        return html
+    panel = _registry_panel_html()
+    lower = html.lower()
+    idx = lower.rfind("</body>")
+    if idx >= 0:
+        return html[:idx] + panel + "\n" + html[idx:]
+    return html + "\n" + panel
 
 class Handler(BaseHTTPRequestHandler):
     def _no_cache_headers(self):
@@ -48,6 +110,30 @@ class Handler(BaseHTTPRequestHandler):
         return json.loads(self.rfile.read(length).decode()) if length > 0 else {}
 
     def do_GET(self):
+        path = self.path.split("?", 1)[0]
+
+        if path == "/api/actions":
+            registry = build_registry()
+            self.send_json(registry.manifest())
+            return
+
+        if path == "/api/action-events":
+            from pathlib import Path
+            root = Path(__file__).resolve().parents[1]
+            events = root / "ai_workflow_os" / "persistence" / "events.jsonl"
+            audit = root / "ai_workflow_os" / "audit" / "audit.jsonl"
+            self.send_json({
+                "ok": True,
+                "events_path": str(events),
+                "audit_path": str(audit),
+                "events_exists": events.exists(),
+                "audit_exists": audit.exists(),
+                "events_tail": events.read_text(encoding="utf-8").splitlines()[-20:] if events.exists() else [],
+                "audit_tail": audit.read_text(encoding="utf-8").splitlines()[-20:] if audit.exists() else [],
+            })
+            return
+
+
         path = urllib.parse.urlparse(self.path).path
         if path == "/":
             self.send_bytes((ROOT / "web/index.html").read_bytes(), "text/html; charset=utf-8"); return
@@ -72,6 +158,26 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json({"error": "not_found", "path": path}, status=404)
 
     def do_POST(self):
+        path = self.path.split("?", 1)[0]
+
+        if path == "/api/actions/run":
+            try:
+                length = int(self.headers.get("Content-Length", "0") or "0")
+                raw = self.rfile.read(length).decode("utf-8") if length else "{}"
+                body = json.loads(raw or "{}")
+                action_id = body.get("action_id")
+                payload = body.get("payload") or {}
+                if not action_id:
+                    self.send_json({"ok": False, "error": "missing action_id"}, status=400)
+                    return
+                result = dispatch(action_id, payload, source="dashboard")
+                self.send_json(result)
+                return
+            except Exception as exc:
+                self.send_json({"ok": False, "error": str(exc)}, status=500)
+                return
+
+
         try:
             path = urllib.parse.urlparse(self.path).path
             data = self.read_json()
@@ -100,3 +206,5 @@ def run_server(host="127.0.0.1", port=8765):
     server = ThreadingHTTPServer((host, port), Handler)
     print(f"AI Workflow OS dashboard: http://{host}:{port}")
     server.serve_forever()
+
+# Registry action panel marker installed; HTML injection target not found.
