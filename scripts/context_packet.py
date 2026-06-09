@@ -11,6 +11,11 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = [
+    "tests/test_native_android_wrapper.py",
+    "docs/standards/NATIVE_ANDROID_WRAPPER_STANDARD.md",
+    "docs/NATIVE_ANDROID_WRAPPER.md",
+    "scripts/prove_native_android_wrapper.py",
+    "ai_workflow_os/native_android_wrapper.py",
     "tests/test_generated_app_shell.py",
     "docs/standards/GENERATED_APP_SHELL_INHERITANCE_V2_STANDARD.md",
     "docs/GENERATED_APP_PACKAGING.md",
