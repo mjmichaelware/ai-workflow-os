@@ -1,0 +1,213 @@
+{
+  "ok": true,
+  "version": "editorial-v6",
+  "about_title": "AI Workflow OS: device-native software creation operating layer",
+  "privacy_title": "Local-first privacy and safety model",
+  "license_title": "License, notices, and public-use explanation",
+  "about": [
+    {
+      "title": "The phone becomes the build console",
+      "body": "AI Workflow OS is designed around a simple technical claim: a phone can become a serious software creation surface when the browser is only the console and the local runtime performs the approved work. The interface is not supposed to be a decorative landing page. It is supposed to expose state, proof, generated artifacts, package paths, safety boundaries, and repeatable commands in a way that a developer can understand quickly without trusting hidden magic."
+    },
+    {
+      "title": "Browser intent, local execution",
+      "body": "The browser sends intent. It does not become an unrestricted shell. That boundary matters because phones are personal devices with credentials, files, accounts, and private context. The application treats every button as a request to a known local endpoint. The local Python runner owns the allowed work, records proof, writes material artifacts, and avoids printing secrets."
+    },
+    {
+      "title": "Generated apps inherit a real shell",
+      "body": "Generated applications are not just folders with a placeholder file. They now receive a shell contract: README, app module, web entrypoint, service worker, manifest, local assets, proof packet, builder, child app capability, and Android wrapper scaffold. The goal is that an app created by the system has enough structure to be inspected, packaged, tested, and improved instead of being a one-time demo."
+    },
+    {
+      "title": "Recursive creation with proof gates",
+      "body": "The app factory has already proven that a generated app can build a child app. That does not mean the system should run without boundaries. It means recursion must be treated as a capability: create, inspect, compile, test, package, archive, and report. Every recursive step should create evidence before it becomes trusted."
+    },
+    {
+      "title": "A public repository needs public discipline",
+      "body": "A public repository cannot rely on private memory, hidden prompts, or undocumented local habits. AI Workflow OS keeps instructions, standards, proof scripts, context packets, and capability records inside the repository. That makes the project readable to future agents, future contributors, and future versions of the owner who need to understand why the system behaves the way it does."
+    },
+    {
+      "title": "Context packets replace giant copy-paste memory",
+      "body": "A compressed context packet gives the project a portable memory artifact. Instead of asking a model to remember everything from a chat, the repository can generate a packet containing core code, standards, tests, docs, and proof surfaces. This is not infinite compression. It is a practical way to make the system easier to hand off, verify, and resume."
+    },
+    {
+      "title": "The UI is an operator surface, not a brochure",
+      "body": "The interface should be dense because the underlying system is dense. Runtime status, proof scripts, endpoint graph, generated apps, package exports, safety state, capability matrix, and final reports all deserve first-class panels. A thin page with one sentence does not match the ambition of the system; the UI should reveal the structure instead of hiding it."
+    },
+    {
+      "title": "Design should communicate machine state",
+      "body": "The glow, motion, hierarchy, and card density are not just decoration. Motion can show active state, hover intent, proof readiness, or a live local runner. Cards can separate concepts without losing information density. Typography can make the difference between a toy interface and a control surface that feels alive on a phone."
+    },
+    {
+      "title": "Native app mode is a separate layer",
+      "body": "A local browser page, an installed PWA, and a future signed APK are different installation surfaces. The code can optimize for app mode and provide wrapper scaffolds, but the operating system controls final launcher behavior. The correct path is progressive: local PWA, generated wrapper scaffold, explicit build and signing, then a real installable package."
+    },
+    {
+      "title": "Every data point can become an endpoint",
+      "body": "The endpoint graph is the long-term shape of the system. Generated apps, proofs, standards, context packets, local routes, wrappers, capabilities, and UI assets can all be represented as nodes. A node can link to a local endpoint, a file, a proof command, or a generated artifact. That gives the console a future path toward a real operating map."
+    },
+    {
+      "title": "Agents are collaborators, not owners",
+      "body": "Model CLIs and assistant tools can help classify, enrich, draft, refactor, and plan. They should not be treated as unrestricted owners of the shell. AI Workflow OS uses capability records so each agent or CLI has a known boundary, safe templates, install detection, and proof expectations."
+    },
+    {
+      "title": "Safety is a product feature",
+      "body": "The system avoids broad permission mode because broad permission mode is not engineering maturity. A useful autonomous system must know what it is allowed to do, what it is not allowed to do, where secrets live, what gets logged, and what proof is required before publishing. Safety is part of the product, not a restriction bolted on afterward."
+    },
+    {
+      "title": "The terminal remains the source of proof",
+      "body": "The browser can display runtime logs, but the terminal remains the proof authority. Commands compile, test, inspect, prove, commit, push, and merge. The UI should make terminal proof visible and easier to understand, not pretend that a flashy button is the same as a verified build."
+    },
+    {
+      "title": "A phone-first system must be brutally responsive",
+      "body": "Phone-first does not mean sparse. It means dense information has to reflow intelligently: cards stack, tabs compress, proof logs become readable, and app mode removes unnecessary browser-feeling chrome inside the page. The layout must respect thumbs, portrait screens, landscape tablets, and desktop widths."
+    },
+    {
+      "title": "Generated apps should look intentional",
+      "body": "Every generated app should have a label, icon, manifest, service worker, install story, and proof files. If the parent system claims to build apps, the children cannot look like bare folders. The generated shell standard makes the children look and behave more like real software packages."
+    },
+    {
+      "title": "The repository is the operating manual",
+      "body": "The repo now contains standards for visual systems, generated app inheritance, wrapper scaffolds, capability matrices, final proof dashboards, runtime console density, and public surface hygiene. Those standards are not decoration. They are the written operating manual for future sessions."
+    },
+    {
+      "title": "Future work can become smaller",
+      "body": "Once the architecture is split into assets, modules, standards, and proof scripts, future work does not need giant terminal blocks forever. Sessions can become smaller: one branch for one capability, one proof for one claim, one merge after one verified result."
+    },
+    {
+      "title": "What exists now",
+      "body": "The current system has a decoupled console, endpoint graph, visual layers, final proof dashboard, generated app shell inheritance, recursive child-builder proof, native Android wrapper scaffold, capability matrix, runtime console endpoint, and local-only hygiene checks. That is a real base to keep building from."
+    },
+    {
+      "title": "What is still not complete",
+      "body": "A signed APK build pipeline is not complete yet. Real stores, external providers, hosted deployment, user accounts, billing, and true distributed runners are not complete yet. The system should say that honestly. The correct next step is to convert the scaffold into a signed package pipeline with explicit key handling outside the repo."
+    },
+    {
+      "title": "The goal",
+      "body": "The goal is not a pile of scripts. The goal is a device-native software creation machine where every action can be traced, every output can be packaged, every generated child can inherit structure, and every proof can be repeated. That is how the project becomes durable instead of just impressive in a single session."
+    }
+  ],
+  "privacy": [
+    {
+      "title": "Localhost is the default boundary",
+      "body": "The browser interface is designed to talk to localhost endpoints. That keeps the normal operating loop on the device instead of sending private project state to a remote UI by default. Any future remote integration must be explicit, documented, scoped, and separately proven."
+    },
+    {
+      "title": "Secrets are never display content",
+      "body": "Secret values must not appear in UI cards, logs, terminal panels, screenshots, generated packets, or repository files. The system can display whether a capability exists, but it must not reveal the token or key that makes the capability work."
+    },
+    {
+      "title": "No token-in-URL pattern",
+      "body": "URLs are easy to log, screenshot, cache, and leak. AI Workflow OS rejects the pattern of putting tokens in URLs. Any authenticated integration must use a safer channel and must keep credentials outside the public repository."
+    },
+    {
+      "title": "Read-only browser terminal",
+      "body": "The inline terminal view is intentionally read-only. It displays runtime state and proof logs. It does not execute arbitrary browser-submitted shell commands because that would turn the browser into a dangerous permission boundary."
+    },
+    {
+      "title": "Generated packets exclude credentials",
+      "body": "Context packets and app shell packets are meant to carry code, docs, standards, manifests, and proof metadata. They are not credential backups. Packet generation must continue to avoid token-like patterns and private keys."
+    },
+    {
+      "title": "Capability records reduce hidden risk",
+      "body": "The tool and agent capability matrix records what each CLI can do, whether it writes to the repo, whether it uses the network, and what proof command checks it. That makes capabilities visible instead of letting them hide inside informal memory."
+    },
+    {
+      "title": "Model tools are not unrestricted operators",
+      "body": "AI assistants can help generate code and plans, but they should not be allowed to become unrestricted shell owners. The project treats model tools as scoped capabilities with safe templates, proof stages, and explicit human review."
+    },
+    {
+      "title": "App wrapper scaffolds do not contain signing secrets",
+      "body": "The Android wrapper scaffold intentionally excludes signing keys. Building a signed APK is a separate stage because signing material must be protected. Public scaffolds can define structure without embedding private release credentials."
+    },
+    {
+      "title": "Public repo hygiene",
+      "body": "A public repository is copied, indexed, mirrored, forked, and cached. Anything committed should be safe to disclose. The hygiene scan blocks secret-like token patterns and keeps browser runtime assets local-only."
+    },
+    {
+      "title": "Runtime logs should be useful but limited",
+      "body": "Verbose logs help debugging, but logs must avoid dumping the environment. The runtime console can show git head, git status, proof files, generated app names, and safety flags without exposing credentials or personal accounts."
+    },
+    {
+      "title": "User-owned generated apps",
+      "body": "Generated apps belong to the user and should carry their own manifests and proof files. They should not silently inherit credentials from the parent system. A child app should be inspectable before it is trusted."
+    },
+    {
+      "title": "Network work requires a reason",
+      "body": "Future APIs, package registries, GitHub operations, cloud deployment, and external model providers can be useful. They must be invoked for a documented reason, with expected outputs, and without leaking credentials in logs."
+    },
+    {
+      "title": "No broad permission mode",
+      "body": "The system should never normalize all-permission execution as the default. Durable automation is built from scoped actions: inspect, compile, test, package, export, and publish only when the proof gate passes."
+    },
+    {
+      "title": "Screenshots are treated as public",
+      "body": "Anything visible in the phone interface can be screenshotted. Therefore the UI must avoid showing secrets, private tokens, or sensitive environment values. It can show status and proof without showing credential material."
+    },
+    {
+      "title": "Install surfaces differ",
+      "body": "A browser tab, an installed PWA, and a native wrapper do not have the same privacy model. Each install surface should declare what it loads, what it can access, and how it is updated. The current native wrapper export is scaffold-only."
+    },
+    {
+      "title": "Data minimization",
+      "body": "The console should prefer useful summaries over uncontrolled dumps. A dense UI can still be privacy-preserving if it shows the right state: proof result, file presence, endpoint health, and package path rather than raw private data."
+    },
+    {
+      "title": "Future user accounts",
+      "body": "If user accounts are ever added, they must be separated from local proof records. Authentication, billing, remote sync, and account storage will require a separate privacy review and new tests."
+    },
+    {
+      "title": "Future cloud runners",
+      "body": "Remote runners can make the system more powerful, but they also change the privacy boundary. Any cloud runner must have explicit job packets, redacted logs, scoped credentials, and a local audit record."
+    },
+    {
+      "title": "Public agents and plugins",
+      "body": "Public agents, plugins, and tools should enter the system through capability registration. That registration should state the tool purpose, network use, write behavior, allowed commands, and proof method."
+    },
+    {
+      "title": "The privacy promise",
+      "body": "The privacy promise is practical rather than magical: do local work by default, keep secrets out of output, avoid broad permissions, prove changes before publishing, and document every new boundary before trusting it."
+    }
+  ],
+  "license": [
+    {
+      "title": "Authoritative license file",
+      "body": "The repository license file remains the authoritative legal text. This interface can explain the license in accessible language, but it does not replace the checked-in LICENSE document."
+    },
+    {
+      "title": "Permission notice",
+      "body": "A permissive license generally allows use, copying, modification, merging, publication, distribution, sublicensing, and sale of copies under the license conditions. Contributors should still read the actual LICENSE file before relying on a summary."
+    },
+    {
+      "title": "Copyright notice",
+      "body": "Public use should preserve required copyright and permission notices. Generated applications and exported wrappers should keep license and notice handling visible as the project matures."
+    },
+    {
+      "title": "Warranty limits",
+      "body": "The project is provided without warranty under the license terms. That matters for an app factory because generated outputs still need inspection, testing, and review before real-world use."
+    },
+    {
+      "title": "Generated app notices",
+      "body": "Generated apps should carry their own README and manifest. Future packaging stages can copy license notices into generated bundles so app exports stay traceable."
+    },
+    {
+      "title": "Third-party assets",
+      "body": "Any future bundled font, icon, template, package, or SDK must include license review. Remote font loading is avoided in the browser surface; bundled assets should still carry license records."
+    },
+    {
+      "title": "Public repository expectations",
+      "body": "A public repo can be forked and reused. Clear license documentation helps users understand what they can do and what obligations they carry when they redistribute modified versions."
+    },
+    {
+      "title": "Native wrapper caution",
+      "body": "The Android wrapper scaffold is project code, not a store submission. A signed release will need its own release notes, versioning, notices, and signing process."
+    },
+    {
+      "title": "No license laundering",
+      "body": "Generated apps should not obscure third-party license obligations. If a future generated app includes dependencies, its manifest should record those dependencies and their license status."
+    },
+    {
+      "title": "Human-readable summary",
+      "body": "This page is a human-readable explanation for contributors and users. The full license text in the repository controls if there is any disagreement between this explanation and the license itself."
+    }
+  ]
+}

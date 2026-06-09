@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "created_at": "2026-06-09T14:16:32.648277+00:00",
-  "git_head": "bbe49e3 Merge final proof dashboard visual max v4",
+  "created_at": "2026-06-09T14:27:20.263965+00:00",
+  "git_head": "860ba02 Merge dense runtime console UX and verbose proof pages",
   "checks": [
     {
       "name": "tests",
       "ok": true,
       "returncode": 0,
-      "stdout_tail": "...............................................                          [100%]\n47 passed in 7.13s\n",
+      "stdout_tail": "..................................................                       [100%]\n50 passed in 5.86s\n",
       "stderr_tail": ""
     },
     {
