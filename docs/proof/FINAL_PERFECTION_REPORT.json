@@ -1,13 +1,13 @@
 {
   "ok": true,
-  "created_at": "2026-06-09T22:30:37.030634+00:00",
-  "git_head": "c7174c9 Merge Termux manual APK manifest package fix",
+  "created_at": "2026-06-10T10:58:29.748352+00:00",
+  "git_head": "e6bb319 Merge GitHub Actions debug APK build workflow",
   "checks": [
     {
       "name": "tests",
       "ok": true,
       "returncode": 0,
-      "stdout_tail": "......................................................................   [100%]\n70 passed in 7.16s\n",
+      "stdout_tail": "........................................................................ [ 98%]\n.                                                                        [100%]\n73 passed in 7.14s\n",
       "stderr_tail": ""
     },
     {
