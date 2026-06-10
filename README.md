@@ -1,5 +1,40 @@
 # AI Workflow OS
 
+**AI Workflow OS is a phone-first local application factory.**
+
+It turns an Android phone running Termux into an operator console for building, testing, exporting, packaging, and publishing software through approved local actions.
+
+The browser is the intent surface. The local runner performs the work. The repository keeps the proof.
+
+## Product position
+
+AI Workflow OS is not just a PWA, not just a script runner, and not just a prompt box.
+
+It is a repo-owned app builder where a phone can operate the build loop:
+
+prompt -> approval -> approved local action -> material code change -> compile -> test -> proof -> export -> optional publish
+
+The system is built around ownership, local control, proof, inspectable source, and safe execution boundaries.
+
+## Why it matters
+
+Most app builders hide the machinery. AI Workflow OS exposes the machinery and proves what happened.
+
+It is designed for phone-first development, generated applications, local runner workflows, AI-assisted drafts without trusting raw agent output, GitHub publishing, debug APK artifact builds, and future desktop, team, marketplace, and SaaS runner paths.
+
+## Current proof points
+
+- Local operator console runs from Termux.
+- Browser actions are mapped to allowlisted local endpoints.
+- Secrets are reported by presence only, not printed.
+- Generated apps compile and test.
+- Phone wrapper export works.
+- GitHub source publishing works.
+- Debug APK artifact builds through GitHub Actions.
+- Proof reports and context packets are generated into the repo.
+
+---
+
 [![CI](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/ci.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/codeql.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/codeql.yml)
 [![Public Hygiene](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/public-hygiene.yml/badge.svg)](https://github.com/mjmichaelware/ai-workflow-os/actions/workflows/public-hygiene.yml)
@@ -68,7 +103,7 @@ Early public operator build. Phone-local first. Cross-device and SaaS paths are 
 
 ## Console-grade direction
 
-AI Workflow OS is being shaped as a cloud-console-style operating surface that runs anywhere: phone, tablet, desktop, Codespaces, local runners, and eventually SaaS.
+AI Workflow OS is being shaped as a console-grade operating surface that runs anywhere: phone, tablet, desktop, Codespaces, local runners, and eventually SaaS.
 
 The phone version is not a toy mode. It is the wedge. The long-term platform goal is a device-independent operating console where the browser is the intent surface and approved runners perform the work.
 

@@ -1,8 +1,8 @@
 # Final Release Hardening Report
 
-- Created: `2026-06-09T22:30:37.676604+00:00`
-- Branch: `github-actions-debug-apk-v1`
-- Head: `c7174c9`
+- Created: `2026-06-10T10:58:30.187023+00:00`
+- Branch: `readme-product-positioning-v1`
+- Head: `e6bb319`
 - OK: `True`
 - Keys printed: `False`
 - Broad permissions: `False`
