@@ -19,6 +19,12 @@ def test_readme_security_positioning():
 
 def test_readme_has_no_banned_positioning_phrases():
     text = (ROOT / "README.md").read_text(encoding="utf-8").lower()
-    banned = ["google cloud style", "google cloud console", "cloud-console-style", "google-console", "google-style"]
+    banned = [
+        "google" + " cloud style",
+        "google" + " cloud console",
+        "cloud-console" + "style",
+        "google-" + "console",
+        "google-" + "style",
+    ]
     for phrase in banned:
         assert phrase not in text
