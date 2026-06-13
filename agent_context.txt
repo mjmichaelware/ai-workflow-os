@@ -1,0 +1,13 @@
+[SYSTEM ARCHITECTURE: AI WORKFLOW OS 2.0]
+Total Target: 100,000 LOC
+Phases: 
+1. Core OS & VFS (15k LOC)
+2. Local AI & ML Swarm Engine (20k LOC)
+3. AST Compiler & Error Recovery (18k LOC)
+4. Jetpack Compose Infinite UI/UX Engine (15k LOC)
+5. Termux/JNI & CLI Package Orchestrator (12k LOC)
+6. Room Database, Telemetry & Memory (10k LOC)
+7. Persistent Application Knowledge Base & Meta-Docs (10k LOC)
+
+Operational Constraint: This file is for project-specific agent context. 
+Do not modify global agents.md. Operate only within ~/Workspaces/Playground/ai-workflow-os.
